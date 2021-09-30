@@ -1,5 +1,6 @@
 
 local execute = vim.api.nvim_command
+local cmd = vim.cmd
 local opt = vim.opt
 
 -- Colorscheme
@@ -30,4 +31,15 @@ opt.clipboard      = "unnamedplus";
 -- Splits
 opt.splitbelow     = true;
 opt.splitright     = true;
+
+-- =============================================================================
+-- AUTOMATIC COMMANDS
+-- =============================================================================
+
+-- Open help on right split
+cmd 'autocmd! BufEnter * if &ft ==# \'help\' | wincmd L | endif'
+
+-- Recompile when plugins.lua is updated
+--cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+
 
