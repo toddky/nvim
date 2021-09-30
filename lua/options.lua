@@ -1,5 +1,9 @@
 
+local execute = vim.api.nvim_command
 local opt = vim.opt
+
+-- Colorscheme
+execute('colorscheme jellybeans')
 
 -- Tab settings
 opt.expandtab      = false;
