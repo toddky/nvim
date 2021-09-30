@@ -16,16 +16,12 @@ end
 -- =============================================================================
 -- PLUGIN MANAGER
 -- =============================================================================
--- Auto install packer.nvim if not exists
+-- Automatically install packer.nvim if it doesn't exists
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
 	fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 cmd 'packadd packer.nvim'
-
--- Recompile when plugins.lua is updated
---cmd 'autocmd BufWritePost plugins.lua PackerCompile'
-
 require('plugins')
 
