@@ -29,12 +29,17 @@ return require('packer').startup({function()
 		end
 	}
 
+	-- TODO: Try these
+	--use 'lukas-reineke/indent-blankline.nvim'
+
 end,
 
 -- Packer config
 config = {
 	display = {
 		open_fn = require('packer.util').float,
+		-- TODO: Why doesn't this work?
+		--open_fn = require('packer.util').float({ border = 'single' }),
 	}
 }})
 
