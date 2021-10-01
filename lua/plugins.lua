@@ -1,23 +1,20 @@
 
 vim.cmd 'packadd packer.nvim'
 
-return require('packer').startup(function()
+return require('packer').startup({function()
 
 	use 'wbthomason/packer.nvim'
 
 	-- Comments
 	--let g:NERDCustomDelimiters = { 'c': { 'left': '//'} }
 	--use { 'preservim/nerdcommenter', opt = true, cmd = {'<Plug>NERDCommenterToggle'}}
-	use 'preservim/nerdcommenter'
-	nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
-	xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
-	--use {
-	--	'preservim/nerdcommenter',
-	--	config = function()
-	--		nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
-	--		xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
-	--	end
-	--}
+	use {
+		'preservim/nerdcommenter',
+		config = function()
+			nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+			xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+		end
+	}
 
 	-- Git Integration
 	-- gitsigns replaces gitgutter
@@ -32,5 +29,12 @@ return require('packer').startup(function()
 		end
 	}
 
-end)
+end,
+
+-- Packer config
+config = {
+	display = {
+		open_fn = require('packer.util').float,
+	}
+}})
 
