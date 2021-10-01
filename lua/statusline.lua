@@ -6,6 +6,7 @@
 local execute = vim.api.nvim_command
 local api     = vim.api
 local cmd     = vim.cmd
+local fn      = vim.fn
 local wo      = vim.wo
 
 -- =============================================================================
@@ -44,6 +45,27 @@ set_status_color('Magenta',  57, 236)
 set_status_color('Cyan'   ,  45, 236)
 set_status_color('White'  , 255, 236)
 
+-- =============================================================================
+-- MODE
+-- =============================================================================
+function statusline_mode()
+	local modelist = {
+		--n = white..'[NORMAL]',
+		n = '',
+		i = red..'[INSERT]',
+		v = blue..'[VISUAL]',
+		V = blue..'[VISUAL]',
+		-- TODO: Figure out why visual block mode doesn't work
+		['CTRL-V'] = blue..'[VISUAL]',
+		R = red..'[REPLACE]',
+		s = blue..'[SELECT]',
+		S = blue..'[SELECT]',
+		c = magenta..'[COMMAND]',
+		t = blue..'[TERM]',
+	}
+	return modelist[fn.mode()] or red..'[UNKNOWN-'..fn.mode()..']'
+end
+
 
 -- =============================================================================
 -- STATUS LINE LEFT
@@ -51,15 +73,12 @@ set_status_color('White'  , 255, 236)
 function statusline_left()
 	local statusline = ''
 
-	-- TODO: Add mode
-	-- Set mode if not normal mode
-	--let l:mode = mode()
-	--let l:statusline .= (l:mode=='n') ? '' : l:red.'['.l:mode.'-mode]'
-
-	-- Buffer number
-	statusline = statusline..yellow..'[%n]'
 	-- Modified
 	statusline = statusline..red..'%m'
+	-- Buffer number
+	statusline = statusline..yellow..'[%n]'
+	-- Mode
+	statusline = statusline..statusline_mode()
 	-- relative/path/to/file
 	statusline = statusline..white..'%f'
 
