@@ -29,9 +29,12 @@ opt.hlsearch       = true
 
 opt.number         = true
 opt.relativenumber = true
+
 opt.backspace      = {"indent", "eol", "start"}
 opt.virtualedit    = "block";
 opt.encoding       = "utf-8";
+
+opt.wrap           = false
 opt.viewoptions    = "folds,cursor,curdir,slash,unix";
 opt.sessionoptions = "curdir,help,tabpages,winsize";
 
@@ -43,7 +46,6 @@ opt.cursorline     = true
 -- TODO: Change color for insert mode
 --autocmd InsertEnter * highlight CursorLine guifg=something
 --autocmd InsertLeave * highlight CursorLine guifg=something
-
 
 -- Splits
 opt.splitbelow     = true;
