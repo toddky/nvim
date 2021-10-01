@@ -8,6 +8,7 @@ local cmd = vim.cmd
 local my_modules = {
 	'options',
 	'mappings',
+	'statusline',
 }
 for i = 1, #my_modules, 1 do
 	pcall(require, my_modules[i])
@@ -16,12 +17,14 @@ end
 -- =============================================================================
 -- PLUGIN MANAGER
 -- =============================================================================
+-- :PackerCompile
+
 -- Automatically install packer.nvim if it doesn't exists
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
 	fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-cmd 'packadd packer.nvim'
+-- Load plugins
 require('plugins')
 
