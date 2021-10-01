@@ -1,20 +1,36 @@
 
+vim.cmd 'packadd packer.nvim'
+
 return require('packer').startup(function()
 
 	use 'wbthomason/packer.nvim'
 
+	-- Comments
 	--let g:NERDCustomDelimiters = { 'c': { 'left': '//'} }
-
-	-- use "terrortylor/nvim-comment"
-	-- require('nvim_comment').setup()
-	-- nmap('#', '<cmd>CommentToggle<Enter>')
-	-- xmap('#', '<cmd>CommentToggle<Enter>')
-
+	--use { 'preservim/nerdcommenter', opt = true, cmd = {'<Plug>NERDCommenterToggle'}}
 	use 'preservim/nerdcommenter'
 	nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
 	xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+	--use {
+	--	'preservim/nerdcommenter',
+	--	config = function()
+	--		nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+	--		xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+	--	end
+	--}
+
+	-- Git Integration
+	-- gitsigns replaces gitgutter
+	-- :help gitsigns
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
 
 end)
-
-
 
