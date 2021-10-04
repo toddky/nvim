@@ -29,9 +29,24 @@ return require('packer').startup({function()
 		end
 	}
 
+	-- TODO: Figure out how to install this.
+	-- When I try to use this, I get this errror:
+		-- Please update dependencies using :CHADdeps
+	-- When I run :CHADdeps, I get this error:
+		-- Error detected while processing function CHADon_exit:
+		-- line    1:
+		-- CHADTree EXITED - 1
+	--use {
+		--'ms-jpq/chadtree',
+		--config = function()
+			--require('chadtree').setup()
+		--end
+	--}
+
 	-- TODO: Try these
 	--use 'lukas-reineke/indent-blankline.nvim'
-
+	-- Plugin for "submodes":
+	--https://github.com/Iron-E/nvim-libmodal
 end,
 
 -- Packer config
