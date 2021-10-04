@@ -68,6 +68,33 @@ end
 
 
 -- =============================================================================
+-- SCROLLBAR
+-- =============================================================================
+function statusline_scrollbar()
+	local width = 20
+	local total_lines = api.nvim_buf_line_count(0)
+	local top_line = api.nvim_call_function('line', {'w0'})
+	local bottom_line = api.nvim_call_function('line', {'w$'})
+	local top = math.floor(width * top_line / total_lines)
+	local bottom = math.floor(width * bottom_line / total_lines)
+
+	local symbol_empty = '░'
+	local symbol_bar   = '█'
+	--local symbol_empty = ' '
+	--local symbol_bar   = '░'
+
+	local bar = {}
+	for i=1,width do
+		if (i < top) or (i > bottom) then
+			bar[i] = symbol_empty
+		else
+			bar[i] = symbol_bar
+		end
+	end
+	return yellow..'['..table.concat(bar, '')..']'
+end
+
+-- =============================================================================
 -- STATUS LINE LEFT
 -- =============================================================================
 function statusline_left()
@@ -114,6 +141,7 @@ function statusline_right()
 
 	-- Scroll statusbar
 	-- TODO: Implement this
+	statusline = statusline..statusline_scrollbar()
 
 	return statusline
 end
