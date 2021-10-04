@@ -75,7 +75,7 @@ function statusline_scrollbar()
 	local total_lines = api.nvim_buf_line_count(0)
 	local top_line = api.nvim_call_function('line', {'w0'})
 	local bottom_line = api.nvim_call_function('line', {'w$'})
-	local top = math.floor(width * top_line / total_lines)
+	local top = math.ceil(width * (top_line - 1) / total_lines) + 1
 	local bottom = math.floor(width * bottom_line / total_lines)
 
 	local symbol_empty = '░'
