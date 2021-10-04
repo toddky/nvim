@@ -12,7 +12,13 @@ local my_modules = {
 }
 for i = 1, #my_modules, 1 do
 	pcall(require, my_modules[i])
+	--TODO: Figure out how to make this work
+	--local ok, _ = pcall(require, my_modules[i])
+	--if not ok then
+		--print('failed to load '..my_modules[i])
+	--end
 end
+
 
 -- =============================================================================
 -- PLUGIN MANAGER
