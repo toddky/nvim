@@ -78,6 +78,11 @@ function statusline_scrollbar()
 	local top = math.ceil(width * (top_line - 1) / total_lines) + 1
 	local bottom = math.floor(width * bottom_line / total_lines)
 
+	-- Use a percentage if file is too big
+	if top > bottom then
+		return yellow..'[%3p%%]'
+	end
+
 	local symbol_empty = '░'
 	local symbol_bar   = '█'
 	--local symbol_empty = ' '
@@ -85,12 +90,13 @@ function statusline_scrollbar()
 
 	local bar = {}
 	for i=1,width do
-		if (i < top) or (i > bottom) then
-			bar[i] = symbol_empty
-		else
+		if (i <= bottom) and (i >= top) then
 			bar[i] = symbol_bar
+		else
+			bar[i] = symbol_empty
 		end
 	end
+	--return yellow..'['..top..'..'..bottom..']'
 	return yellow..'['..table.concat(bar, '')..']'
 end
 
@@ -113,7 +119,6 @@ function statusline_left()
 end
 
 
-
 -- =============================================================================
 -- STATUS LINE RIGHT
 -- =============================================================================
@@ -126,8 +131,6 @@ function statusline_right()
 	statusline = statusline..white..'/%L,'
 	-- ColumnNumber
 	statusline = statusline..yellow..'%-3c'
-	-- PercentFile
-	statusline = statusline..white..'[%3p%%]'
 
 	-- Filetype and syntax
 	-- TODO: Move filetype and syntax into StatuslineFileInfo
