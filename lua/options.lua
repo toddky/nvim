@@ -34,7 +34,7 @@ opt.backspace      = {"indent", "eol", "start"}
 opt.virtualedit    = "block"
 opt.encoding       = "utf-8"
 
-opt.timeoutlen      = 100
+opt.timeoutlen      = 300
 
 opt.wrap           = false
 opt.viewoptions    = "folds,cursor,curdir,slash,unix"
@@ -59,9 +59,28 @@ opt.splitright     = true
 -- =============================================================================
 
 -- Open help on right split
-cmd 'autocmd! BufEnter * if &ft ==# \'help\' | wincmd L | endif'
+cmd([[autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif]])
 
 -- Recompile when plugins.lua is updated
 --cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+
+-- Quit man pages with q
+-- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L116
+cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
+
+-- Close windows with q
+-- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L115
+vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
+
+
+-- Only show cursor line in active window
+-- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L96
+cmd([[
+	autocmd InsertLeave,WinEnter * set cursorline
+	autocmd InsertEnter,WinLeave * set nocursorline
+]])
+
+-- TODO: Markdown
+-- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L90
 
 
