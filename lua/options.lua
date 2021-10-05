@@ -31,14 +31,16 @@ opt.number         = true
 opt.relativenumber = true
 
 opt.backspace      = {"indent", "eol", "start"}
-opt.virtualedit    = "block";
-opt.encoding       = "utf-8";
+opt.virtualedit    = "block"
+opt.encoding       = "utf-8"
+
+opt.timeoutlen      = 100
 
 opt.wrap           = false
-opt.viewoptions    = "folds,cursor,curdir,slash,unix";
-opt.sessionoptions = "curdir,help,tabpages,winsize";
+opt.viewoptions    = "folds,cursor,curdir,slash,unix"
+opt.sessionoptions = "curdir,help,tabpages,winsize"
 
-opt.clipboard      = "unnamedplus";
+opt.clipboard      = "unnamedplus"
 
 -- Highlight currentl line
 opt.cursorline     = true
@@ -48,8 +50,8 @@ opt.cursorline     = true
 --autocmd InsertLeave * highlight CursorLine guifg=something
 
 -- Splits
-opt.splitbelow     = true;
-opt.splitright     = true;
+opt.splitbelow     = true
+opt.splitright     = true
 
 
 -- =============================================================================
