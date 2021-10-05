@@ -1,6 +1,7 @@
 
 vim.cmd 'packadd packer.nvim'
 
+
 return require('packer').startup({function()
 
 	use 'wbthomason/packer.nvim'
@@ -11,8 +12,9 @@ return require('packer').startup({function()
 	use {
 		'preservim/nerdcommenter',
 		config = function()
-			nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
-			xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+			local util = require('util')
+			util.nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+			util.xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
 		end
 	}
 
@@ -26,6 +28,14 @@ return require('packer').startup({function()
 		},
 		config = function()
 			require('gitsigns').setup()
+		end
+	}
+
+	use {
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup {
+			}
 		end
 	}
 
@@ -45,6 +55,9 @@ return require('packer').startup({function()
 
 	-- TODO: Try these
 	--use 'lukas-reineke/indent-blankline.nvim'
+	-- https://github.com/wellle/targets.vim
+	-- https://github.com/wellle/context.vim
+	-- https://github.com/ms-jpq/coq_nvim
 	-- Plugin for "submodes":
 	--https://github.com/Iron-E/nvim-libmodal
 end,
