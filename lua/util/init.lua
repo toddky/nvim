@@ -8,7 +8,7 @@ local M = {}
 
 
 -- =============================================================================
--- FUNCTIONS
+-- MAP
 -- =============================================================================
 
 local map = function(mode, lhs, rhs, opts)
@@ -39,6 +39,11 @@ end
 
 function M.tmap(lhs, rhs, opts)
 	map('t', lhs, rhs, opts)
+end
+
+function M.nvmap(lhs, rhs, opts)
+	map('n', lhs, rhs, opts)
+	map('v', lhs, rhs, opts)
 end
 
 
