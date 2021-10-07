@@ -28,22 +28,22 @@ util.nmap('<S-Tab>', '<<')
 -- =============================================================================
 
 -- Beginning/end of line
-util.nmap('gh', '^')
-util.nmap('gl', '$')
-util.nmap('H', '^')
-util.nmap('L', '$')
+util.nvmap('gh', '^')
+util.nvmap('gl', '$')
+util.nvmap('H', '^')
+util.nvmap('L', '$')
 
 -- Center after search
-util.nmap('N', 'Nzz')
-util.nmap('n', 'nzz')
+util.nvmap('N', 'Nzz')
+util.nvmap('n', 'nzz')
 
 -- Mark with `M` and jump with `m`
-util.nmap('M', 'm')
-util.nmap('m', "'")
+util.nvmap('M', 'm')
+util.nvmap('m', "'")
 
 -- Repeat latest f, t, F or T in opposite direction
 -- Opposite direction of ;
-util.nmap(':', ',')
+util.nvmap(':', ',')
 
 
 -- =============================================================================
