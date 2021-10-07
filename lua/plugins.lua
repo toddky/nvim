@@ -1,4 +1,14 @@
 
+
+-- =============================================================================
+-- EXAMPLES
+-- =============================================================================
+-- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
+
+
+-- =============================================================================
+-- PACKER
+-- =============================================================================
 vim.cmd 'packadd packer.nvim'
 
 
@@ -39,6 +49,16 @@ return require('packer').startup({function()
 		end
 	}
 
+
+	use {
+		"wellle/context.vim",
+		setup = function()
+			vim.api.nvim_set_var('context_add_mappings', 0)
+		end
+	}
+
+
+
 	-- TODO: Figure out how to install this.
 	-- When I try to use this, I get this errror:
 		-- Please update dependencies using :CHADdeps
@@ -56,8 +76,8 @@ return require('packer').startup({function()
 	-- TODO: Try these
 	--use 'lukas-reineke/indent-blankline.nvim'
 	-- https://github.com/wellle/targets.vim
-	-- https://github.com/wellle/context.vim
 	-- https://github.com/ms-jpq/coq_nvim
+	-- https://github.com/folke/dot/blob/master/config/nvim/lua/config/snippets.lua
 	-- Plugin for "submodes":
 	--https://github.com/Iron-E/nvim-libmodal
 end,
