@@ -89,6 +89,10 @@ util.imap('jj', '<esc>')
 -- Visual block mode
 util.vmap('v', '<C-v>')
 
+-- Search for visually selected text
+-- https://vim.fandom.com/wiki/Search_for_visually_selected_text
+util.vmap('*', 'y/<C-R>"<CR>')
+
 -- Quit
 util.vmap('q', '<Esc>')
 
