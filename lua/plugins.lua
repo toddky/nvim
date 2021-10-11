@@ -11,20 +11,24 @@
 -- =============================================================================
 vim.cmd 'packadd packer.nvim'
 
-
 return require('packer').startup({function()
 
 	use 'wbthomason/packer.nvim'
 
 	-- Comments
-	--let g:NERDCustomDelimiters = { 'c': { 'left': '//'} }
 	--use { 'preservim/nerdcommenter', opt = true, cmd = {'<Plug>NERDCommenterToggle'}}
 	use {
 		'preservim/nerdcommenter',
+		setup = function()
+			vim.g.NERDCustomDelimiters = {
+				['c'] = { ['left'] = '//' },
+				['python'] = { ['left'] = '#' }
+			}
+		end,
 		config = function()
 			local util = require('util')
-			util.nmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
-			util.xmap('#', '<Plug>NERDCommenterToggle', { noremap = false } )
+			util.nmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
+			util.xmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
 		end
 	}
 
