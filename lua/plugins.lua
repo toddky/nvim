@@ -57,7 +57,7 @@ return require('packer').startup({function()
 	use {
 		"wellle/context.vim",
 		setup = function()
-			vim.api.nvim_set_var('context_add_mappings', 0)
+			vim.g.context_add_mappings = 0
 		end
 	}
 
