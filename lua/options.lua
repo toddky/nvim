@@ -19,8 +19,16 @@ opt.shiftwidth     = 0;
 opt.softtabstop    = 0;
 
 -- List
-opt.list           = true
-opt.listchars      = { tab='▸ ', trail='·', precedes='←', extends='→' }
+opt.list      = true
+opt.listchars = {
+	tab      = '▸ ',
+	trail    = '·',
+	precedes = '←',
+	eol      = '⌐',
+	--extends  = '→',
+	extends  = '»',
+	precedes = '«',
+}
 
 -- Search
 opt.ignorecase     = true
@@ -34,7 +42,7 @@ opt.backspace      = {"indent", "eol", "start"}
 opt.virtualedit    = "block"
 opt.encoding       = "utf-8"
 
-opt.timeoutlen      = 300
+opt.timeoutlen     = 300
 
 opt.wrap           = false
 opt.viewoptions    = "folds,cursor,curdir,slash,unix"
@@ -82,5 +90,17 @@ cmd([[
 
 -- TODO: Markdown
 -- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L90
+
+
+-- TODO: Terminal
+-- https://github.com/b0o/nvim-conf/blob/9b0377bc810b766b7580811a99780b98026602ad/lua/user/autocmds.lua#L31
+--vim.cmd [[
+  --augroup term
+    --autocmd!
+    --autocmd BufEnter  term://* call user#fn#termEnter(1)
+    --autocmd TermClose term://* call user#fn#closeBufWins(expand('<abuf>'))
+  --augroup END
+--]]
+
 
 
