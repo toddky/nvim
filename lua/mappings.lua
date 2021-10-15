@@ -17,7 +17,7 @@ local util = require('util')
 -- =============================================================================
 
 -- Command
-util.nmap('<Enter>', ':')
+util.nvmap('<Enter>', ':')
 
 -- Indentation
 util.nmap('<Tab>', '>>')
@@ -120,10 +120,21 @@ util.vmap('<S-Tab>', '<gv')
 -- =============================================================================
 -- PLUGINS
 -- =============================================================================
-util.nmap(',ce', '<cmd>ContextEnableWindow<Enter>')
-util.nmap(',cq', '<cmd>ContextDisable<Enter>')
-util.nmap(',ps', '<cmd>PackerSync<Enter>')
-util.nmap(',pu', '<cmd>PackerUpdate<Enter>')
+util.nmap(',ce',  '<cmd>ContextEnableWindow<Enter>')
+util.nmap(',cq',  '<cmd>ContextDisable<Enter>')
+util.nmap(',f/',  '<cmd>FzfLua blines<Enter>')
+util.nmap(',fb',  '<cmd>FzfLua buffers<Enter>')
+util.nmap(',ff',  '<cmd>FzfLua files<Enter>')
+util.nmap(',fgb', '<cmd>FzfLua git_bcommits<Enter>')
+util.nmap(',fgf', '<cmd>FzfLua git_files<Enter>')
+util.nmap(',fgl', '<cmd>FzfLua git_commits<Enter>')
+util.nmap(',fh',  '<cmd>FzfLua help_tags<Enter>')
+util.nmap(',fl',  '<cmd>FzfLua lines<Enter>')
+util.nmap(',ft',  '<cmd>FzfLua tabs<Enter>')
+util.nmap(',pc',  '<cmd>PackerCompile<Enter>')
+util.nmap(',ps',  '<cmd>PackerSync<Enter>')
+util.nmap(',pu',  '<cmd>PackerUpdate<Enter>')
+
 
 
 -- =============================================================================
