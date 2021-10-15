@@ -24,8 +24,10 @@ opt.listchars = {
 	tab      = '▸ ',
 	trail    = '·',
 	precedes = '←',
+	--space    = '·',
+	lead    = '·',
+	--This breaks hterm alignment: '↴',
 	eol      = '⌐',
-	--extends  = '→',
 	extends  = '»',
 	precedes = '«',
 }
