@@ -74,30 +74,29 @@ packer.startup({function()
 		'lukas-reineke/indent-blankline.nvim',
 		config = function()
 			require("indent_blankline").setup {
-				--char = "|",
 				char = '│',
+				space_char_blankline = " ",
 				filetype_exclude = {'help'},
 				buftype_exclude = {'terminal'},
 				show_end_of_line = true,
 				-- TODO: Figure out indent_blankline treesitter context
 				show_current_context = true,
-				space_char_blankline = " ",
 				-- TODO: Figure out indent_blankline highlight list
-				--char_highlight_list = {
-					--"IndentBlanklineIndent1",
-					--"IndentBlanklineIndent2",
-					--"IndentBlanklineIndent3",
-					--"IndentBlanklineIndent4",
-					--"IndentBlanklineIndent5",
-					--"IndentBlanklineIndent6",
-				--},
+				char_highlight_list = {
+					"IndentBlanklineIndent1",
+					"IndentBlanklineIndent2",
+					"IndentBlanklineIndent3",
+					"IndentBlanklineIndent4",
+					"IndentBlanklineIndent5",
+					"IndentBlanklineIndent6",
+				}
 			}
 		end
 	}
 
-	-- TODO: Re-enable when I figure out the flickering issue
 	use {
 		'wellle/context.vim',
+		-- TODO: Always enable when I figure out the flickering issue
 		cmd = {'ContextEnable', 'ContextEnableWindow'},
 		setup = function()
 			vim.g.context_add_mappings = 0
