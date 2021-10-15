@@ -47,6 +47,15 @@ packer.startup({function()
 		end
 	}
 
+	-- FZF
+	use {
+		'ibhagwan/fzf-lua',
+		requires = {
+			'vijaymarupudi/nvim-fzf',
+			'kyazdani42/nvim-web-devicons'
+		}
+	}
+
 	-- Git Integration
 	-- gitsigns replaces gitgutter
 	-- :help gitsigns
@@ -79,6 +88,7 @@ packer.startup({function()
 				filetype_exclude = {'help'},
 				buftype_exclude = {'terminal'},
 				show_end_of_line = true,
+				show_trailing_blankline_indent = false,
 				-- TODO: Figure out indent_blankline treesitter context
 				--show_current_context = true,
 				-- TODO: Figure out indent_blankline highlight list
