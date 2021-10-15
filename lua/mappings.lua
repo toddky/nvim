@@ -1,4 +1,14 @@
 
+
+-- =============================================================================
+-- EXAMPLES
+-- =============================================================================
+-- https://github.com/b0o/nvim-conf/blob/main/lua/user/mappings.lua
+
+
+-- =============================================================================
+-- REQUIRE
+-- =============================================================================
 local util = require('util')
 
 
@@ -9,6 +19,12 @@ local util = require('util')
 -- Command
 util.nmap('<Enter>', ':')
 
+-- Indentation
+util.nmap('<Tab>', '>>')
+util.nmap('<S-Tab>', '<<')
+--util.xmap('<Tab>', '>>gv')
+--util.xmap('<S-Tab>', '<<gv')
+
 -- Black hole registers
 util.nmap('c', '"_c')
 util.nmap('C', '"_C')
@@ -16,11 +32,11 @@ util.nmap('C', '"_C')
 -- Redo
 util.nmap('U', '<C-r>')
 
--- Indentation
-util.nmap('<Tab>', '>>')
-util.nmap('<S-Tab>', '<<')
---util.xmap('<Tab>', '>>gv')
---util.xmap('<S-Tab>', '<<gv')
+-- Disable Ex mode
+util.nmap('Q', '<Nop>')
+
+-- Disable Ctrl-c warning
+util.nmap('<C-c>', '<Nop>')
 
 
 -- =============================================================================
