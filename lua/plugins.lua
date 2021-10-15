@@ -80,7 +80,7 @@ packer.startup({function()
 				buftype_exclude = {'terminal'},
 				show_end_of_line = true,
 				-- TODO: Figure out indent_blankline treesitter context
-				show_current_context = true,
+				--show_current_context = true,
 				-- TODO: Figure out indent_blankline highlight list
 				char_highlight_list = {
 					"IndentBlanklineIndent1",
