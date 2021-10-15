@@ -20,6 +20,7 @@ end
 -- PACKER
 -- =============================================================================
 -- :PackerCompile
+-- :PackerSync
 vim.cmd 'packadd packer.nvim'
 
 local packer = require 'packer'
@@ -82,26 +83,35 @@ packer.startup({function()
 				show_current_context = true,
 				space_char_blankline = " ",
 				-- TODO: Figure out indent_blankline highlight list
-				char_highlight_list = {
-					"IndentBlanklineIndent1",
-					"IndentBlanklineIndent2",
-					"IndentBlanklineIndent3",
-					"IndentBlanklineIndent4",
-					"IndentBlanklineIndent5",
-					"IndentBlanklineIndent6",
-				},
+				--char_highlight_list = {
+					--"IndentBlanklineIndent1",
+					--"IndentBlanklineIndent2",
+					--"IndentBlanklineIndent3",
+					--"IndentBlanklineIndent4",
+					--"IndentBlanklineIndent5",
+					--"IndentBlanklineIndent6",
+				--},
 			}
 		end
 	}
 
 	-- TODO: Re-enable when I figure out the flickering issue
 	use {
-		"wellle/context.vim",
-		cmd = 'ContextEnable',
+		'wellle/context.vim',
+		cmd = {'ContextEnable', 'ContextEnableWindow'},
 		setup = function()
 			vim.g.context_add_mappings = 0
 		end
 	}
+
+	--use {
+		--'EdenEast/nightfox.nvim',
+		--config = function()
+			--require('nightfox').load('nightfox')
+			--require('nightfox').load('nordfox')
+			--require('nightfox').load('dayfox')
+		--end
+	--}
 
 	-- TODO: Figure out how to install this.
 	-- When I try to use this, I get this errror:
