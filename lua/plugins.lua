@@ -67,6 +67,23 @@ packer.startup({function()
 		end
 	}
 
+	-- Indentation
+	-- :help indent_blankline
+	use {
+		'lukas-reineke/indent-blankline.nvim',
+		config = function()
+			require("indent_blankline").setup {
+				--char = "|",
+				char = '│',
+				filetype_exclude = {'help'},
+				buftype_exclude = {'terminal'},
+				show_end_of_line = true,
+				space_char_blankline = " ",
+				--space_char_blankline = '·'
+			}
+		end
+	}
+
 	-- TODO: Re-enable when I figure out the flickering issue
 	--use {
 	--	"wellle/context.vim",
@@ -90,7 +107,6 @@ packer.startup({function()
 	--}
 
 	-- TODO: Try these
-	--use 'lukas-reineke/indent-blankline.nvim'
 	-- https://github.com/wellle/targets.vim
 	-- https://github.com/ms-jpq/coq_nvim
 	-- https://github.com/folke/dot/blob/master/config/nvim/lua/config/snippets.lua
