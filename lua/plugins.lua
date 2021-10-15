@@ -54,6 +54,7 @@ packer.startup({function()
 			'vijaymarupudi/nvim-fzf',
 			'kyazdani42/nvim-web-devicons'
 		}
+		-- :help fzf-lua-customization
 	}
 
 	-- Git Integration
