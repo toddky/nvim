@@ -95,12 +95,13 @@ packer.startup({function()
 	}
 
 	-- TODO: Re-enable when I figure out the flickering issue
-	--use {
-	--	"wellle/context.vim",
-	--	setup = function()
-	--		vim.g.context_add_mappings = 0
-	--	end
-	--}
+	use {
+		"wellle/context.vim",
+		cmd = 'ContextEnable',
+		setup = function()
+			vim.g.context_add_mappings = 0
+		end
+	}
 
 	-- TODO: Figure out how to install this.
 	-- When I try to use this, I get this errror:
