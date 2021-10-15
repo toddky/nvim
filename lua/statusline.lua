@@ -41,7 +41,7 @@ set_status_color('Red'    , 196, 236)
 set_status_color('Green'  ,  46, 236)
 set_status_color('Yellow' , 226, 236)
 set_status_color('Blue'   ,  45, 236)
-set_status_color('Magenta',  57, 236)
+set_status_color('Magenta', 165, 236)
 set_status_color('Cyan'   ,  45, 236)
 set_status_color('White'  , 255, 236)
 
