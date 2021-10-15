@@ -78,8 +78,18 @@ packer.startup({function()
 				filetype_exclude = {'help'},
 				buftype_exclude = {'terminal'},
 				show_end_of_line = true,
+				-- TODO: Figure out indent_blankline treesitter context
+				show_current_context = true,
 				space_char_blankline = " ",
-				--space_char_blankline = '·'
+				-- TODO: Figure out indent_blankline highlight list
+				char_highlight_list = {
+					"IndentBlanklineIndent1",
+					"IndentBlanklineIndent2",
+					"IndentBlanklineIndent3",
+					"IndentBlanklineIndent4",
+					"IndentBlanklineIndent5",
+					"IndentBlanklineIndent6",
+				},
 			}
 		end
 	}
