@@ -11,6 +11,8 @@ execute('colorscheme jellybeans')
 -- OPTIONS
 -- =============================================================================
 
+-- TODO: Set undodir
+
 -- Tab settings
 opt.expandtab      = false;
 opt.autoindent     = true;
