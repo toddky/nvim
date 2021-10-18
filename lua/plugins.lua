@@ -141,6 +141,7 @@ packer.startup({function()
 	-- https://github.com/wellle/targets.vim
 	-- https://github.com/ms-jpq/coq_nvim
 	-- https://github.com/folke/dot/blob/master/config/nvim/lua/config/snippets.lua
+	-- https://github.com/weilbith/nvim-code-action-menu
 	-- Plugin for "submodes":
 	--https://github.com/Iron-E/nvim-libmodal
 end,
