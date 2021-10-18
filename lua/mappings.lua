@@ -43,6 +43,8 @@ util.nmap('<C-c>', '<Nop>')
 -- MOVEMENT
 -- =============================================================================
 
+-- TODO: Map j to gj with v:count
+
 -- Beginning/end of line
 util.nvmap('gh', '^')
 util.nvmap('gl', '$')
@@ -56,6 +58,12 @@ util.nvmap('n', 'nzz')
 -- Mark with `M` and jump with `m`
 util.nvmap('M', 'm')
 util.nvmap('m', "'")
+
+-- TODO: Center after movement
+--util.nvmap('{', '{zz')
+--util.nvmap('}', '}zz')
+--util.nvmap('<C-o>', '<C-o>zz')
+--util.nvmap('<C-i>', '<C-i>zz')
 
 -- Repeat latest f, t, F or T in opposite direction
 -- Opposite direction of ;
@@ -105,12 +113,20 @@ util.imap('jj', '<esc>')
 -- Visual block mode
 util.vmap('v', '<C-v>')
 
--- Search for visually selected text
--- https://vim.fandom.com/wiki/Search_for_visually_selected_text
-util.vmap('*', 'y/<C-R>"<CR>')
-
 -- Quit
 util.vmap('q', '<Esc>')
+
+-- Search for visually selected text
+-- https://vim.fandom.com/wiki/Search_for_visually_selected_text
+util.vmap('*', 'y/<C-R>"<Enter>')
+
+-- TODO: Figure out how this works
+-- Use dot over visual selection
+--util.xmap('.', '<cmd>norm.<Enter>')
+
+-- TODO: Figure out how this works
+-- Use macro over visual selection
+--util.xmap('@', [[<cmd>'<,'>:normal @@<Enter>]])
 
 -- Indentation
 util.vmap('<Tab>', '>gv')
