@@ -29,10 +29,12 @@ opt.listchars = {
 	--space    = '·',
 	lead    = '·',
 	--This breaks hterm alignment: '↴',
-	eol      = '⌐',
+	eol      = '↴',
+	--eol      = '⌐',
 	extends  = '»',
 	precedes = '«',
 }
+
 
 -- Search
 opt.ignorecase     = true
@@ -67,6 +69,14 @@ opt.splitright     = true
 
 
 -- =============================================================================
+-- MATCH
+-- =============================================================================
+
+-- Highlight trailing whitespace
+cmd([[match Error /\v\s+$/]])
+
+
+-- =============================================================================
 -- AUTOMATIC COMMANDS
 -- =============================================================================
 
@@ -94,7 +104,6 @@ cmd([[
 
 -- TODO: Markdown
 -- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L90
-
 
 -- TODO: Terminal
 -- https://github.com/b0o/nvim-conf/blob/9b0377bc810b766b7580811a99780b98026602ad/lua/user/autocmds.lua#L31
