@@ -1,5 +1,4 @@
 
-
 -- =============================================================================
 -- EXAMPLES
 -- =============================================================================
@@ -147,10 +146,25 @@ util.nmap(',fgl', '<cmd>FzfLua git_commits<Enter>')
 util.nmap(',fh',  '<cmd>FzfLua help_tags<Enter>')
 util.nmap(',fl',  '<cmd>FzfLua lines<Enter>')
 util.nmap(',ft',  '<cmd>FzfLua tabs<Enter>')
+util.nmap(',tc',  '<cmd>Telescope colorscheme<Enter>')
+util.nmap(',tf',  '<cmd>Telescope find_files<Enter>')
+util.nmap(',tgf', '<cmd>Telescope git_files<Enter>')
+util.nmap(',tk',  '<cmd>Telescope keymaps<Enter>')
 util.nmap(',pc',  '<cmd>PackerCompile<Enter>')
 util.nmap(',ps',  '<cmd>PackerSync<Enter>')
 util.nmap(',pu',  '<cmd>PackerUpdate<Enter>')
 
+
+-- =============================================================================
+-- OPTIONS
+-- =============================================================================
+util.leader('sfd', '<cmd>set foldmethod=diff<Enter>')
+util.leader('sfi', '<cmd>set foldmethod=indent<Enter>')
+util.leader('sfm', '<cmd>set foldmethod=manual<Enter>')
+util.leader('st2', '<cmd>set tabstop=2<Enter>')
+util.leader('st4', '<cmd>set tabstop=4<Enter>')
+util.leader('ste', '<cmd>set expandtab<Enter>')
+util.leader('stn', '<cmd>set noexpandtab<Enter>')
 
 
 -- =============================================================================
