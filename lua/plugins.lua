@@ -3,6 +3,21 @@
 -- EXAMPLES
 -- =============================================================================
 -- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
+-- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lu
+
+
+-- =============================================================================
+-- NOTES
+-- =============================================================================
+-- :help packer.use
+-- use {
+--   'myusername/example',        -- The plugin location string
+--   disable = boolean,           -- Mark a plugin as inactive
+--   run = string, function, or table  -- Post-update/install hook. See |packer-plugin-hooks|
+--   requires = string or list    -- Specifies plugin dependencies. See |packer-plugin-dependencies|
+--   config = string or function, -- Specifies code to run after this plugin is loaded.
+--   setup = string or function,  -- Specifies code to run before this plugin is loaded.
+-- }
 
 
 -- =============================================================================
@@ -29,6 +44,27 @@ local use = packer.use
 packer.startup({function()
 
 	use 'wbthomason/packer.nvim'
+
+	-- Treesitter
+	use {
+		-- Example: https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/treesitter/init.lua
+		'nvim-treesitter/nvim-treesitter'
+		--setup = function()
+			--TSUpdate
+			--set foldmethod=expr
+			--set foldexpr=nvim_treesitter#foldexpr()
+		--end
+	}
+	use 'nvim-treesitter/playground'
+
+	-- Telescope
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'} },
+		setup = function()
+			require('nvim-web-devicons').get_icons()
+		end
+	}
 
 	-- Comments
 	--use { 'preservim/nerdcommenter', opt = true, cmd = {'<Plug>NERDCommenterToggle'}}
