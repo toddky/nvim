@@ -115,6 +115,9 @@ cmd([[
   --augroup END
 --]]
 
+-- Disable wrap in Telescope preview
+cmd([[autocmd User TelescopePreviewerLoaded setlocal nowrap]])
+
 -- Reset softtabstop and shiftwidth when tabstop changes
 cmd([[autocmd OptionSet tabstop set sts=0 sw=0]])
 
