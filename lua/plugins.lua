@@ -95,6 +95,7 @@ packer.startup({function()
 
 	-- Git Integration
 	-- gitsigns replaces gitgutter
+	-- TODO: Learn how to stage hunks
 	-- :help gitsigns
 	use {
 		'lewis6991/gitsigns.nvim',
