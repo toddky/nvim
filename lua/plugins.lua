@@ -48,12 +48,18 @@ packer.startup({function()
 	-- Treesitter
 	use {
 		-- Example: https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/treesitter/init.lua
-		'nvim-treesitter/nvim-treesitter'
-		--setup = function()
+		'nvim-treesitter/nvim-treesitter',
+		setup = function()
+			require'nvim-treesitter.configs'.setup {
+				ensure_installed = {"html", "javascript", "lua"},
+				highlight = {
+					enable = true,
+				}
+			}
 			--TSUpdate
 			--set foldmethod=expr
 			--set foldexpr=nvim_treesitter#foldexpr()
-		--end
+		end
 	}
 	use 'nvim-treesitter/playground'
 
@@ -151,6 +157,9 @@ packer.startup({function()
 		end
 	}
 
+	-- Colorschemes
+	-- :colorscheme nord
+	use 'EdenEast/nightfox.nvim'
 	--use {
 		--'EdenEast/nightfox.nvim',
 		--config = function()
