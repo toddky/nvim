@@ -13,17 +13,15 @@ local wo      = vim.wo
 -- COLORS
 -- =============================================================================
 
-function set_status_color(name, fg, bg)
-	local highlight_cmd = ''
-	ctermfg = fg == nil and '' or ' ctermfg='..fg
-	ctermbg = bg == nil and '' or ' ctermbg='..bg
-
+function statusline_color(name, ctermfg, ctermbg, guifg, guibg)
 	-- `highlight` doesn't work until after VimEnter:
 	--https://www.reddit.com/r/neovim/comments/me35u9/comment/h2x5n7u/?utm_source=share&utm_medium=web2x&context=3
-	highlight_cmd = highlight_cmd .. 'autocmd VimEnter * '
-
-	highlight_cmd = highlight_cmd .. 'highlight StatusLine'..name
-	highlight_cmd = highlight_cmd .. ctermfg .. ctermbg
+	local highlight_cmd = 'autocmd VimEnter * '
+		.. 'highlight StatusLine'..name
+		.. (ctermfg == nil and '' or ' ctermfg='..ctermfg)
+		.. (ctermbg == nil and '' or ' ctermbg='..ctermbg)
+		.. (guifg == nil and '' or ' guifg='..guifg)
+		.. (guibg == nil and '' or ' guibg='..guibg)
 	--vim.cmd('echom "'..highlight_cmd..'"')
 	execute(highlight_cmd)
 end
@@ -37,13 +35,15 @@ local magenta = '%#StatusLineMagenta#'
 local cyan    = '%#StatusLineCyan#'
 local white   = '%#StatusLineWhite#'
 
-set_status_color('Red'    , 196, 236)
-set_status_color('Green'  ,  46, 236)
-set_status_color('Yellow' , 226, 236)
-set_status_color('Blue'   ,  45, 236)
-set_status_color('Magenta', 165, 236)
-set_status_color('Cyan'   ,  45, 236)
-set_status_color('White'  , 255, 236)
+local guibg = '#3B4252'
+
+statusline_color('Red'    , 196, 236, '#E080A0', guibg)
+statusline_color('Green'  ,  46, 236, '#80E080', guibg)
+statusline_color('Yellow' , 226, 236, '#F0F090', guibg)
+statusline_color('Blue'   ,  45, 236, '#50B0F0', guibg)
+statusline_color('Magenta', 165, 236, '#8080E0', guibg)
+statusline_color('Cyan'   ,  45, 236, '#222222', guibg)
+statusline_color('White'  , 255, 236, '#F0F0F0', guibg)
 
 -- =============================================================================
 -- MODE
