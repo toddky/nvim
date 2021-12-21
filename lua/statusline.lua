@@ -35,15 +35,17 @@ local magenta = '%#StatusLineMagenta#'
 local cyan    = '%#StatusLineCyan#'
 local white   = '%#StatusLineWhite#'
 
-local guibg = '#3B4252'
+local colors = require('colors')
+local cterm = colors.cterm
+local gui = colors.gui
 
-statusline_color('Red'    , 196, 236, '#E080A0', guibg)
-statusline_color('Green'  ,  46, 236, '#80E080', guibg)
-statusline_color('Yellow' , 226, 236, '#F0F090', guibg)
-statusline_color('Blue'   ,  45, 236, '#50B0F0', guibg)
-statusline_color('Magenta', 165, 236, '#8080E0', guibg)
-statusline_color('Cyan'   ,  45, 236, '#222222', guibg)
-statusline_color('White'  , 255, 236, '#F0F0F0', guibg)
+statusline_color('Red'    , cterm.red    , 236, gui.red    , gui.bg)
+statusline_color('Green'  , cterm.green  , 236, gui.green  , gui.bg)
+statusline_color('Yellow' , cterm.yellow , 236, gui.yellow , gui.bg)
+statusline_color('Blue'   , cterm.blue   , 236, gui.blue   , gui.bg)
+statusline_color('Magenta', cterm.magenta, 236, gui.magenta, gui.bg)
+statusline_color('Cyan'   , cterm.cyan   , 236, gui.cyan   , gui.bg)
+statusline_color('White'  , cterm.white  , 236, gui.white  , gui.bg)
 
 -- =============================================================================
 -- MODE
