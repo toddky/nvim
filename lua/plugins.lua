@@ -17,6 +17,7 @@
 --   requires = string or list    -- Specifies plugin dependencies. See |packer-plugin-dependencies|
 --   config = string or function, -- Specifies code to run after this plugin is loaded.
 --   setup = string or function,  -- Specifies code to run before this plugin is loaded.
+--   branch = string,             -- Specifies a git branch to use
 -- }
 
 
@@ -50,18 +51,36 @@ packer.startup({function()
 		-- Example: https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/treesitter/init.lua
 		'nvim-treesitter/nvim-treesitter',
 		setup = function()
-			require'nvim-treesitter.configs'.setup {
-				ensure_installed = {"html", "javascript", "lua"},
-				highlight = {
-					enable = true,
-				}
-			}
+			-- TODO: Figure out how to make this work
+			--require'nvim-treesitter.configs'.setup {
+				--ensure_installed = {"html", "javascript", "lua"},
+				--highlight = {
+					--enable = true,
+				--}
+			--}
 			--TSUpdate
 			--set foldmethod=expr
 			--set foldexpr=nvim_treesitter#foldexpr()
 		end
 	}
 	use 'nvim-treesitter/playground'
+
+	-- coq
+	use {
+		'ms-jpq/coq_nvim',
+		branch = 'coq',
+		requires = {
+			{
+				'ms-jpq/coq.artifacts',
+				branch = 'artifacts',
+			},
+			{
+				'ms-jpq/coq.thirdparty',
+				branch = '3p',
+			}
+		}
+	}
+
 
 	-- Telescope
 	use {
@@ -159,6 +178,7 @@ packer.startup({function()
 
 	-- Colorschemes
 	-- :colorscheme nord
+	use 'shaunsingh/nord.nvim'
 	use 'EdenEast/nightfox.nvim'
 	--use {
 		--'EdenEast/nightfox.nvim',
