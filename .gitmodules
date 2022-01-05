@@ -1,0 +1,3 @@
+[submodule "ultisnips"]
+	path = ultisnips
+	url = git@github.com:toddky/ultisnips.git
