@@ -65,6 +65,15 @@ packer.startup({function()
 	}
 	use 'nvim-treesitter/playground'
 
+	-- UltiShips
+	use {
+		'SirVer/ultisnips',
+		--disable = true
+		--let g:UltiSnipsExpandTrigger="<tab>"
+		--let g:UltiSnipsEditSplit="vertical"
+	}
+	-- TODO: https://github.com/quangnguyen30192/cmp-nvim-ultisnips
+
 	-- coq
 	use {
 		'ms-jpq/coq_nvim',
@@ -91,7 +100,7 @@ packer.startup({function()
 		end
 	}
 
-	-- Comments
+	-- NERD Commenter
 	--use { 'preservim/nerdcommenter', opt = true, cmd = {'<Plug>NERDCommenterToggle'}}
 	use {
 		'preservim/nerdcommenter',
