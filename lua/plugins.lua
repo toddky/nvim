@@ -69,8 +69,15 @@ packer.startup({function()
 	use {
 		'SirVer/ultisnips',
 		--disable = true
-		--let g:UltiSnipsExpandTrigger="<tab>"
-		--let g:UltiSnipsEditSplit="vertical"
+		setup = function()
+			vim.g.UltiSnipsSnippetDirectories = { 'ultisnips' }
+			vim.g.UltiSnipsEditSplit           = 'tabdo'
+			vim.g.UltiSnipsExpandTrigger       = "<Tab>"
+			vim.g.UltiSnipsListSnippets        = "<F2>"
+			vim.g.UltiSnipsJumpForwardTrigger  = "<C-n>"
+			vim.g.UltiSnipsJumpBackwardTrigger = "<C-p>"
+		end
+		-- 'honza/vim-snippets'
 	}
 	-- TODO: https://github.com/quangnguyen30192/cmp-nvim-ultisnips
 
