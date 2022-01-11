@@ -21,8 +21,6 @@ util.nvmap('<Enter>', ':')
 -- Indentation
 util.nmap('<Tab>', '>>')
 util.nmap('<S-Tab>', '<<')
---util.xmap('<Tab>', '>>gv')
---util.xmap('<S-Tab>', '<<gv')
 
 -- Black hole registers
 util.nmap('c', '"_c')
@@ -128,7 +126,9 @@ util.vmap('*', 'y/<C-R>"<Enter>')
 --util.xmap('@', [[<cmd>'<,'>:normal @@<Enter>]])
 
 -- Indentation
-util.vmap('<Tab>', '>gv')
+--util.vmap('<Tab>', '>gv')
+-- UltiSnips remaps this, so I have to use this autocmd
+vim.api.nvim_command([[autocmd VimEnter * vnoremap <Tab> >gv]])
 util.vmap('<S-Tab>', '<gv')
 
 
