@@ -3,8 +3,7 @@
 -- EXAMPLES
 -- =============================================================================
 -- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
--- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lu
-
+-- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lua
 
 -- =============================================================================
 -- NOTES
@@ -15,8 +14,8 @@
 --   disable = boolean,           -- Mark a plugin as inactive
 --   run = string, function, or table  -- Post-update/install hook. See |packer-plugin-hooks|
 --   requires = string or list    -- Specifies plugin dependencies. See |packer-plugin-dependencies|
---   config = string or function, -- Specifies code to run after this plugin is loaded.
 --   setup = string or function,  -- Specifies code to run before this plugin is loaded.
+--   config = string or function, -- Specifies code to run after this plugin is loaded.
 --   branch = string,             -- Specifies a git branch to use
 -- }
 
@@ -74,12 +73,28 @@ packer.startup({function()
 			vim.g.UltiSnipsEditSplit           = 'tabdo'
 			vim.g.UltiSnipsExpandTrigger       = "<Tab>"
 			vim.g.UltiSnipsListSnippets        = "<F2>"
-			vim.g.UltiSnipsJumpForwardTrigger  = "<C-n>"
-			vim.g.UltiSnipsJumpBackwardTrigger = "<C-p>"
+			vim.g.UltiSnipsJumpForwardTrigger  = "<Tab>"
+			vim.g.UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 		end
 		-- 'honza/vim-snippets'
 	}
 	-- TODO: https://github.com/quangnguyen30192/cmp-nvim-ultisnips
+
+	-- nvim-cmp
+	use {
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'neovim/nvim-lspconfig',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline'
+		},
+		setup = function()
+		end,
+		config = function()
+		end,
+	}
 
 	-- coq
 	use {
@@ -236,5 +251,4 @@ config = {
 		--open_fn = require('packer.util').float({ border = 'single' }),
 	}
 }})
-
 
