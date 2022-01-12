@@ -5,6 +5,7 @@ local opt = vim.opt
 
 -- Colorscheme
 execute('colorscheme jellybeans')
+--execute('colorscheme nord')
 
 
 -- =============================================================================
