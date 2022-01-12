@@ -41,9 +41,17 @@ function M.tmap(lhs, rhs, opts)
 	map('t', lhs, rhs, opts)
 end
 
+
+-- Normal and Visual
 function M.nvmap(lhs, rhs, opts)
 	map('n', lhs, rhs, opts)
 	map('v', lhs, rhs, opts)
+end
+
+-- Text Objects
+function M.xomap(lhs, rhs, opts)
+	map('x', lhs, rhs, opts)
+	map('o', lhs, rhs, opts)
 end
 
 
