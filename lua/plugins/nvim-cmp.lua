@@ -5,21 +5,20 @@
 -- Recommended Config:
 -- https://github.com/hrsh7th/nvim-cmp#setup
 
--- From Neil Sabde:
--- https://youtu.be/5lPA8LpMytI?t=138
-vim.g.completeopt = 'menu,menuone,noselect,noinsert'
+-- Example:
+-- https://github.com/hackorum/nfs/blob/master/lua/lsp/cmp.lua
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
 cmp.setup({
+	-- Snippet engine
 	snippet = {
-		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+			--vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			 vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	mapping = {
@@ -64,7 +63,15 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+--require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+--	capabilities = capabilities
+--}
+
+require('lspconfig').html.setup {
 	capabilities = capabilities
 }
+
+-- From Neil Sabde:
+-- https://youtu.be/5lPA8LpMytI?t=138
+vim.g.completeopt = 'menu,menuone,noselect,noinsert'
 

@@ -93,6 +93,7 @@ packer.startup({function()
 		setup = function()
 		end,
 		config = function()
+			require('plugins/nvim-cmp')
 		end,
 	}
 
