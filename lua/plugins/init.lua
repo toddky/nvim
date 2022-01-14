@@ -47,19 +47,9 @@ packer.startup({function()
 
 	-- Treesitter
 	use {
-		-- Example: https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/treesitter/init.lua
 		'nvim-treesitter/nvim-treesitter',
 		setup = function()
-			-- TODO: Figure out how to make this work
-			--require'nvim-treesitter.configs'.setup {
-				--ensure_installed = {"html", "javascript", "lua"},
-				--highlight = {
-					--enable = true,
-				--}
-			--}
-			--TSUpdate
-			--set foldmethod=expr
-			--set foldexpr=nvim_treesitter#foldexpr()
+			require('plugins/nvim-treesitter')
 		end
 	}
 	use 'nvim-treesitter/playground'
@@ -252,4 +242,3 @@ config = {
 		--open_fn = require('packer.util').float({ border = 'single' }),
 	}
 }})
-
