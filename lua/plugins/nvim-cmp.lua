@@ -3,10 +3,16 @@
 -- nvim-cmp
 -- =============================================================================
 -- Recommended Config:
--- https://github.com/hrsh7th/nvim-cmp#setup
+-- https://github.com/hrsh7th/nvim-cmp#recommended-configuration
 
 -- Example:
 -- https://github.com/hackorum/nfs/blob/master/lua/lsp/cmp.lua
+
+vim.g.completeopt = 'menu,menuone,noinsert,noselect'
+-- - menu	    Use a popup menu to show possible completions
+-- - menuone    Use a popup menu even when there is only one match.
+-- - noinsert   Do not insert any text until the user selects a match.
+-- - noselect   Do not select a match until the user to selects one.
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
@@ -70,8 +76,4 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require('lspconfig').html.setup {
 	capabilities = capabilities
 }
-
--- From Neil Sabde:
--- https://youtu.be/5lPA8LpMytI?t=138
-vim.g.completeopt = 'menu,menuone,noselect,noinsert'
 
