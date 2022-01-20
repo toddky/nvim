@@ -5,6 +5,7 @@
 -- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
 -- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lua
 
+
 -- =============================================================================
 -- NOTES
 -- =============================================================================
@@ -48,11 +49,14 @@ packer.startup({function()
 	-- Treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		--disable = true,
+		requires = {
+			'nvim-treesitter/playground'
+		},
 		setup = function()
 			require('plugins/nvim-treesitter')
 		end
 	}
-	use 'nvim-treesitter/playground'
 
 	-- UltiShips
 	use {
@@ -78,7 +82,14 @@ packer.startup({function()
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline'
+			'hrsh7th/cmp-cmdline',
+			{
+				'quangnguyen30192/cmp-nvim-ultisnips',
+				--disable = true,
+				config = function()
+					require('cmp_nvim_ultisnips').setup()
+				end
+			}
 		},
 		setup = function()
 		end,
