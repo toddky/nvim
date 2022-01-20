@@ -49,11 +49,10 @@ packer.startup({function()
 	-- Treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		--disable = true,
 		requires = {
 			'nvim-treesitter/playground'
 		},
-		setup = function()
+		config = function()
 			require('plugins/nvim-treesitter')
 		end
 	}
