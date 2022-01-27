@@ -56,11 +56,15 @@ packer.startup({function()
 			require('plugins/nvim-treesitter')
 		end
 	}
+	use {
+		'nvim-treesitter/playground',
+		--disable = true,
+	}
 
 	-- UltiShips
 	use {
 		'SirVer/ultisnips',
-		--disable = true
+		--disable = true,
 		setup = function()
 			vim.g.UltiSnipsSnippetDirectories = { 'ultisnips' }
 			vim.g.UltiSnipsEditSplit           = 'tabdo'
