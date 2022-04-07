@@ -76,7 +76,7 @@ function tabname(tabnr)
 		.. (current and blue or other)..'['..tabnr..']'
 		.. (current and white or other)..bufname
 		.. modified
-		.w (#buflist > 1 and other..'('..#buflist..')' or '')
+		.. (#buflist > 1 and other..'('..#buflist..')' or '')
 
 	return tabname
 end
