@@ -24,23 +24,22 @@ end
 function M.nmap(lhs, rhs, opts)
 	map('n', lhs, rhs, opts)
 end
-
 function M.imap(lhs, rhs, opts)
 	map('i', lhs, rhs, opts)
 end
-
 function M.vmap(lhs, rhs, opts)
 	map('v', lhs, rhs, opts)
 end
-
 function M.xmap(lhs, rhs, opts)
 	map('x', lhs, rhs, opts)
 end
-
 function M.tmap(lhs, rhs, opts)
 	map('t', lhs, rhs, opts)
 end
 
+function M.cmap(lhs, rhs, opts)
+	map('c', lhs, rhs, opts)
+end
 
 -- Normal and Visual
 function M.nvmap(lhs, rhs, opts)

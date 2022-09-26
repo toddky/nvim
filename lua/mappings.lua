@@ -115,7 +115,7 @@ util.vmap('q', '<Esc>')
 
 -- Search for visually selected text
 -- https://vim.fandom.com/wiki/Search_for_visually_selected_text
-util.vmap('*', 'y/<C-R>"<Enter>')
+--util.vmap('*', 'y/<C-R>"<Enter>')
 
 -- TODO: Figure out how this works
 -- Use dot over visual selection
@@ -175,4 +175,11 @@ util.leader('stn', '<cmd>set noexpandtab<Enter>')
 -- =============================================================================
 util.tmap('<Esc>', '<C-\\><C-n>')
 
+
+-- =============================================================================
+-- COMMAND MODE
+-- =============================================================================
+-- :w!! to save with sudo
+-- https://www.reddit.com/r/commandline/comments/vqzg5c/comment/iesmv4r/
+util.cmap('w!!', 'w !sudo tee > /dev/null %')
 
