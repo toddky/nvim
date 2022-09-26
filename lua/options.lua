@@ -76,6 +76,10 @@ opt.splitright     = true
 -- Highlight trailing whitespace
 cmd([[match Error /\v\s+$/]])
 
+-- TODO: Invert selection colors
+-- https://www.reddit.com/r/tmux/comments/vqpxol/comment/if1murd/
+--vim.api.nvim_set_hl(0, "Visual", { nil,  nil, reverse = true })
+
 
 -- =============================================================================
 -- AUTOMATIC COMMANDS
