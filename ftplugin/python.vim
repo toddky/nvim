@@ -26,6 +26,6 @@ iab #read f = open("file.txt", "r")<CR>for line in f:<CR>line = line.rstrip()
 iab #in list(dict[key][index] for key in dict)
 iab #try try:<CR>#<CR>except KeyError:<UP>
 
-# Time
+" Time
 iab #epoch datetime.datetime.fromtimestamp(epoch).strftime('%Y-%m-%d %a %T')
 
