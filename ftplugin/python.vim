@@ -19,8 +19,14 @@ iab #stderr sys.stderr.write(f'')
 iab #env os.environ['']
 iab #path sys.path.insert(0, '/path/to/somewhere'}) # $PYTHON_PATH
 
-" File
+" File/Directory Operations
+iab #exists os.path.exists(path)
+iab #dir os.path.isdir(path)
+iab #f os.path.isfile(file)
 iab #read f = open("file.txt", "r")<CR>for line in f:<CR>line = line.rstrip()
+iab #cp shutil.copyfile(src, dest)
+iab #mkdir os.mkdir(path, 0o755)
+iab #mkdirp os.makedirs(path, 0o755)
 
 " Expressions
 iab #in list(dict[key][index] for key in dict)
