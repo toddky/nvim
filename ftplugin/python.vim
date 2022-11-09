@@ -10,6 +10,7 @@ set iskeyword+=#
 " Setup
 iab #python #!/usr/bin/env python3
 iab #sys import sys
+iab #pylint # pylint: disable=consider-using-with
 
 " Printing
 "iab #2 sys.stderr.write(f'')
