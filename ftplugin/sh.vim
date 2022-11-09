@@ -1,6 +1,7 @@
 
 " Examples:
 " https://github.com/toddky/ultisnips/blob/master/sh.snippets
+" https://sharats.me/posts/shell-script-best-practices/
 
 " ==============================================================================
 " ABBREVIATIONS
@@ -17,8 +18,17 @@ iab #z [[ -z "$string" ]]
 iab #ifd if [[ -d "$dir" ]]; then<CR><CR>fi<UP>
 iab #iff if [[ -f "$file" ]]; then<CR><CR>fi<UP>
 
-" Commands
+" Comments
+iab #! #!/usr/bin/env bash
 iab #bash #!/usr/bin/env bash
+iab #des # USAGE: <CR># DESCRIPTION:
+
+" Init
+iab #set set -euo pipefail
+iab #debug ((TRACE)) && set -o xtrace
+iab #curr CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+" Commands
 iab #while while [[ condition ]]; do<CR><CR>done<UP>
 iab #read while read line; do<CR><CR>done < <(command)<UP>
 "iab #2 1>&2
@@ -27,7 +37,6 @@ iab #read while read line; do<CR><CR>done < <(command)<UP>
 	"rm "$tempfile"
 "}
 "trap cleanup EXIT
-
 
 " Comments
 iab #= # ==============================================================================
