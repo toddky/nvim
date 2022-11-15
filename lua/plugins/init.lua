@@ -121,6 +121,7 @@ packer.startup({function()
 	-- Telescope
 	use {
 		'nvim-telescope/telescope.nvim',
+		--disable = true,
 		requires = { {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'} },
 		setup = function()
 			require('nvim-web-devicons').get_icons()
