@@ -157,6 +157,12 @@ util.nmap(',pc',  '<cmd>PackerCompile<Enter>')
 util.nmap(',ps',  '<cmd>PackerSync<Enter>')
 util.nmap(',pu',  '<cmd>PackerUpdate<Enter>')
 
+-- Telescope
+util.nmap('///',  '<cmd>Telescope live_grep<Enter>')
+util.nmap('//f',  '<cmd>Telescope find_files<Enter>')
+util.nmap('//g',  '<cmd>Telescope git_files<Enter>')
+util.nmap('//h',  '<cmd>Telescope help_tags<Enter>')
+
 
 -- =============================================================================
 -- OPTIONS
