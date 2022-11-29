@@ -1,14 +1,24 @@
 
-" Examples:
+" ==============================================================================
+" EXAMPLES
+" ==============================================================================
 " https://github.com/toddky/ultisnips/blob/master/sh.snippets
 " https://sharats.me/posts/shell-script-best-practices/
+" Inserting abbreviation from file:
+"   https://vi.stackexchange.com/questions/31601/inserting-abbreviation-from-file
+
 
 " ==============================================================================
-" ABBREVIATIONS
+" SETTINGS
 " ==============================================================================
 set iskeyword+=#
 
-" Test
+
+" ==============================================================================
+" CONTROL
+" ==============================================================================
+
+" Conditions
 iab #f [[ -f "$file" ]]
 iab #d [[ -d "$dir" ]]
 iab #n [[ -n "$string" ]]
@@ -17,11 +27,6 @@ iab #z [[ -z "$string" ]]
 " If
 iab #ifd if [[ -d "$dir" ]]; then<CR><CR>fi<UP>
 iab #iff if [[ -f "$file" ]]; then<CR><CR>fi<UP>
-
-" Comments
-iab #! #!/usr/bin/env bash
-iab #bash #!/usr/bin/env bash
-iab #des # USAGE: <CR># DESCRIPTION:
 
 " Init
 iab #set set -euo pipefail
@@ -33,35 +38,52 @@ iab #while while [[ condition ]]; do<CR><CR>done<UP>
 iab #read while read line; do<CR><CR>done < <(command)<UP>
 "iab #2 1>&2
 
-"function cleanup() {
-	"rm "$tempfile"
-"}
-"trap cleanup EXIT
+" On Exit
+iab #at_exit 
+\<CR>function cleanup() {
+\<CR>rm "$tempfile"
+\<CR>}
+\<CR>trap cleanup EXIT
+
+" Temp
+iab #temp 
+\<CR>tempdir="$(mktemp -d)"
+\<CR>function cleanup() {
+\<CR>rm -rf "$tempdir"
+\<CR>}
+\<CR>trap cleanup EXIT
+
+
+" ==============================================================================
+" DOCUMENTATION
+" ==============================================================================
+
+" Header
+iab #= 
+\<CR># ==============================================================================
+\<CR>#
+\<CR># ==============================================================================<UP>
 
 " Comments
-iab #= # ==============================================================================
+iab #! #!/usr/bin/env bash
+iab #bash #!/usr/bin/env bash
+iab #des # USAGE: <CR># DESCRIPTION:
 
-
-" TODO: Figure out how to use multiline abbrevs
-"iab #usage
-"\<CR>function print_usage()
-"\<CR>cat <<EOF
-"\<CR>USAGE: \$0 [options] <command>
-"\<CR>
-"\<CR>Write a description here.
-"\<CR>
-"\<CR>Options:
-"\<CR>    -h, --help                   Show this message
-"\<CR>
-"\<CR>    -v, --verbose                Increase verbosity
-"\<CR>EOF
-"
-
-"iab #temp
-"tempfile="$(mktemp)"
-"function cleanup() {
-"	rm "$tempfile"
-"}
-"trap cleanup EXIT
+" TODO: Fix weird indentation
+" Usage
+iab #usage 
+\<CR>function print_usage() {
+\<CR>cat <<EOF
+\<CR>USAGE: \$0 [options] <command>
+\<CR>
+\<CR>Write a description here.
+\<CR>
+\<CR>Options:
+\<CR>    -h, --help                   Show this message
+\<CR>
+\<CR>    -v, --verbose                Increase verbosity
+\<CR>EOF
+\<CR>}
+\<CR>
 
 
