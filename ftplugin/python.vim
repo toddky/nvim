@@ -9,8 +9,14 @@ set iskeyword+=#
 
 " Setup
 iab #python #!/usr/bin/env python3
-iab #sys import sys
 iab #pylint # pylint: disable=consider-using-with
+iab #vim 
+\<CR># vim: ft=python et ts=2 sw=0 sts=0
+\<CR># vim: ft=python noet ts=4 sw=0 sts
+
+" Import
+iab #sys import sys
+iab #os import os
 
 " Printing
 "iab #2 sys.stderr.write(f'')
