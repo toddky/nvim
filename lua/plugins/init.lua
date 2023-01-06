@@ -80,6 +80,7 @@ packer.startup({function()
 	-- nvim-cmp
 	use {
 		'hrsh7th/nvim-cmp',
+		--disable = true,
 		requires = {
 			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
@@ -171,6 +172,7 @@ packer.startup({function()
 
 	use {
 		"folke/which-key.nvim",
+		--disable = true,
 		config = function()
 			require("which-key").setup {
 			}
@@ -205,10 +207,18 @@ packer.startup({function()
 	}
 
 	use {
+		'nvim-treesitter/nvim-treesitter-context',
+		disable = true,
+	}
+
+	use {
 		'wellle/context.vim',
+		-- Replaced with nvim-treesitter-context
+		--disable = true,
 		-- TODO: Always enable when I figure out the flickering issue
 		cmd = {'ContextEnable', 'ContextEnableWindow'},
 		setup = function()
+			vim.g.context_enabled = 1
 			vim.g.context_add_mappings = 0
 		end
 	}
