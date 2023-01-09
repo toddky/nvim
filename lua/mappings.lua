@@ -96,6 +96,8 @@ util.leader('fk', '<cmd>bprevious<Enter>')
 util.leader('fw', '<cmd>w<Enter>')
 util.leader('fx', '<cmd>x<Enter>')
 util.leader('fq', '<cmd>q!<Enter>')
+util.nmap('<C-j>', '<cmd>bnext<Enter>')
+util.nmap('<C-k>', '<cmd>bprev<Enter>')
 
 
 -- =============================================================================
@@ -159,9 +161,11 @@ util.nmap(',pu',  '<cmd>PackerUpdate<Enter>')
 
 -- Telescope
 util.nmap('///',  '<cmd>Telescope live_grep<Enter>')
+util.nmap('//b',  '<cmd>Telescope buffers<Enter>')
 util.nmap('//f',  '<cmd>Telescope find_files<Enter>')
 util.nmap('//g',  '<cmd>Telescope git_files<Enter>')
 util.nmap('//h',  '<cmd>Telescope help_tags<Enter>')
+util.nmap('//l',  '<cmd>Telescope live_grep<Enter>')
 
 
 -- =============================================================================
