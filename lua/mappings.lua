@@ -167,6 +167,36 @@ util.nmap('//g',  '<cmd>Telescope git_files<Enter>')
 util.nmap('//h',  '<cmd>Telescope help_tags<Enter>')
 util.nmap('//l',  '<cmd>Telescope live_grep<Enter>')
 
+-- Bazel
+-- Open TOP/some/path/BUILD from //some/path:target
+function open_bazel_file()
+
+	-- Get filename under cursor
+	local orig_isfname = vim.o.isfname
+	vim.o.isfname = vim.o.isfname .. ',:'
+	local filename = vim.fn.expand('<cfile>')
+	vim.o.isfname = orig_isfname
+
+	-- Get WORKSPACE
+	-- TODO: Get WORKSPACE instead of .git
+	if string.sub(filename, 1, 2) == "//" then
+		local git_path = vim.fn.finddir(".git", ".;")
+		local git_top = vim.fn.fnamemodify(git_path, ":h")
+		filename = git_top .. string.sub(filename, 2, -1)
+	end
+
+	if string.sub(filename, -4, -1) == ".bzl" then
+		-- Get .bzl file
+		filename = string.gsub(filename, ":", "/")
+	else
+		-- Get BUILD file
+		filename = string.gsub(filename, ":[^:]+$", "/BUILD")
+	end
+
+	vim.cmd('e ' .. filename)
+end
+util.nmap('gb', '<cmd>lua open_bazel_file()<Enter>')
+
 
 -- =============================================================================
 -- OPTIONS
