@@ -29,7 +29,7 @@ iab #stderr sys.stderr.write(f'')
 iab #env os.environ['']
 iab #path sys.path.insert(0, '/path/to/somewhere'}) # $PYTHON_PATH
 
-" File/Directory Operations
+" File/directory operations
 iab #exists os.path.exists(path)
 iab #dir os.path.isdir(path)
 iab #f os.path.isfile(file)
@@ -57,6 +57,13 @@ iab #match
 \result = re.search(r"(\b[A-Z]+\b).+(\b\d+)", target_string)
 \<CR>print(result.groups())
 \<CR>print(result.group(1))
+
+" Dictionaries/lists
+iab #sort listname.sort(key=lambda x: x[1])
+
+" Strings
+iab #ljust stringname.ljust(width, '0')
+iab #rjust stringname.rjust(width, '0')
 
 " Time
 iab #epoch datetime.datetime.fromtimestamp(epoch).strftime('%Y-%m-%d %a %T')
