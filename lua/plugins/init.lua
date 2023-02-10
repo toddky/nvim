@@ -236,7 +236,17 @@ packer.startup({function()
 			vim.g.loaded_netrwPlugin = 1
 		end,
 		config = function()
-			require("nvim-tree").setup()
+			require("nvim-tree").setup({
+				view = {
+					width = 30,
+					mappings = {
+						list = {
+							{ key = "u", action = "dir_up" },
+							{ key = "?", action = "toggle_help" },
+						},
+					},
+				},
+			})
 		end,
 	}
 
