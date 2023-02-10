@@ -225,6 +225,21 @@ packer.startup({function()
 		end
 	}
 
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons',
+		},
+		--cmd = {'NvimTreeToggle'},
+		setup = function()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+		end,
+		config = function()
+			require("nvim-tree").setup()
+		end,
+	}
+
 	-- Colorschemes
 	-- :colorscheme nord
 	use 'shaunsingh/nord.nvim'
