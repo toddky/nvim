@@ -6,7 +6,7 @@ local opt = vim.opt
 -- Colorscheme
 execute('colorscheme jellybeans')
 --execute('colorscheme nord')
-
+--execute('colorscheme catppuccin_macchiato')
 
 -- =============================================================================
 -- OPTIONS
@@ -67,6 +67,10 @@ opt.cursorline     = true
 -- Splits
 opt.splitbelow     = true
 opt.splitright     = true
+
+-- Spelling
+-- TODO: Figure out how to enable it for just comments
+--opt.spell = true;
 
 
 -- =============================================================================
