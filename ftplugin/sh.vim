@@ -32,6 +32,7 @@ iab #iff if [[ -f "$file" ]]; then<CR><CR>fi<UP>
 iab #set set -euo pipefail
 iab #debug ((TRACE)) && set -o xtrace
 iab #curr CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+iab #now now="$(date +'%Y%m%d-%H%M%S')"
 
 " Commands
 iab #while while [[ condition ]]; do<CR><CR>done<UP>
