@@ -241,7 +241,9 @@ packer.startup({function()
 					width = 30,
 					mappings = {
 						list = {
+							{ key = "s", action = "split" },
 							{ key = "u", action = "dir_up" },
+							{ key = "v", action = "vsplit" },
 							{ key = "?", action = "toggle_help" },
 						},
 					},
