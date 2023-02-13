@@ -164,13 +164,17 @@ util.nmap('//f',  '<cmd>Telescope find_files<Enter>')
 util.nmap('//g',  '<cmd>Telescope git_files<Enter>')
 util.nmap('//h',  '<cmd>Telescope help_tags<Enter>')
 util.nmap('//k',  '<cmd>Telescope keymaps<Enter>')
-vim.keymap.set('v', '///', function()
-		local tb = require('telescope.builtin')
-		local text = require('util').get_selection()
-		tb.live_grep({ default_text = text })
+vim.keymap.set('v', '//', function()
+		local text = util.get_selection()
+		require('telescope.builtin').live_grep({ default_text = text })
 	end,
 	{ noremap = true, silent=true }
 )
+-- TODO: Figure out how to use util.vmap
+--util.vmap('//', function()
+	--local text = util.get_selection()
+	--require('telescope.builtin').live_grep({ default_text = text })
+--end)
 
 -- Bazel
 -- Open TOP/some/path/BUILD from //some/path:target

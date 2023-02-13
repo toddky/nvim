@@ -63,11 +63,7 @@ function M.get_selection()
 	local text = vim.fn.getreg('v')
 	vim.fn.setreg('v', {})
 	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ''
-	end
+	return text
 end
 -- Test code
 --vim.keymap.set('v', '<space>G', function()
