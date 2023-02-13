@@ -55,6 +55,28 @@ end
 
 
 -- =============================================================================
+-- GET TEXT
+-- =============================================================================
+
+function M.get_selection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+-- Test code
+--vim.keymap.set('v', '<space>G', function()
+	--local text = M.get_selection()
+	--vim.api.nvim_echo({{text, 'None'}}, false, {})
+--end)
+
+
+-- =============================================================================
 -- RETURN
 -- =============================================================================
 return M
