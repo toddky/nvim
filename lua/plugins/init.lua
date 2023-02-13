@@ -218,7 +218,7 @@ packer.startup({function()
 		-- Replaced with nvim-treesitter-context
 		--disable = true,
 		-- TODO: Always enable when I figure out the flickering issue
-		cmd = {'ContextEnable', 'ContextEnableWindow'},
+		--cmd = {'ContextEnable', 'ContextEnableWindow'},
 		setup = function()
 			vim.g.context_enabled = 1
 			vim.g.context_add_mappings = 0
