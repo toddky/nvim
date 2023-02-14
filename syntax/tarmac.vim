@@ -11,7 +11,7 @@ syn match tarmac_ts /\v^\s*\d+\s+(tic ES|clk)\s+(cpu\d+)/
 
 " IT
 hi def link tarmac_instr Operator
-syn match tarmac_instr /\v:\zs\s+[A-Z0-9]{3,}\s+.*/
+syn match tarmac_instr /\v:\zs\s+[A-Z0-9]{3,}($|\s+.*)/
 
 "" Error/Fatal
 hi def link tarmac_el3 DiagnosticError
