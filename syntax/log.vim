@@ -19,3 +19,5 @@ syn match simlog_warning /\v\c^\w+: \*W,\w+/
 hi def link simlog_info DiagnosticInfo
 syn match simlog_info /\v<I(NFO|nfo)>(:|-\[.*\])?/
 
+let b:current_syntax = "log"
+
