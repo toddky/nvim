@@ -141,6 +141,9 @@ hi Typedef          guisp=NONE      guifg=#EED49F   guibg=NONE      ctermfg=223 
 hi debugPC          guisp=NONE      guifg=NONE      guibg=#181926   ctermfg=223     ctermbg=NONE gui=NONE           cterm=NONE
 hi debugBreakpoint  guisp=NONE      guifg=#6E738D   guibg=#24273A   ctermfg=223     ctermbg=NONE gui=NONE           cterm=NONE
 
+" CUSTOM
+hi Whitespace       guisp=NONE      guifg=#303040   guibg=NONE      ctermfg=243     ctermbg=NONE gui=NONE           cterm=NONE
+
 hi link Define PreProc
 hi link Macro PreProc
 hi link PreCondit PreProc
