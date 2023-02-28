@@ -21,6 +21,9 @@ iab #def def func(arg1, arg2, *args, **kwargs):
 iab #sys import sys
 iab #os import os
 
+" Options
+iab #argv sys.argv
+
 " Printing
 "iab #2 sys.stderr.write(f'')
 iab #stderr sys.stderr.write(f'')
@@ -30,6 +33,9 @@ iab #env os.environ['']
 iab #path sys.path.insert(0, '/path/to/somewhere'}) # $PYTHON_PATH
 
 " File/directory operations
+iab #realpath 
+\import os
+\<CR>os.path.realpath('path')
 iab #exists os.path.exists(path)
 iab #dir os.path.isdir(path)
 iab #f os.path.isfile(file)
@@ -50,6 +56,9 @@ iab #run
 \<CR>stdout = result.stdout.decode('utf-8')
 
 " Expressions
+iab #ifr 
+\match = re.match('regex', string)
+\<CR>if match:
 iab #in list(dict[key][index] for key in dict)
 iab #try try:<CR>#<CR>except KeyError:<UP>
 iab #for for key, value in dict.items():
