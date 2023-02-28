@@ -23,5 +23,9 @@ hi def link simlog_info DiagnosticInfo
 syn match simlog_info /\v<I(NFO|nfo)>(:|-\[.*\])?/
 syn match simlog_info /\vUVM_INFO.*\ze\@/
 
+" Keywords
+hi def link simlog_constant Constant
+syn match simlog_constant /\vinstr_id:\zs0x[0-9a-f]+/
+
 let b:current_syntax = "log"
 
