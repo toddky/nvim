@@ -10,8 +10,8 @@ hi def link simlog_error DiagnosticError
 syn match simlog_error /\v<F(ATAL|atal)(:)?>(:|-\[.*\])?/
 syn match simlog_error /\v<E(RROR|rror)>(:|-\[.*\])?/
 syn match simlog_error /\v^\w+: \*[FE],\w+/
-syn match simlog_error /\vUVM_FATAL\s+\ze\@/
-syn match simlog_error /\vUVM_ERROR\s+\ze\@/
+syn match simlog_error /\vUVM_FATAL.*\ze\@/
+syn match simlog_error /\vUVM_ERROR.*\ze\@/
 syn match simlog_error /\vStack ?[Tt]race:/
 
 " Warning
