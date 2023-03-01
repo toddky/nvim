@@ -16,6 +16,7 @@ syn match simlog_error /\vStack ?[Tt]race:/
 
 " Warning
 hi def link simlog_warning DiagnosticWarn
+syn match simlog_warning /\vWARN(ING)?\ze:/
 syn match simlog_warning /\v\c^\w+: \*W,\w+/
 
 " Info
