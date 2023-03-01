@@ -5,9 +5,10 @@ if exists("b:current_syntax")
 	finish
 endif
 
-" Timestamps
+" Timestamps and NOPs
 hi def link tarmac_ts Comment
 syn match tarmac_ts /\v^\s*\d+\s+(tic ES|clk)\s+(cpu\d+\S*|gic\S+)/
+syn match tarmac_ts /\v^.*d503201f.*NOP.*$/
 
 " IT
 "hi def link tarmac_instr Operator
