@@ -29,5 +29,9 @@ syn match simlog_info /\vUVM_INFO.*\ze\@/
 hi def link simlog_constant Constant
 syn match simlog_constant /\vinstr_id:\zs0x[0-9a-f]+/
 
+" String
+hi def link simlog_string String
+syn match simlog_string /\v\[[a-zA-z]+\]/
+
 let b:current_syntax = "log"
 
