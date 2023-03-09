@@ -33,5 +33,9 @@ syn match simlog_constant /\vinstr_id:\zs0x[0-9a-f]+/
 hi def link simlog_string String
 syn match simlog_string /\v\[[a-zA-z]+\]/
 
+" Comments
+hi def link simlog_comment Comment
+syn match simlog_comment /\v.*opcode: *(0x)?d503201f.*$/
+
 let b:current_syntax = "log"
 
