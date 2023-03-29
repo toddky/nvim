@@ -40,5 +40,8 @@ hi def link simlog_comment Comment
 syn match simlog_comment /\v.*opcode: *(0x)?d503201f.*$/
 syn match simlog_comment /\vuvm_test_top\S*\s+/ conceal
 
+
+set conceallevel=2
+
 let b:current_syntax = "log"
 
