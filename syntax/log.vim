@@ -25,7 +25,7 @@ syn match simlog_warning /\v\c^\w+: \*W,\w+/
 " Info
 hi def link simlog_info DiagnosticInfo
 syn match simlog_info /\v<I(NFO|nfo)>(:|-\[.*\])?/
-syn match simlog_info /\vUVM_INFO.*\ze\@/
+syn match simlog_info /\vUVM_INFO.*\ze\@/ conceal cchar=I
 
 " Keywords
 hi def link simlog_constant Constant
@@ -38,6 +38,7 @@ syn match simlog_string /\v\[[a-zA-z]+\]/
 " Comments
 hi def link simlog_comment Comment
 syn match simlog_comment /\v.*opcode: *(0x)?d503201f.*$/
+syn match simlog_comment /\vuvm_test_top\S*\s+/ conceal
 
 let b:current_syntax = "log"
 
