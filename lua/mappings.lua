@@ -49,8 +49,8 @@ util.nvmap('H', '^')
 util.nvmap('L', '$')
 
 -- Center after search
-util.nvmap('N', 'Nzz')
-util.nvmap('n', 'nzz')
+util.nvmap('N', 'Nzzzv')
+util.nvmap('n', 'nzzzv')
 
 -- Mark with `M` and jump with `m`
 util.nvmap('M', 'm')
