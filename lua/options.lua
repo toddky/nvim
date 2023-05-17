@@ -4,9 +4,9 @@ local cmd = vim.cmd
 local opt = vim.opt
 
 -- Colorscheme
-execute('colorscheme jellybeans')
---execute('colorscheme nord')
---execute('colorscheme catppuccin_macchiato')
+--execute('colorscheme jellybeans')
+execute('colorscheme nord')
+execute('colorscheme catppuccin_macchiato')
 
 -- =============================================================================
 -- OPTIONS
