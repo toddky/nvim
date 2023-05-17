@@ -26,6 +26,24 @@
 -- =============================================================================
 -- SETUP
 -- =============================================================================
+-- TODO: Figure out how to set up lazy.nvim
+-- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- if not vim.loop.fs_stat(lazypath) then
+-- 	vim.fn.system({
+-- 		"git",
+-- 		"clone",
+-- 		"--filter=blob:none",
+-- 		"https://github.com/folke/lazy.nvim.git",
+-- 		"--branch=stable",
+-- 		lazypath,
+-- 	})
+-- end
+-- vim.opt.rtp:prepend(lazypath)
+
+
+-- =============================================================================
+-- SETUP
+-- =============================================================================
 -- Automatically install packer.nvim if it doesn't exists
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
