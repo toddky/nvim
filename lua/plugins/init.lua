@@ -270,6 +270,9 @@ packer.startup({function()
 		end,
 	}
 
+	-- TODO: Shellcheck
+	-- https://github.com/jose-elias-alvarez/null-ls.nvim
+
 	-- Colorschemes
 	-- :colorscheme nord
 	use 'shaunsingh/nord.nvim'
