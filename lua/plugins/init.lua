@@ -245,6 +245,7 @@ packer.startup({function()
 
 	use {
 		'nvim-tree/nvim-tree.lua',
+		disable = true,
 		requires = {
 			'nvim-tree/nvim-web-devicons',
 		},
