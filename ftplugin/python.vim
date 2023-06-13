@@ -38,8 +38,9 @@ iab #exists os.path.exists(path)
 iab #dir os.path.isdir(path)
 iab #f os.path.isfile(file)
 iab #cp shutil.copyfile(src, dest)
-iab #mkdir os.mkdir(path, 0o755)
-iab #mkdirp os.makedirs(path, 0o755)
+"iab #mkdir os.mkdir(path, 0o755)
+iab #mkdir os.makedirs(path, 0o755, exist_ok=True)↴
+"iab #mkdirp os.makedirs(path, 0o755)
 iab #pwd os.getcwd()
 iab #read 
 \f = open('file.txt', 'r')

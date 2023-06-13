@@ -21,3 +21,11 @@ iab #vim
 \<CR># vim: ft=tcl et ts=2 sw=0 sts=0
 \<CR># vim: ft=tcl noet ts=4 sw=0 sts
 
+
+" ==============================================================================
+" ABBREVIATIONS
+" ==============================================================================
+"
+" File/directory operations
+iab #ln file link -symbolic /path/to/original/file /path/to/symlink
+
