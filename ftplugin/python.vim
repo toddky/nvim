@@ -33,21 +33,21 @@ iab #env os.environ['']
 iab #path sys.path.insert(0, '/path/to/somewhere'}) # $PYTHON_PATH
 
 " File/directory operations
-iab #realpath 
-\import os
-\<CR>os.path.realpath('path')
+iab #cd os.chdir(path)
 iab #exists os.path.exists(path)
 iab #dir os.path.isdir(path)
 iab #f os.path.isfile(file)
 iab #cp shutil.copyfile(src, dest)
 iab #mkdir os.mkdir(path, 0o755)
 iab #mkdirp os.makedirs(path, 0o755)
+iab #pwd os.getcwd()
 iab #read 
 \f = open('file.txt', 'r')
 \<CR>for line in f:
 \<CR>line = line.rstrip()
 \<CR>with open('file.txt', 'r') as f:
 \<CR>lines = f.readlines()
+iab #realpath os.path.realpath(path)
 
 " Run
 iab #run 
