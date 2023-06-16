@@ -69,6 +69,10 @@ iab #=
 iab #! #!/usr/bin/env bash
 iab #bash #!/usr/bin/env bash
 iab #des # USAGE: <CR># DESCRIPTION:
+iab #vim 
+\<CR># vim: ft=sh et ts=2 sw=0 sts=0
+\<CR># vim: ft=sh et ts=4 sw=0 sts=0
+\<CR># vim: ft=sh noet ts=4 sw=0 sts
 
 " TODO: Fix weird indentation
 " Usage
