@@ -54,6 +54,15 @@ iab #temp
 \<CR>}
 \<CR>trap cleanup EXIT
 
+" Case
+iab #case 
+\<CR>case "$var" in
+\<CR>-h\|--help) echo "USAGE";;
+\<CR>*)
+\<CR>exit 1
+\<CR>;;
+\<CR>esac
+
 
 " ==============================================================================
 " DOCUMENTATION
