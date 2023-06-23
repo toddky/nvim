@@ -81,6 +81,13 @@ packer.startup({function()
 		--disable = true,
 	}
 
+	-- GitHub Copilot
+	-- :Copilot setup
+	use {
+		'github/copilot.vim',
+		cmd = 'Copilot'
+	}
+
 	-- UltiShips
 	use {
 		'SirVer/ultisnips',

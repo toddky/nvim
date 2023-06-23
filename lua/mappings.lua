@@ -148,6 +148,7 @@ util.vmap('<S-Tab>', '<gv')
 -- PLUGINS
 -- =============================================================================
 util.nmap(',ce',  '<cmd>ContextEnableWindow<Enter>')
+util.nmap(',cp',  '<cmd>Copilot enable<Enter>')
 util.nmap(',cq',  '<cmd>ContextDisable<Enter>')
 util.nmap(',f/',  '<cmd>FzfLua blines<Enter>')
 util.nmap(',fb',  '<cmd>FzfLua buffers<Enter>')
