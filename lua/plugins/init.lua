@@ -51,6 +51,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+-- Check if pynvim is installed
+local has_python3 = vim.fn.exists('g:python3_host_prog')
+local has_pynvim = false
+if has_python3 then
+	local output = vim.fn.system('python3 -c "import pynvim" 2>&1')
+	has_pynvim = (vim.v.shell_error == 0)
+end
+
 
 -- =============================================================================
 -- PACKER
