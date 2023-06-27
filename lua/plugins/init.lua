@@ -100,7 +100,7 @@ packer.startup({function()
 	use {
 		'SirVer/ultisnips',
 		--disable = true,
-		disable = has_pynvim,
+		disable = not has_pynvim,
 		setup = function()
 			vim.g.UltiSnipsSnippetDirectories = { 'ultisnips' }
 			vim.g.UltiSnipsEditSplit           = 'tabdo'
@@ -117,7 +117,7 @@ packer.startup({function()
 	use {
 		'hrsh7th/nvim-cmp',
 		--disable = true,
-		disable = has_pynvim,
+		disable = not has_pynvim,
 		requires = {
 			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
