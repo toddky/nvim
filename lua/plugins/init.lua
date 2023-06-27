@@ -59,7 +59,6 @@ if has_python3 then
 	has_pynvim = (vim.v.shell_error == 0)
 end
 
-
 -- =============================================================================
 -- PACKER
 -- =============================================================================
@@ -77,6 +76,7 @@ packer.startup({function()
 	-- Treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
+		--disable = true,
 		requires = {
 			'nvim-treesitter/playground'
 		},
@@ -100,6 +100,7 @@ packer.startup({function()
 	use {
 		'SirVer/ultisnips',
 		--disable = true,
+		disable = has_pynvim,
 		setup = function()
 			vim.g.UltiSnipsSnippetDirectories = { 'ultisnips' }
 			vim.g.UltiSnipsEditSplit           = 'tabdo'
@@ -116,6 +117,7 @@ packer.startup({function()
 	use {
 		'hrsh7th/nvim-cmp',
 		--disable = true,
+		disable = has_pynvim,
 		requires = {
 			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
