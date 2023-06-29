@@ -14,12 +14,13 @@ iab #vim
 \<CR># vim: ft=python et ts=2 sw=0 sts=0
 \<CR># vim: ft=python noet ts=4 sw=0 sts
 
-" Functions
-iab #def def func(arg1, arg2, *args, **kwargs):
-
 " Import
 iab #sys import sys
 iab #os import os
+
+" Functions
+iab #def def func(arg1, arg2, *args, **kwargs):
+iab #exit sys.exit(0)
 
 " Options
 iab #argv sys.argv
