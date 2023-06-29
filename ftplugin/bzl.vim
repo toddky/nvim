@@ -23,11 +23,22 @@ iab #=
 " ==============================================================================
 " SETUP
 " ==============================================================================
+
 " C
 iab #cclib 
 \<CR>cc_library(
-\<CR>	name = "name",
-\<CR>    srcs = glob(["*.cc"]),
-\<CR>    hdrs = glob(["*.h"]),
+\<CR>name = "name",
+\<CR>srcs = glob(["*.cc"]),
+\<CR>hdrs = glob(["*.h"]),
+\<CR>)
+
+" Python
+iab #pybin 
+\<CR>py_binary(
+\<CR>name = "name",
+\<CR>srcs = ["srcs"],
+\<CR>data = ["data"],
+\<CR>deps = ["@rules_python//python/runfiles"],
+\<CR>visibility = ["//visibility:public"],
 \<CR>)
 
