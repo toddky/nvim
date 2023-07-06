@@ -34,4 +34,5 @@ iab #vim
 "
 " File/directory operations
 iab #ln file link -symbolic /path/to/original/file /path/to/symlink
+iab #mkdir file mkdir /path/to/dir
 
