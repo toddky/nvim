@@ -91,6 +91,7 @@ packer.startup({function()
 
 	-- GitHub Copilot
 	-- :Copilot setup
+	-- TODO: https://github.com/zbirenbaum/copilot-cmp
 	use {
 		'github/copilot.vim',
 		cmd = 'Copilot'
