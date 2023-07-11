@@ -59,6 +59,15 @@ if has_python3 then
 	has_pynvim = (vim.v.shell_error == 0)
 end
 
+disable_treesitter = false
+disable_ultisnips = not has_pynvim
+disable_cmp = not has_pynvim
+
+--disable_treesitter = true
+--disable_ultisnips = true
+--disable_cmp = true
+
+
 -- =============================================================================
 -- PACKER
 -- =============================================================================
@@ -69,6 +78,7 @@ vim.cmd 'packadd packer.nvim'
 local packer = require 'packer'
 local use = packer.use
 
+
 packer.startup({function()
 
 	use 'wbthomason/packer.nvim'
@@ -76,17 +86,14 @@ packer.startup({function()
 	-- Treesitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		--disable = true,
-		requires = {
-			'nvim-treesitter/playground'
-		},
+		disable = disable_treesitter,
 		config = function()
 			require('plugins/nvim-treesitter')
 		end
 	}
 	use {
 		'nvim-treesitter/playground',
-		--disable = true,
+		disable = disable_treesitter,
 	}
 
 	-- GitHub Copilot
@@ -100,8 +107,7 @@ packer.startup({function()
 	-- UltiShips
 	use {
 		'SirVer/ultisnips',
-		--disable = true,
-		disable = not has_pynvim,
+		disable = disable_ultisnips,
 		setup = function()
 			vim.g.UltiSnipsSnippetDirectories = { 'ultisnips' }
 			vim.g.UltiSnipsEditSplit           = 'tabdo'
@@ -117,8 +123,7 @@ packer.startup({function()
 	-- nvim-cmp
 	use {
 		'hrsh7th/nvim-cmp',
-		--disable = true,
-		disable = not has_pynvim,
+		disable = disable_cmp,
 		requires = {
 			'neovim/nvim-lspconfig',
 			'hrsh7th/cmp-nvim-lsp',
@@ -127,7 +132,7 @@ packer.startup({function()
 			'hrsh7th/cmp-cmdline',
 			{
 				'quangnguyen30192/cmp-nvim-ultisnips',
-				--disable = true,
+				disable = disable_cmp,
 				config = function()
 					require('cmp_nvim_ultisnips').setup()
 				end
@@ -246,7 +251,7 @@ packer.startup({function()
 
 	use {
 		'nvim-treesitter/nvim-treesitter-context',
-		disable = true,
+		disable = disable_treesitter,
 	}
 
 	use {
