@@ -1,22 +1,11 @@
-
-
+-- REVISIT: Fix my whitespace
+-- :help modeline
+-- vim: et ts=4 sts=0 sw=0
 -- =============================================================================
 -- EXAMPLES
 -- =============================================================================
 -- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
 -- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lua
-
-
--- REVISIT: Fix my whitespace
--- :help modeline
--- vim: et ts=2 sts=0 sw=0
-
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 
 -- =============================================================================
 -- SETUP
@@ -24,28 +13,64 @@ vim.g.maplocalleader = ' '
 -- Install lazy.nvim package manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
+	vim.fn.system {
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
+	lazypath,
+	}
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- :help mapleader
+-- Set <space> as the leader key
+-- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+
+-- =============================================================================
+-- LAZY
+-- =============================================================================
 require('lazy').setup({
 
-  -- Colorschemes
-  'shaunsingh/nord.nvim',
-  'EdenEast/nightfox.nvim',
+	----------------------------------------------------
+	-- Colorschemes
+	----------------------------------------------------
+	'shaunsingh/nord.nvim',
+	'EdenEast/nightfox.nvim',
+	{
+		-- Theme inspired by Atom
+		'navarasu/onedark.nvim',
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme 'onedark'
+		end,
+	},
 
-  --- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+	----------------------------------------------------
+	-- GitHub Copilot
+	----------------------------------------------------
+	-- :Copilot setup
+	-- TODO: https://github.com/zbirenbaum/copilot-cmp
+	{
+		'github/copilot.vim',
+		cmd = 'Copilot'
+	},
 
+	----------------------------------------------------
+	-- Git
+	----------------------------------------------------
+	'tpope/vim-fugitive',
+	-- REVISIT: Do I need this?
+	-- rhubarb.vim: GitHub plugin
+	--'tpope/vim-rhubarb',
+
+	----------------------------------------------------
 	-- NERD Commenter
+	----------------------------------------------------
 	{
 		'preservim/nerdcommenter',
 		init = function()
@@ -61,14 +86,6 @@ require('lazy').setup({
 		end
 	},
 
-	-- GitHub Copilot
-	-- :Copilot setup
-	-- TODO: https://github.com/zbirenbaum/copilot-cmp
-	{
-		'github/copilot.vim',
-		cmd = 'Copilot'
-	},
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
@@ -82,17 +99,24 @@ require('lazy').setup({
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
+      -- https://github.com/folke/neodev.nvim
+      -- Automatically configures lua-language-server for your Neovim config, Neovim runtime and plugin directories
+      -- Annotations for completion, hover and signatures of Vim functions, Neovim api functions, vim.opt, vim.loop
+      -- Properly configures require path and vimruntime
       'folke/neodev.nvim',
     },
   },
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip' },
   },
 
   -- Useful plugin to show you pending keybinds.
+  -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
   { 'folke/which-key.nvim', opts = {} },
 
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -107,14 +131,6 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
-  },
-
-  { -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
   },
 
   { -- Set lualine as statusline
