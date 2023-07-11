@@ -54,8 +54,7 @@ opt.listchars = {
 opt.ignorecase     = true
 opt.smartcase      = true
 opt.incsearch      = true
---opt.hlsearch       = true
-opt.hlsearch       = false
+opt.hlsearch       = true
 
 opt.number         = true
 opt.relativenumber = true
