@@ -1,25 +1,38 @@
 
+-- =============================================================================
+-- SETUP
+-- =============================================================================
 local execute = vim.api.nvim_command
 local cmd = vim.cmd
 local opt = vim.opt
 
--- Colorscheme
+
+-- =============================================================================
+-- COLORSCHEME
+-- =============================================================================
 --execute('colorscheme jellybeans')
 execute('colorscheme nord')
 execute('colorscheme catppuccin_macchiato')
 
+
 -- =============================================================================
 -- OPTIONS
 -- =============================================================================
+-- See `:help vim.o`
 
 -- TODO: Set undodir
+-- opt.undofile = true
+
+-- Enable mouse mode
+opt.mouse = 'a'
 
 -- Tab settings
-opt.expandtab      = false;
-opt.autoindent     = true;
-opt.tabstop        = 4;
-opt.shiftwidth     = 0;
-opt.softtabstop    = 0;
+opt.expandtab      = false
+opt.autoindent     = true
+opt.tabstop        = 4
+opt.shiftwidth     = 0
+opt.softtabstop    = 0
+opt.breakindent    = false
 
 -- List
 opt.list      = true
@@ -39,8 +52,10 @@ opt.listchars = {
 
 -- Search
 opt.ignorecase     = true
+opt.smartcase      = true
 opt.incsearch      = true
-opt.hlsearch       = true
+--opt.hlsearch       = true
+opt.hlsearch       = false
 
 opt.number         = true
 opt.relativenumber = true
