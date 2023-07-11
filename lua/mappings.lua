@@ -175,13 +175,29 @@ util.nmap(',ps',  '<cmd>PackerSync<Enter>')
 util.nmap(',pu',  '<cmd>PackerUpdate<Enter>')
 
 -- Telescope
-util.nmap('///',  '<cmd>Telescope live_grep<Enter>')
-util.nmap('//b',  '<cmd>Telescope buffers<Enter>')
-util.nmap('//c',  '<cmd>Telescope colorscheme<Enter>')
-util.nmap('//f',  '<cmd>Telescope find_files<Enter>')
-util.nmap('//g',  '<cmd>Telescope git_files<Enter>')
-util.nmap('//h',  '<cmd>Telescope help_tags<Enter>')
-util.nmap('//k',  '<cmd>Telescope keymaps<Enter>')
+-- :help telescope.builtin
+-- TODO: Add unique and silent
+vim.keymap.set('n', '//a', require('telescope.builtin').live_grep, { desc = 'Telescope Grep [A]ll' })
+vim.keymap.set('n', '//b', require('telescope.builtin').buffers, { desc = 'Telescope [B]uffers' })
+vim.keymap.set('n', '//c', require('telescope.builtin').colorscheme, { desc = 'Telescope [C]olorscheme' })
+vim.keymap.set('n', '//d', require('telescope.builtin').diagnostics, { desc = 'Telescope [D]iagnostics' })
+vim.keymap.set('n', '//f', require('telescope.builtin').find_files, { desc = 'Telescope [F]iles' })
+vim.keymap.set('n', '//g', require('telescope.builtin').git_files, { desc = 'Telescope [G]it Files' })
+vim.keymap.set('n', '//h', require('telescope.builtin').help_tags, { desc = 'Telescope [H]elp' })
+vim.keymap.set('n', '//k', require('telescope.builtin').keymaps, { desc = 'Telescope [K]eymaps' })
+vim.keymap.set('n', '//w', require('telescope.builtin').grep_string, { desc = 'Telescope Current [W]ord' })
+
+vim.keymap.set('n', '///',
+	function()
+		-- You can pass additional configuration to telescope to change theme, layout, etc.
+		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+			winblend = 10,
+			previewer = false,
+		})
+	end,
+	{ desc = '[/] Fuzzily search in current buffer' }
+)
+
 vim.keymap.set('v', '//', function()
 		local text = util.get_selection()
 		require('telescope.builtin').live_grep({ default_text = text })
