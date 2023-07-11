@@ -1,4 +1,13 @@
 
+
+-- =============================================================================
+-- EXAMPLES
+-- =============================================================================
+-- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
+-- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lua
+
+
+-- REVISIT: Fix my whitespace
 -- :help modeline
 -- vim: et ts=2 sts=0 sw=0
 
@@ -8,9 +17,11 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
+
+-- =============================================================================
+-- SETUP
+-- =============================================================================
+-- Install lazy.nvim package manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -83,6 +94,7 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
+
   { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -111,8 +123,12 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
+        --theme = 'onedark',
+        theme = 'palenight',
+        --theme = 'nightfly',
+        --theme = '',
+        --component_separators = '|',
+        component_separators = '│',
         section_separators = '',
       },
     },
@@ -129,7 +145,11 @@ require('lazy').setup({
   },
 
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    version = '*',
+    dependencies = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'}
+  },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
