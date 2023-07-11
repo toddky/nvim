@@ -32,12 +32,29 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
-  -- Git related plugins
+  -- Colorschemes
+  'shaunsingh/nord.nvim',
+  'EdenEast/nightfox.nvim',
+
+  --- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+	-- NERD Commenter
+	{
+		'preservim/nerdcommenter',
+		init = function()
+			vim.g.NERDCustomDelimiters = {
+				['c'] = { ['left'] = '//' },
+				['python'] = { ['left'] = '#' }
+			}
+		end,
+		config = function()
+			local util = require('util')
+			util.nmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
+			util.xmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
+		end
+	},
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -108,9 +125,6 @@ require('lazy').setup({
       show_trailing_blankline_indent = false,
     },
   },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
