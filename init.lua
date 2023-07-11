@@ -24,13 +24,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
 
   -- Colorschemes
   'shaunsingh/nord.nvim',
@@ -54,6 +48,14 @@ require('lazy').setup({
 			util.nmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
 			util.xmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
 		end
+	},
+
+	-- GitHub Copilot
+	-- :Copilot setup
+	-- TODO: https://github.com/zbirenbaum/copilot-cmp
+	{
+		'github/copilot.vim',
+		cmd = 'Copilot'
 	},
 
   -- NOTE: This is where your plugins related to LSP can be installed.
