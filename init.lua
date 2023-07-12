@@ -165,6 +165,24 @@ require('lazy').setup({
 	},
 
 	------------------------------------------------------------
+	-- FILE EXPLORER
+	------------------------------------------------------------
+	{
+		'nvim-tree/nvim-tree.lua',
+		cmd = 'NvimTreeToggle',
+		dependencies = { 'kyazdani42/nvim-web-devicons' },
+			--vim.g.loaded_netrw = 1
+			--vim.g.loaded_netrwPlugin = 1
+		opts = {
+			--require("nvim-tree").setup({
+				--view = {
+					--width = 30,
+				--},
+			--})
+		},
+	},
+
+	------------------------------------------------------------
 	-- LSP
 	------------------------------------------------------------
 	-- The configuration is done below. Search for lspconfig to find it below.
