@@ -7,6 +7,42 @@
 -- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
 -- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lua
 
+
+-- =============================================================================
+-- PLUGIN NOTES
+-- =============================================================================
+
+-- :help packer.use
+-- use {
+--   'myusername/example',        -- The plugin location string
+--   disable = boolean,           -- Mark a plugin as inactive
+--   run = string, function, or table  -- Post-update/install hook. See |packer-plugin-hooks|
+--   requires = string or list    -- Specifies plugin dependencies. See |packer-plugin-dependencies|
+--   setup = string or function,  -- Specifies code to run before this plugin is loaded.
+--   config = string or function, -- Specifies code to run after this plugin is loaded.
+--   branch = string,             -- Specifies a git branch to use
+-- }
+
+-- packer.nvim  -> lazy.nvim
+-- setup        -> init
+-- requires     -> dependencies
+-- as           -> name
+-- opt          -> lazy
+-- run          -> build
+-- lock         -> pin
+-- disable=true -> enabled = false
+-- tag='*'      -> version="*"
+-- after        -> not needed for most use-cases. Use dependencies otherwise.
+-- wants        -> not needed for most use-cases. Use dependencies otherwise.
+--
+-- Merged with parent spec:
+-- * opts
+-- * dependencies
+-- * cmd
+-- * event
+-- * ft
+
+
 -- =============================================================================
 -- SETUP
 -- =============================================================================
