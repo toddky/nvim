@@ -67,6 +67,15 @@ require('lazy').setup({
 				component_separators = '│',
 				section_separators = '',
 			},
+			--- TODO: Check if copilot is enabled
+			-- https://github.com/ofseed/lualine-copilot/blob/9b441d06031cef3cf0ca82a6363189aeeea297ca/lua/lualine/components/copilot.lua#L21
+			--local function enabled()
+			  --if vim.g.loaded_copilot == 1 and vim.fn["copilot#Enabled"]() == 1 then
+				--return true
+			  --else
+				--return false
+			  --end
+			--end
 		},
 	},
 
