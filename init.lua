@@ -56,7 +56,7 @@ if not vim.loop.fs_stat(lazypath) then
 		'--filter=blob:none',
 		'https://github.com/folke/lazy.nvim.git',
 		'--branch=stable', -- latest stable release
-	lazypath,
+		lazypath,
 	}
 end
 vim.opt.rtp:prepend(lazypath)
@@ -329,22 +329,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-}
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
 -- -- [[ Configure Treesitter ]]
 -- -- See `:help nvim-treesitter`
 -- require('nvim-treesitter.configs').setup {
@@ -421,6 +405,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- =============================================================================
 -- PLUGIN SETUP
 -- =============================================================================
+require('setup.telescope')
 require('setup.lsp')
 require('setup.cmp')
 
