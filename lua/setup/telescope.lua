@@ -10,7 +10,8 @@ require('telescope').setup {
 	defaults = {
 
 		file_ignore_patterns = {
-			'bazel_output_base',
+			'bazel_output_base/',
+			'bazel_output_user_root/',
 		},
 
 		extensions = {
