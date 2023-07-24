@@ -117,13 +117,26 @@ require('lazy').setup({
 	},
 
 	------------------------------------------------------------
-	-- GitHub Copilot
+	-- GitHub Copilot and ChatGPT
 	------------------------------------------------------------
 	-- :Copilot setup
 	-- TODO: https://github.com/zbirenbaum/copilot-cmp
 	{
 		'github/copilot.vim',
 		cmd = 'Copilot'
+	},
+	-- https://github.com/jackMort/ChatGPT.nvim
+	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+	{
+		"jackMort/ChatGPT.nvim",
+		opts = {
+			api_key_cmd = "openaikey",
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 
 	------------------------------------------------------------
@@ -258,6 +271,7 @@ require('lazy').setup({
 			show_trailing_blankline_indent = false,
 		},
 	},
+	'vim-scripts/AnsiEsc.vim',
 
 	------------------------------------------------------------
 	-- TREESITTER
