@@ -142,6 +142,7 @@ require('lazy').setup({
 	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 	{
 		"jackMort/ChatGPT.nvim",
+		cmd = 'ChatGPT',
 		opts = {
 			api_key_cmd = "openaikey",
 		},
