@@ -280,8 +280,12 @@ require('lazy').setup({
 	{
 		'lukas-reineke/indent-blankline.nvim',
 		opts = {
-			char = '┊',
+			--char = '┊',
+			char = '│',
+			space_char_blankline = " ",
 			show_trailing_blankline_indent = false,
+			filetype_exclude = {'help'},
+			buftype_exclude = {'terminal'},
 		},
 	},
 	'vim-scripts/AnsiEsc.vim',
