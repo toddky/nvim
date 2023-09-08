@@ -117,6 +117,19 @@ require('lazy').setup({
 	},
 
 	------------------------------------------------------------
+	-- CONTEXT
+	------------------------------------------------------------
+	{
+		'wellle/context.vim',
+		--enabled = false,
+		--cmd = {'ContextEnable', 'ContextEnableWindow'},
+		init = function()
+			vim.g.context_enabled = 1
+			vim.g.context_add_mappings = 0
+		end,
+	},
+
+	------------------------------------------------------------
 	-- GitHub Copilot and ChatGPT
 	------------------------------------------------------------
 	-- :Copilot setup
