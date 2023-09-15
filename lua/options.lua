@@ -32,14 +32,13 @@ opt.autoindent     = true
 opt.tabstop        = 4
 opt.shiftwidth     = 0
 opt.softtabstop    = 0
-opt.breakindent    = false
+opt.breakindent    = true
 
 -- List
 opt.list      = true
 opt.listchars = {
 	tab      = '▸ ',
 	trail    = '·',
-	precedes = '←',
 	--space    = '·',
 	lead    = '·',
 	--This breaks hterm alignment: '↴',
