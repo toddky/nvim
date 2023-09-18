@@ -27,12 +27,17 @@ iab #z [[ -z "$string" ]]
 " If
 iab #ifd if [[ -d "$dir" ]]; then<CR><CR>fi<UP>
 iab #iff if [[ -f "$file" ]]; then<CR><CR>fi<UP>
+iab #ifn if [[ -n "$str" ]]; then<CR><CR>fi<UP>
+iab #ifz if [[ -z "$str" ]]; then<CR><CR>fi<UP>
 
 " Init
 iab #set set -euo pipefail
 iab #debug ((TRACE)) && set -o xtrace
-iab #curr CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+iab #dir SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 iab #now now="$(date +'%Y%m%d-%H%M%S')"
+
+" Variables
+iab #split read -r left right <<<"$var"
 
 " Commands
 iab #while while [[ condition ]]; do<CR><CR>done<UP>
