@@ -105,4 +105,8 @@ iab #usage
 \<CR>}
 \<CR>
 
+iab #eof 
+\<CR>cat <<-EOF
+\<CR>
+\<CR>EOF<UP>
 
