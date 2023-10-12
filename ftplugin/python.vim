@@ -24,6 +24,7 @@ iab #exit sys.exit(0)
 
 " Options
 iab #argv sys.argv
+iab #main if __name__ == '__main__':
 
 " Printing
 "iab #2 sys.stderr.write(f'')
