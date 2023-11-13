@@ -281,6 +281,7 @@ require('lazy').setup({
 	{
 		'lukas-reineke/indent-blankline.nvim',
 		main = "ibl",
+		-- NOTE: `opts = {}` is the same as calling `require('ibl').setup({})`
 		opts = {
 			indent = {
 				highlight = {
