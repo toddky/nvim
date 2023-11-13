@@ -128,6 +128,13 @@ require('lazy').setup({
 			vim.g.context_add_mappings = 0
 		end,
 	},
+	{
+		'stevearc/aerial.nvim',
+		-- REVISIT: Make aerial.nvim work
+		enabled = false,
+		cmd = 'AerialToggle',
+		opt = {},
+	},
 
 	------------------------------------------------------------
 	-- GitHub Copilot and ChatGPT
