@@ -280,13 +280,25 @@ require('lazy').setup({
 	-- :help indent_blankline.txt
 	{
 		'lukas-reineke/indent-blankline.nvim',
+		main = "ibl",
 		opts = {
-			--char = '┊',
-			char = '│',
-			space_char_blankline = " ",
-			show_trailing_blankline_indent = false,
-			filetype_exclude = {'help'},
-			buftype_exclude = {'terminal'},
+			indent = {
+				highlight = {
+					"Comment",
+				},
+				char = "│",
+				smart_indent_cap = true,
+			},
+			whitespace = {
+				highlight = {
+					"Whitespace",
+				},
+				 remove_blankline_trail = false,
+			},
+			scope = {
+				enabled = false,
+				exclude = { language = { "help" } },
+			},
 		},
 	},
 	'vim-scripts/AnsiEsc.vim',
