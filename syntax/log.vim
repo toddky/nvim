@@ -16,6 +16,7 @@ syn match simlog_error /\vUVM_ERROR.*\ze\@/
 syn match simlog_error /\vStack ?[Tt]race:/
 syn match simlog_error /\vAssertion output stop:/
 syn match simlog_error /\v\w*MISMATCH\w*/
+syn match simlog_error /\v^### +\S+/
 
 " Warning
 hi def link simlog_warning DiagnosticWarn
