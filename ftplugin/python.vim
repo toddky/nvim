@@ -66,7 +66,15 @@ iab #ifr
 \match = re.match('regex', string)
 \<CR>if match:
 iab #in list(dict[key][index] for key in dict)
-iab #try try:<CR>#<CR>except KeyError:<UP>
+iab #try 
+\try:
+\<CR>#
+\<CR>except KeyError:
+\<CR>#
+\<CR>except Exception as e:
+\<CR>print(getattr(e, 'message', repr(e)))
+\<CR>print(getattr(e, 'message', str(e)))
+
 iab #for for key, value in dict.items():
 iab #match 
 \result = re.search(r"(\b[A-Z]+\b).+(\b\d+)", target_string)
