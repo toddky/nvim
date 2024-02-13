@@ -9,11 +9,12 @@ endif
 hi def link simlog_error DiagnosticError
 syn match simlog_error /\v<F(ATAL|atal)(:)?>(:|-\[.*\])?/
 syn match simlog_error /\v<E(RROR|rror)>(:|-\[.*\])?/
-syn match simlog_error /\vFAIL:/
+syn match simlog_error /\v\cFAIL(ED)?:/
 syn match simlog_error /\v^\w+: \*[FE],\w+/
 syn match simlog_error /\vUVM_FATAL.*\ze\@/
 syn match simlog_error /\vUVM_ERROR.*\ze\@/
 syn match simlog_error /\vStack ?[Tt]race:/
+syn match simlog_error /\vTraceback.*:/
 syn match simlog_error /\vAssertion output stop:/
 syn match simlog_error /\v\w*MISMATCH\w*/
 syn match simlog_error /\v^### +\S+/
