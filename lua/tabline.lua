@@ -82,7 +82,7 @@ function tabname(tabnr)
 end
 
 
-function tabline()
+local function tabline()
 	local tabline = ''
 
 	tabnrs = fn.tabpagenr('$')
