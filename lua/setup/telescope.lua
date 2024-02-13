@@ -12,6 +12,9 @@ require('telescope').setup {
 		file_ignore_patterns = {
 			'bazel_output_base/',
 			'bazel_output_user_root/',
+			'%.db',
+			'%.fsdb',
+			'%.xcui',
 		},
 
 		extensions = {
