@@ -1,10 +1,13 @@
 
+-- Example:
+-- - https://github.com/1024bees/dotfiles/blob/workfinal/nvim/lua/lib/plugin/lspconfig.lua
+
 -- REVISIT: Clean up
 -- This was copied directly from kickstart.nvim
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local lsp_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -47,11 +50,7 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
+
 local servers = {
   -- clangd = {},
   -- gopls = {},
@@ -74,8 +73,11 @@ local servers = {
 require('neodev').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- LSP servers and clients are able to communicate to each other what features they support.
+--  By default, Neovim doesn't support everything that is in the LSP Specification.
+--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- =============================================================================
@@ -94,11 +96,11 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
 	function(server_name)
-	require('lspconfig')[server_name].setup {
-		capabilities = capabilities,
-		on_attach = on_attach,
-		settings = servers[server_name],
-	}
+		require('lspconfig')[server_name].setup {
+			capabilities = lsp_capabilities,
+			on_attach = lsp_attach,
+			settings = servers[server_name],
+		}
 	end,
 }
 

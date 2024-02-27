@@ -6,8 +6,8 @@
 -- - https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 luasnip.config.setup {}
 
@@ -41,6 +41,11 @@ local kind_icons = {
 }
 
 cmp.setup {
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' },
+	},
+
 	snippet = {
 		expand = function(args)
 		luasnip.lsp_expand(args.body)
@@ -94,11 +99,6 @@ cmp.setup {
 	window = {
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
-	},
-
-	sources = {
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
 	},
 }
 
