@@ -48,8 +48,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('v', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Beginning/end of line
-util.nvmap('gh', '^')
-util.nvmap('gl', '$')
+--util.nvmap('gh', '^')
+--util.nvmap('gl', '$')
 util.nvmap('H', '^')
 util.nvmap('L', '$')
 
