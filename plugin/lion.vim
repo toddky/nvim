@@ -195,22 +195,14 @@ function! s:debug_str(str)
 	let x = getchar()
 endfunction
 
-function! s:assign_map(map, func)
-	if a:map ==# ''
-		return
-	endif
-	execute 'nmap <silent> ' . a:map . ' <Plug>Lion' . a:func
-	execute 'vmap <silent> ' . a:map . ' <Plug>VLion' . a:func
-endfunction
-
 nnoremap <silent> <Plug>LionRepeat .
 nnoremap <silent> <expr> <Plug>LionRight  <SID>command("<SID>alignRight")
 vnoremap <silent> <expr> <Plug>VLionRight <SID>command("<SID>alignRight", 1)
 nnoremap <silent> <expr> <Plug>LionLeft   <SID>command("<SID>alignLeft")
 vnoremap <silent> <expr> <Plug>VLionLeft  <SID>command("<SID>alignLeft", 1)
 
-if get(g:, 'lion_create_maps', 1)
-	call s:assign_map(get(g:, 'lion_map_right', 'gl'), 'Right')
-	call s:assign_map(get(g:, 'lion_map_left',  'gL'), 'Left')
-endif
+nmap <silent> gah <Plug>LionLeft
+vmap <silent> gah <Plug>VLionLeft
+nmap <silent> gal <Plug>LionRight
+vmap <silent> gal <Plug>VLionRight
 
