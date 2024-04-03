@@ -110,3 +110,16 @@ iab #eof
 \<CR>
 \<CR>EOF<UP>
 
+
+" ==============================================================================
+" ARGS
+" ==============================================================================
+iab #args 
+\<CR>while [[ $# -ge 1 ]]; do
+\<CR>arg="$1" && shift
+\<CR>case "$arg" in
+\<CR>--help) print_usage;;
+\<CR>*) print-error "'$arg' not recognized"; exit 1;;
+\<CR>esac
+\<CR>done
+
