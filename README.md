@@ -21,6 +21,9 @@ Features:
 
 [TODO: Implement this.](https://vimtricks.com/p/vim-file-templates/)
 
+## Example
+- [git-remote-url.nvim](https://github.com/JojoMakesGames/git-remote-url.nvim): A tiny example plugin.
+
 ```
 :help skeleton
 ```
