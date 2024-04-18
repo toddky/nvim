@@ -40,12 +40,9 @@ util.nmap('<C-c>', '<Nop>')
 -- MOVEMENT
 -- =============================================================================
 
--- REVISIT: Use nvmap
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('v', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set('v', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+util.nvmap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+util.nvmap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 
 -- Beginning/end of line
 --util.nvmap('gh', '^')
@@ -167,17 +164,17 @@ util.nmap(',pu',  '<cmd>Lazy update<Enter>')
 -- Telescope
 -- :help telescope.builtin
 -- TODO: Add unique and silent
-vim.keymap.set('n', '//a', require('telescope.builtin').live_grep,   { desc = 'Telescope Grep [A]ll' })
-vim.keymap.set('n', '//b', require('telescope.builtin').buffers,     { desc = 'Telescope [B]uffers' })
-vim.keymap.set('n', '//c', require('telescope.builtin').colorscheme, { desc = 'Telescope [C]olorscheme' })
-vim.keymap.set('n', '//d', require('telescope.builtin').diagnostics, { desc = 'Telescope [D]iagnostics' })
-vim.keymap.set('n', '//f', require('telescope.builtin').find_files,  { desc = 'Telescope [F]iles' })
-vim.keymap.set('n', '//g', require('telescope.builtin').git_files,   { desc = 'Telescope [G]it Files' })
-vim.keymap.set('n', '//h', require('telescope.builtin').help_tags,   { desc = 'Telescope [H]elp' })
-vim.keymap.set('n', '//k', require('telescope.builtin').keymaps,     { desc = 'Telescope [K]eymaps' })
-vim.keymap.set('n', '//w', require('telescope.builtin').grep_string, { desc = 'Telescope Current [W]ord' })
+util.nmap('//a', require('telescope.builtin').live_grep,   { desc = 'Telescope Grep [A]ll' })
+util.nmap('//b', require('telescope.builtin').buffers,     { desc = 'Telescope [B]uffers' })
+util.nmap('//c', require('telescope.builtin').colorscheme, { desc = 'Telescope [C]olorscheme' })
+util.nmap('//d', require('telescope.builtin').diagnostics, { desc = 'Telescope [D]iagnostics' })
+util.nmap('//f', require('telescope.builtin').find_files,  { desc = 'Telescope [F]iles' })
+util.nmap('//g', require('telescope.builtin').git_files,   { desc = 'Telescope [G]it Files' })
+util.nmap('//h', require('telescope.builtin').help_tags,   { desc = 'Telescope [H]elp' })
+util.nmap('//k', require('telescope.builtin').keymaps,     { desc = 'Telescope [K]eymaps' })
+util.nmap('//w', require('telescope.builtin').grep_string, { desc = 'Telescope Current [W]ord' })
 
-vim.keymap.set('n', '///',
+util.nmap('///',
 	function()
 		-- You can pass additional configuration to telescope to change theme, layout, etc.
 		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -188,21 +185,17 @@ vim.keymap.set('n', '///',
 	{ desc = '[/] Fuzzily search in current buffer' }
 )
 
-vim.keymap.set('v', '//', function()
+util.vmap('//',
+	function()
 		local text = util.get_selection()
 		require('telescope.builtin').live_grep({ default_text = text })
 	end,
 	{ noremap = true, silent=true }
 )
--- TODO: Figure out how to use util.vmap
---util.vmap('//', function()
-	--local text = util.get_selection()
-	--require('telescope.builtin').live_grep({ default_text = text })
---end)
 
 -- Bazel
 -- Open TOP/some/path/BUILD from //some/path:target
-vim.keymap.set('n', 'gb',
+util.nmap('gb',
 	function()
 		-- Get filename under cursor
 		local orig_isfname = vim.o.isfname

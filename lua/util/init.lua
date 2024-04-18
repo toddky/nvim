@@ -14,7 +14,7 @@ local M = {}
 local map = function(mode, lhs, rhs, opts)
 	local options = {noremap = true, silent = true, unique = true}
 	if opts then options = vim.tbl_extend('force', options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	vim.keymap.set(mode, lhs, rhs, options)
 end
 
 function M.leader(lhs, rhs, opts)
@@ -65,11 +65,6 @@ function M.get_selection()
 	text = string.gsub(text, "\n", "")
 	return text
 end
--- Test code
---vim.keymap.set('v', '<space>G', function()
-	--local text = M.get_selection()
-	--vim.api.nvim_echo({{text, 'None'}}, false, {})
---end)
 
 
 -- =============================================================================
