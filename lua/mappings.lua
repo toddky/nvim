@@ -167,14 +167,14 @@ util.nmap(',pu',  '<cmd>Lazy update<Enter>')
 -- Telescope
 -- :help telescope.builtin
 -- TODO: Add unique and silent
-vim.keymap.set('n', '//a', require('telescope.builtin').live_grep, { desc = 'Telescope Grep [A]ll' })
-vim.keymap.set('n', '//b', require('telescope.builtin').buffers, { desc = 'Telescope [B]uffers' })
+vim.keymap.set('n', '//a', require('telescope.builtin').live_grep,   { desc = 'Telescope Grep [A]ll' })
+vim.keymap.set('n', '//b', require('telescope.builtin').buffers,     { desc = 'Telescope [B]uffers' })
 vim.keymap.set('n', '//c', require('telescope.builtin').colorscheme, { desc = 'Telescope [C]olorscheme' })
 vim.keymap.set('n', '//d', require('telescope.builtin').diagnostics, { desc = 'Telescope [D]iagnostics' })
-vim.keymap.set('n', '//f', require('telescope.builtin').find_files, { desc = 'Telescope [F]iles' })
-vim.keymap.set('n', '//g', require('telescope.builtin').git_files, { desc = 'Telescope [G]it Files' })
-vim.keymap.set('n', '//h', require('telescope.builtin').help_tags, { desc = 'Telescope [H]elp' })
-vim.keymap.set('n', '//k', require('telescope.builtin').keymaps, { desc = 'Telescope [K]eymaps' })
+vim.keymap.set('n', '//f', require('telescope.builtin').find_files,  { desc = 'Telescope [F]iles' })
+vim.keymap.set('n', '//g', require('telescope.builtin').git_files,   { desc = 'Telescope [G]it Files' })
+vim.keymap.set('n', '//h', require('telescope.builtin').help_tags,   { desc = 'Telescope [H]elp' })
+vim.keymap.set('n', '//k', require('telescope.builtin').keymaps,     { desc = 'Telescope [K]eymaps' })
 vim.keymap.set('n', '//w', require('telescope.builtin').grep_string, { desc = 'Telescope Current [W]ord' })
 
 vim.keymap.set('n', '///',
@@ -202,33 +202,34 @@ vim.keymap.set('v', '//', function()
 
 -- Bazel
 -- Open TOP/some/path/BUILD from //some/path:target
-function open_bazel_file()
+vim.keymap.set('n', 'gb',
+	function()
+		-- Get filename under cursor
+		local orig_isfname = vim.o.isfname
+		vim.o.isfname = vim.o.isfname .. ',:'
+		local filename = vim.fn.expand('<cfile>')
+		vim.o.isfname = orig_isfname
 
-	-- Get filename under cursor
-	local orig_isfname = vim.o.isfname
-	vim.o.isfname = vim.o.isfname .. ',:'
-	local filename = vim.fn.expand('<cfile>')
-	vim.o.isfname = orig_isfname
+		-- Get WORKSPACE
+		-- TODO: Get WORKSPACE instead of .git
+		if string.sub(filename, 1, 2) == "//" then
+			local git_path = vim.fn.finddir(".git", ".;")
+			local git_top = vim.fn.fnamemodify(git_path, ":h")
+			filename = git_top .. string.sub(filename, 2, -1)
+		end
 
-	-- Get WORKSPACE
-	-- TODO: Get WORKSPACE instead of .git
-	if string.sub(filename, 1, 2) == "//" then
-		local git_path = vim.fn.finddir(".git", ".;")
-		local git_top = vim.fn.fnamemodify(git_path, ":h")
-		filename = git_top .. string.sub(filename, 2, -1)
-	end
+		if string.sub(filename, -4, -1) == ".bzl" then
+			-- Get .bzl file
+			filename = string.gsub(filename, ":", "/")
+		else
+			-- Get BUILD file
+			filename = string.gsub(filename, ":[^:]+$", "/BUILD")
+		end
 
-	if string.sub(filename, -4, -1) == ".bzl" then
-		-- Get .bzl file
-		filename = string.gsub(filename, ":", "/")
-	else
-		-- Get BUILD file
-		filename = string.gsub(filename, ":[^:]+$", "/BUILD")
-	end
-
-	vim.cmd('e ' .. filename)
-end
---util.nmap('gb', '<cmd>lua open_bazel_file()<Enter>')
+		vim.cmd('e ' .. filename)
+	end,
+	{ noremap = true, silent=true , desc = 'Go [B]azel' }
+)
 
 
 -- =============================================================================
