@@ -7,6 +7,7 @@
 -- https://github.com/folke/dot/blob/master/config/nvim/lua/plugins.lua
 -- https://github.com/mhartington/dotfiles/blob/main/config/nvim/lua/mh/plugins/init.lua
 -- https://github.com/1024bees/dotfiles/tree/work2/nvim
+-- https://github.com/nvim-lua/kickstart.nvim
 
 
 -- =============================================================================
