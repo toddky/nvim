@@ -35,7 +35,7 @@ iab #env os.environ['']
 iab #path sys.path.insert(0, '/path/to/somewhere'}) # $PYTHON_PATH
 
 " File/directory operations
-iab #basename os.basename(path)
+iab #basename os.path.basename(path)
 iab #cd os.chdir(path)
 iab #exists os.path.exists(path)
 iab #dir os.path.isdir(path)
