@@ -161,37 +161,41 @@ util.nmap(',tsp', '<cmd>TSPlaygroundToggle<Enter>')
 util.nmap(',ps',  '<cmd>Lazy sync<Enter>')
 util.nmap(',pu',  '<cmd>Lazy update<Enter>')
 
--- Telescope
+------------------------------------------------------------
+-- TELESCOPE
+------------------------------------------------------------
 -- :help telescope.builtin
--- TODO: Add unique and silent
-util.nmap('//a', require('telescope.builtin').live_grep,   { desc = 'Telescope Grep [A]ll' })
-util.nmap('//b', require('telescope.builtin').buffers,     { desc = 'Telescope [B]uffers' })
-util.nmap('//c', require('telescope.builtin').colorscheme, { desc = 'Telescope [C]olorscheme' })
-util.nmap('//d', require('telescope.builtin').diagnostics, { desc = 'Telescope [D]iagnostics' })
-util.nmap('//f', require('telescope.builtin').find_files,  { desc = 'Telescope [F]iles' })
-util.nmap('//g', require('telescope.builtin').git_files,   { desc = 'Telescope [G]it Files' })
-util.nmap('//h', require('telescope.builtin').help_tags,   { desc = 'Telescope [H]elp' })
-util.nmap('//k', require('telescope.builtin').keymaps,     { desc = 'Telescope [K]eymaps' })
-util.nmap('//w', require('telescope.builtin').grep_string, { desc = 'Telescope Current [W]ord' })
+if pcall(require, 'telescope') then
+	local telescope = require('telescope.builtin')
+	util.nmap('//a', telescope.live_grep,   { desc = 'Telescope Grep [A]ll' })
+	util.nmap('//b', telescope.buffers,     { desc = 'Telescope [B]uffers' })
+	util.nmap('//c', telescope.colorscheme, { desc = 'Telescope [C]olorscheme' })
+	util.nmap('//d', telescope.diagnostics, { desc = 'Telescope [D]iagnostics' })
+	util.nmap('//f', telescope.find_files,  { desc = 'Telescope [F]iles' })
+	util.nmap('//g', telescope.git_files,   { desc = 'Telescope [G]it Files' })
+	util.nmap('//h', telescope.help_tags,   { desc = 'Telescope [H]elp' })
+	util.nmap('//k', telescope.keymaps,     { desc = 'Telescope [K]eymaps' })
+	util.nmap('//w', telescope.grep_string, { desc = 'Telescope Current [W]ord' })
 
-util.nmap('///',
-	function()
-		-- You can pass additional configuration to telescope to change theme, layout, etc.
-		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-			winblend = 10,
-			previewer = false,
-		})
-	end,
-	{ desc = '[/] Fuzzily search in current buffer' }
-)
+	util.nmap('///',
+		function()
+			-- You can pass additional configuration to telescope to change theme, layout, etc.
+			telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+				winblend = 10,
+				previewer = false,
+			})
+		end,
+		{ desc = '[/] Fuzzily search in current buffer' }
+	)
 
-util.vmap('//',
-	function()
-		local text = util.get_selection()
-		require('telescope.builtin').live_grep({ default_text = text })
-	end,
-	{ noremap = true, silent=true }
-)
+	util.vmap('//',
+		function()
+			local text = util.get_selection()
+			telescope.live_grep({ default_text = text })
+		end,
+		{ noremap = true, silent=true }
+	)
+end -- pcall(require, 'telescope') then
 
 -- Bazel
 -- Open TOP/some/path/BUILD from //some/path:target
