@@ -1,9 +1,18 @@
+-- =============================================================================
+-- SETUP
+-- =============================================================================
+-- vim: noet ts=4 sts=0 sw=0
+if not pcall(require, 'nvim-treesitter') then
+	return
+end
 
--- REVISIT: Clean up
--- This was copied directly from kickstart.nvim
-
+-- =============================================================================
+-- CONFIG
+-- =============================================================================
 -- nvim-treesitter setup
 -- See `:help nvim-treesitter`
+
+-- REVISIT: Clean up,  this was copied directly from kickstart.nvim
 require('nvim-treesitter.configs').setup {
 	-- Treesitter languages
 	ensure_installed = {
