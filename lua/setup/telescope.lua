@@ -6,9 +6,23 @@ if not pcall(require, 'telescope') then
 	return
 end
 
+local pickers = require "telescope.pickers"
+local finders = require "telescope.finders"
+local conf = require("telescope.config").values
+
+-- Search for log files
+local log_files = function(opts)
+	opts = opts or {}
+	pickers.new(opts, {
+		prompt_title = 'logs',
+		finder = finders.new_oneshot_job({'findn', '.log'}, opts),
+		sorter = conf.generic_sorter(opts),
+	}):find()
+end
+
 
 -- =============================================================================
--- TELESCOPE SETTINGS
+-- SETTINGS
 -- =============================================================================
 
 -- See `:help telescope` and `:help telescope.setup()`
@@ -42,6 +56,10 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+
+local M = {}
+M.log_files = log_files
+return M
 
 
 -- =============================================================================

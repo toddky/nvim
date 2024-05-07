@@ -41,8 +41,8 @@ util.nmap('<C-c>', '<Nop>')
 -- =============================================================================
 
 -- Remap for dealing with word wrap
-util.nvmap('j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
-util.nvmap('k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+util.nvmap('j', "v:count == 0 ? 'gj' : 'j'", {expr=true})
+util.nvmap('k', "v:count == 0 ? 'gk' : 'k'", {expr=true})
 
 -- Beginning/end of line
 --util.nvmap('gh', '^')
@@ -86,7 +86,7 @@ util.leader('j', '<C-w>j')
 util.leader('k', '<C-w>k')
 util.leader('l', '<C-w>l')
 
-util.leader('w', '<C-w>', { noremap = false })
+util.leader('w', '<C-w>', {noremap = false})
 util.nmap('<C-w>e', '<C-w>=')
 
 
@@ -167,15 +167,17 @@ util.nmap(',pu',  '<cmd>Lazy update<Enter>')
 -- :help telescope.builtin
 if pcall(require, 'telescope') then
 	local telescope = require('telescope.builtin')
-	util.nmap('//a', telescope.live_grep,   { desc = 'Telescope Grep [A]ll' })
-	util.nmap('//b', telescope.buffers,     { desc = 'Telescope [B]uffers' })
-	util.nmap('//c', telescope.colorscheme, { desc = 'Telescope [C]olorscheme' })
-	util.nmap('//d', telescope.diagnostics, { desc = 'Telescope [D]iagnostics' })
-	util.nmap('//f', telescope.find_files,  { desc = 'Telescope [F]iles' })
-	util.nmap('//g', telescope.git_files,   { desc = 'Telescope [G]it Files' })
-	util.nmap('//h', telescope.help_tags,   { desc = 'Telescope [H]elp' })
-	util.nmap('//k', telescope.keymaps,     { desc = 'Telescope [K]eymaps' })
-	util.nmap('//w', telescope.grep_string, { desc = 'Telescope Current [W]ord' })
+	util.nmap('//a', telescope.live_grep,   {desc='Telescope Grep [A]ll'})
+	util.nmap('//b', telescope.buffers,     {desc='Telescope [B]uffers'})
+	util.nmap('//c', telescope.colorscheme, {desc='Telescope [C]olorscheme'})
+	util.nmap('//d', telescope.diagnostics, {desc='Telescope [D]iagnostics'})
+	util.nmap('//f', telescope.find_files,  {desc='Telescope [F]iles'})
+	util.nmap('//g', telescope.git_files,   {desc='Telescope [G]it Files'})
+	util.nmap('//h', telescope.help_tags,   {desc='Telescope [H]elp'})
+	util.nmap('//k', telescope.keymaps,     {desc='Telescope [K]eymaps'})
+	util.nmap('//w', telescope.grep_string, {desc='Telescope Current [W]ord'})
+
+	util.nmap('//l', require('setup.telescope').log_files, {desc='Telescope [L]og'})
 
 	util.nmap('///',
 		function()
@@ -185,15 +187,15 @@ if pcall(require, 'telescope') then
 				previewer = false,
 			})
 		end,
-		{ desc = '[/] Fuzzily search in current buffer' }
+		{desc='[/] Fuzzily search in current buffer'}
 	)
 
 	util.vmap('//',
 		function()
 			local text = util.get_selection()
-			telescope.live_grep({ default_text = text })
+			telescope.live_grep({default_text=text})
 		end,
-		{ noremap = true, silent=true }
+		{noremap = true, silent=true}
 	)
 end -- pcall(require, 'telescope') then
 
@@ -225,7 +227,7 @@ util.nmap('gb',
 
 		vim.cmd('e ' .. filename)
 	end,
-	{ noremap = true, silent=true , desc = 'Go [B]azel' }
+	{noremap = true, silent=true , desc = 'Go [B]azel'}
 )
 
 
