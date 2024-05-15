@@ -20,30 +20,30 @@ luasnip.config.setup {}
 
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
 local kind_icons = {
-	Text = "",
-	Method = "󰆧",
-	Function = "󰊕",
-	Constructor = "",
-	Field = "󰇽",
-	Variable = "󰂡",
-	Class = "󰠱",
-	Interface = "",
-	Module = "",
-	Property = "󰜢",
-	Unit = "",
-	Value = "󰎠",
-	Enum = "",
-	Keyword = "󰌋",
-	Snippet = "",
-	Color = "󰏘",
-	File = "󰈙",
-	Reference = "",
-	Folder = "󰉋",
-	EnumMember = "",
-	Constant = "󰏿",
-	Struct = "",
-	Event = "",
-	Operator = "󰆕",
+	Text          = "",
+	Method        = "󰆧",
+	Function      = "󰊕",
+	Constructor   = "",
+	Field         = "󰇽",
+	Variable      = "󰂡",
+	Class         = "󰠱",
+	Interface     = "",
+	Module        = "",
+	Property      = "󰜢",
+	Unit          = "",
+	Value         = "󰎠",
+	Enum          = "",
+	Keyword       = "󰌋",
+	Snippet       = "",
+	Color         = "󰏘",
+	File          = "󰈙",
+	Reference     = "",
+	Folder        = "󰉋",
+	EnumMember    = "",
+	Constant      = "󰏿",
+	Struct        = "",
+	Event         = "",
+	Operator      = "󰆕",
 	TypeParameter = "󰅲",
 }
 
@@ -55,7 +55,7 @@ cmp.setup {
 
 	snippet = {
 		expand = function(args)
-		luasnip.lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 
