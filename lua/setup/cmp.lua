@@ -1,3 +1,10 @@
+-- =============================================================================
+-- SETUP
+-- =============================================================================
+-- vim: noet ts=4 sts=0 sw=0
+if not pcall(require, 'cmp') then
+	return
+end
 
 -- Originally came from here:
 -- https://github.com/nvim-lua/kickstart.nvim/blob/7af594fd319fbae6b2aaa06337f3df8acbbb7f18/init.lua#L638
