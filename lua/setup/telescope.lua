@@ -6,17 +6,21 @@ if not pcall(require, 'telescope') then
 	return
 end
 
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local conf = require("telescope.config").values
+local pickers    = require("telescope.pickers")
+local finders    = require("telescope.finders")
+local previewers = require("telescope.previewers")
+local conf       = require("telescope.config").values
 
 -- Search for log files
 local log_files = function(opts)
 	opts = opts or {}
+	opts.layout_strategy = opts.layout_strategy or 'vertical'
+	opts.layout_config = opts.layout_config or { anchor = 'CENTER', height = 0.8, width = 0.8}
 	pickers.new(opts, {
 		prompt_title = 'logs',
 		finder = finders.new_oneshot_job({'findn', '.log'}, opts),
 		sorter = conf.generic_sorter(opts),
+		previewer = previewers.cat.new(opts),
 	}):find()
 end
 
