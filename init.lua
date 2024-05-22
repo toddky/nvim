@@ -145,6 +145,10 @@ require('lazy').setup({
 		'github/copilot.vim',
 		cmd = 'Copilot'
 	},
+	{
+		'CopilotC-Nvim/CopilotChat.nvim',
+		enabled = false,
+	},
 	-- https://github.com/jackMort/ChatGPT.nvim
 	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 	{
