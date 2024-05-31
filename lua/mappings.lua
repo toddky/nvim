@@ -256,3 +256,15 @@ util.tmap('<Esc>', '<C-\\><C-n>')
 -- https://www.reddit.com/r/commandline/comments/vqzg5c/comment/iesmv4r/
 util.cmap('w!!', 'w !sudo tee > /dev/null %')
 
+-- https://github.com/efueyo/dotfiles/blob/main/nvim/after/ftplugin/sh/mappings.lua
+-- local keymap = vim.keymap.set
+-- -- execute and print the output of the current line
+-- -- yank the current line, add two lines below, paste the yanked line in between the lines, execute the line in bash
+-- keymap("n", "<leader>xp", "yy2o<ESC>kpV:!/bin/bash<CR>", { desc = "e[X]ecute and [P]rint", buffer = 0 })
+-- keymap(
+-- 	"v",
+-- 	"<leader>xp",
+-- 	"y'<P'<O<ESC>'>o<ESC>:<C-u>'<,'>!/bin/bash<CR>",
+-- 	{ desc = "e[X]ecute and [P]rint", buffer = 0 }
+-- )
+
