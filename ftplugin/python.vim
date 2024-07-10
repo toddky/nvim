@@ -62,6 +62,9 @@ iab #run
 \<CR>result = subprocess.run(cmd, capture_output=True)
 \<CR>stdout = result.stdout.decode('utf-8')
 
+" Debug
+iab #bp breakpoint()
+
 " Expressions
 iab #ifr 
 \match = re.match('regex', string)
