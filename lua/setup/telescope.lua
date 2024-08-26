@@ -18,7 +18,7 @@ local log_files = function(opts)
 	opts.layout_config = opts.layout_config or { anchor = 'CENTER', height = 0.8, width = 0.8}
 	pickers.new(opts, {
 		prompt_title = 'logs',
-		finder = finders.new_oneshot_job({'findn', '.log'}, opts),
+		finder = finders.new_oneshot_job({'find', '.', '-type', 'f', '-name', '*.log'}, opts),
 		sorter = conf.generic_sorter(opts),
 		previewer = previewers.cat.new(opts),
 	}):find()
