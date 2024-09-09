@@ -315,6 +315,8 @@ require('lazy').setup({
 		},
 	},
 	'vim-scripts/AnsiEsc.vim',
+	-- REVISIT: Once treesitter gets fixed
+	-- https://github.com/OXY2DEV/markview.nvim
 
 	------------------------------------------------------------
 	-- TREESITTER
