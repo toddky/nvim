@@ -322,7 +322,10 @@ require('lazy').setup({
 	-- Highlight, edit, and navigate code
 	{
 		'nvim-treesitter/nvim-treesitter',
-		enabled = true,
+		-- Currently disabled because of this error:
+		-- src/tree_sitter/parser.h:184:5: error: ‘for’ loop initial declarations are only allowed in C99 mode
+		enabled = false,
+		--enabled = true,
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
