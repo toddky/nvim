@@ -36,3 +36,9 @@ iab #vim
 iab #ln file link -symbolic /path/to/original/file /path/to/symlink
 iab #mkdir file mkdir /path/to/dir
 
+" Run
+iab #run 
+\<CR>set command [list ls -l]
+\<CR>lappend command -h
+\<CR>puts [eval exec $command]
+
