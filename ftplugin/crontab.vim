@@ -28,5 +28,8 @@ iab #help
 iab #vnc @reboot vncserver -geometry 1920x1015 :1
 
 iab #nightly 0 0 * * * ./midnight.sh
-iab #weekly 0 0 * * 0 ./sunday.sh
+iab #daily   0 0 * * * ./daily.sh
+iab #weekly  0 0 * * 0 ./sunday.sh
+iab #hourly  0 * * * * ./hourly.sh
+iab #minute  * * * * * ./every_minute.sh
 
