@@ -143,7 +143,9 @@ require('lazy').setup({
 	-- TODO: https://github.com/zbirenbaum/copilot-cmp
 	{
 		'github/copilot.vim',
-		cmd = 'Copilot'
+		cmd = 'Copilot',
+		-- v1.39.0 requires node 18, which is not available on this system
+		tag = 'v1.38.0'
 	},
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
