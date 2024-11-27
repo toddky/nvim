@@ -15,3 +15,5 @@ iab #vim
 " Cool stuff
 iab #fib fib = Hash.new{\|h,k\| h[k] = k < 2 ? k : h[k-1] + h[k-2]}
 
+iab #now Time.now.strftime("%Y%m%d-%H%M%S")
+
