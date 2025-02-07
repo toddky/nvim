@@ -163,3 +163,13 @@ cmd([[autocmd User TelescopePreviewerLoaded setlocal nowrap]])
 -- Reset softtabstop and shiftwidth when tabstop changes
 cmd([[autocmd OptionSet tabstop set sts=0 sw=0]])
 
+-- Disable syntax for large files
+autocmd({"BufEnter"}, {
+	callback = function()
+		local current_file = vim.fn.expand('%:t')
+		if vim.fn.getfsize(current_file) > (5*1024*1024) then
+			vim.o.syntax = false
+		end
+	end,
+})
+
