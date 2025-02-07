@@ -75,10 +75,7 @@ opt.clipboard      = "unnamedplus"
 
 -- Highlight currentl line
 opt.cursorline     = true
---opt.cursorcolumn   = true
--- TODO: Change color for insert mode
---autocmd InsertEnter * highlight CursorLine guifg=something
---autocmd InsertLeave * highlight CursorLine guifg=something
+opt.cursorcolumn   = false
 
 -- Splits
 opt.splitbelow     = true
@@ -105,8 +102,13 @@ cmd([[match Error /\v\s+$/]])
 -- AUTOMATIC COMMANDS
 -- =============================================================================
 
--- Open help on right split
-cmd([[autocmd! BufEnter * if &ft ==# 'help' | wincmd L | endif]])
+-- https://www.reddit.com/r/neovim/comments/1i2xw2m/comment/m7jbnnf/
+autocmd("FileType", {
+	desc = "Open help buffers on the right split",
+	pattern = "help",
+	command = "wincmd L",
+})
+
 
 -- Recompile when plugins.lua is updated
 --cmd 'autocmd BufWritePost plugins.lua PackerCompile'
