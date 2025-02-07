@@ -119,10 +119,17 @@ vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent>
 
 -- Only show cursor line in active window
 -- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L96
-cmd([[
-	autocmd InsertLeave,WinEnter * set cursorline
-	autocmd InsertEnter,WinLeave * set nocursorline
-]])
+-- https://www.reddit.com/r/neovim/comments/1i2xw2m/comment/m7ik6wu/
+vim.api.nvim_create_autocmd({"WinEnter", "InsertLeave"}, {
+	callback = function()
+		vim.wo.cursorline = true
+	end,
+})
+vim.api.nvim_create_autocmd({"WinLeave", "InsertEnter"}, {
+	callback = function()
+		vim.wo.cursorline = false
+	end,
+})
 
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
