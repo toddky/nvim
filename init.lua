@@ -360,8 +360,9 @@ require('lazy').setup({
 -- REQUIRE
 -- =============================================================================
 require('colors')
-require('options')
+require('functions')
 require('mappings')
+require('options')
 require('text-objects')
 
 
