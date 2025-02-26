@@ -22,6 +22,3 @@ util.xomap('al', ':<c-u>normal! $v0<Enter>')
 -- =============================================================================
 -- https://github.com/toddyamakawa/vim/blob/master/my-plugins/plugin/text-objects/number.vim
 
-
-return colors
-
