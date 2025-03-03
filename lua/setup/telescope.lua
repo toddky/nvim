@@ -11,6 +11,13 @@ local finders    = require("telescope.finders")
 local previewers = require("telescope.previewers")
 local conf       = require("telescope.config").values
 
+-- Disable wrap in Telescope preview
+vim.cmd([[autocmd User TelescopePreviewerLoaded setlocal nowrap]])
+
+
+-- =============================================================================
+-- FUNCTIONS
+-- =============================================================================
 -- Search for log files
 local log_files = function(opts)
 	opts = opts or {}
