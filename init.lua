@@ -132,12 +132,18 @@ require('lazy').setup({
 		end,
 		version = '82eb26de265292808917b82f3eda2725b53d785c',
 	},
+
 	{
 		'stevearc/aerial.nvim',
 		-- REVISIT: Make aerial.nvim work
-		enabled = false,
+		--enabled = false,
 		cmd = 'AerialToggle',
-		opt = {},
+		opts = {},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons"
+		},
+		version = 'v2.5.0',
 	},
 
 	------------------------------------------------------------
