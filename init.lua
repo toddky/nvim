@@ -127,6 +127,7 @@ require('lazy').setup({
 			vim.g.context_enabled = 1
 			vim.g.context_add_mappings = 0
 		end,
+		version = '82eb26de265292808917b82f3eda2725b53d785c',
 	},
 	{
 		'stevearc/aerial.nvim',
