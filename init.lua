@@ -161,13 +161,25 @@ require('lazy').setup({
 	},
 
 	{
-		'CopilotC-Nvim/CopilotChat.nvim',
-		enabled = false,
+		"CopilotC-Nvim/CopilotChat.nvim",
+		--enabled = false,
+		cmd = 'CopilotChat',
+		dependencies = {
+			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+		},
+		build = "make tiktoken", -- Only on MacOS or Linux
+		opts = {
+			-- See Configuration section for options
+		},
+			-- See Commands section for default commands if you want to lazy load on them
 	},
+
 	-- https://github.com/jackMort/ChatGPT.nvim
 	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 	{
 		"jackMort/ChatGPT.nvim",
+		enabled = false,
 		cmd = 'ChatGPT',
 		opts = {
 			api_key_cmd = "openaikey",
@@ -177,7 +189,6 @@ require('lazy').setup({
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		enabled = false,
 	},
 
 	------------------------------------------------------------
@@ -409,6 +420,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- =============================================================================
 require('setup.treesitter')
 require('setup.telescope')
+require('setup.copilot')
 require('setup.lsp')
 require('setup.cmp')
 
