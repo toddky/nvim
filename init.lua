@@ -67,6 +67,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Check if using RHEL8
+local is_rhel8 = vim.fn.system('cat /etc/redhat-release | grep -q "release 8"') == 0
+
 
 -- =============================================================================
 -- LAZY
@@ -146,8 +149,11 @@ require('lazy').setup({
 		'github/copilot.vim',
 		cmd = 'Copilot',
 		-- v1.39.0 requires node 18, which is not available on this system
-		tag = 'v1.38.0'
+		--tag = 'v1.38.0'
+		--tag = 'v1.36.0'
+		tag = is_rhel8 and 'v1.42.0' or 'v1.36.0',
 	},
+
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
 		enabled = false,
@@ -165,6 +171,7 @@ require('lazy').setup({
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+		enabled = false,
 	},
 
 	------------------------------------------------------------
