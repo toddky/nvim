@@ -134,8 +134,10 @@ require('lazy').setup({
 	},
 
 	{
+		-- Code outline window
+		-- https://github.com/stevearc/aerial.nvim
 		'stevearc/aerial.nvim',
-		-- REVISIT: Make aerial.nvim work
+		-- Pretty neat plugin but needs LSP to work, so not worth it yet
 		--enabled = false,
 		cmd = 'AerialToggle',
 		opts = {},
@@ -143,6 +145,7 @@ require('lazy').setup({
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons"
 		},
+		-- 2025-03-07
 		version = 'v2.5.0',
 	},
 
@@ -157,16 +160,19 @@ require('lazy').setup({
 		-- v1.39.0 requires node 18, which is not available on this system
 		--tag = 'v1.38.0'
 		--tag = 'v1.36.0'
+		-- 2025-03-07
 		tag = is_rhel8 and 'v1.42.0' or 'v1.36.0',
 	},
-
+	{
+		-- for curl, log and async functions
+		"nvim-lua/plenary.nvim",
+	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		--enabled = false,
-		cmd = 'CopilotChat',
+		cmd = 'CopilotChatOpen',
 		dependencies = {
-			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+			"nvim-lua/plenary.nvim",
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
@@ -310,7 +316,12 @@ require('lazy').setup({
 	------------------------------------------------------------
 	-- Useful plugin to show you pending keybinds.
 	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-	{ 'folke/which-key.nvim', opts = {} },
+	{
+		'folke/which-key.nvim',
+		opts = {},
+		-- 2025-03-07
+		version = 'v3.16.0'
+	},
 
 	------------------------------------------------------------
 	-- SYNTAX
@@ -333,7 +344,7 @@ require('lazy').setup({
 				highlight = {
 					"Whitespace",
 				},
-				 remove_blankline_trail = false,
+				remove_blankline_trail = false,
 			},
 			scope = {
 				enabled = false,
@@ -423,4 +434,5 @@ require('setup.telescope')
 require('setup.copilot')
 require('setup.lsp')
 require('setup.cmp')
+
 
