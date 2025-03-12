@@ -169,6 +169,7 @@ require('lazy').setup({
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
+		-- https://github.com/CopilotC-Nvim/CopilotChat.nvim/wiki/Examples-and-Tips
 		--enabled = false,
 		cmd = 'CopilotChatOpen',
 		dependencies = {
