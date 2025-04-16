@@ -31,7 +31,11 @@ iab #main if __name__ == '__main__':
 iab #stderr sys.stderr.write(f'')
 
 " Environment variables
-iab #env os.environ['']
+iab #env 
+\os.environ['']
+\<CR>for key, value in sorted(os.environ.items()):
+\<CR>print(f'{key}={value}')
+
 iab #path sys.path.insert(0, '/path/to/somewhere'}) # $PYTHON_PATH
 
 " File/directory operations
