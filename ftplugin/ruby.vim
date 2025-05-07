@@ -17,6 +17,11 @@ iab #fib fib = Hash.new{\|h,k\| h[k] = k < 2 ? k : h[k-1] + h[k-2]}
 
 iab #now Time.now.strftime("%Y%m%d-%H%M%S")
 
+iab #run 
+\<CR>require 'open3'
+\<CR>stdout, stderr, status = Open3.capture3(*cmd)
+\<CR>exitstatus = status.exitstatus
+
 
 " ==============================================================================
 " ADVENT OF CODE
