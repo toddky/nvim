@@ -29,6 +29,7 @@ iab #main if __name__ == '__main__':
 " Printing
 "iab #2 sys.stderr.write(f'')
 iab #stderr sys.stderr.write(f'')
+iab #todd print(f'TODD {variable=}'); exit(0)
 
 " Environment variables
 iab #env 
