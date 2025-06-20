@@ -67,6 +67,7 @@ iab #run
 \cmd = ['ls', '-l']
 \<CR>result = subprocess.run(cmd, capture_output=True)
 \<CR>stdout = result.stdout.decode('utf-8')
+\<CR>stdout = subprocess.run(cmd, capture_output=True, text=True, check=True).stdout
 
 " Debug
 iab #bp breakpoint()
