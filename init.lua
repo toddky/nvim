@@ -265,6 +265,9 @@ require('lazy').setup({
 	-- The configuration is done below. Search for lspconfig to find it below.
 	{
 		'neovim/nvim-lspconfig',
+		-- nvim-lspconfig requires Nvim version 0.10, but you are running: 0.9.5
+		-- tag = 'v2.0.0',
+		tag = 'v1.8.0',
 		-- NOTE: This is where your plugins related to LSP can be installed.
 		dependencies = {
 			-- Automatically install LSPs to stdpath for neovim
