@@ -69,7 +69,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Check if using RHEL8
-local is_rhel8 = vim.fn.system('cat /etc/redhat-release | grep -q "release 8"') == 0
+local fp = io.open("/etc/redhat-release", "r")
+local content = fp and fp:read("*all")
+if fp then fp:close() end
+local is_rhel8 = (string.find(content, "release 8") ~= nil)
 
 
 -- =============================================================================
