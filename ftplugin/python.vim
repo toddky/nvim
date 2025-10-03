@@ -54,6 +54,8 @@ iab #mkdir Path(path).mkdir(parents=True, exist_ok=True, mode=0o755)
 "iab #mkdirp os.makedirs(path, 0o755)
 iab #mv os.rename(old_file, new_file)
 iab #pwd os.getcwd()
+iab #ln if not dest_dir.is_symlink(): dest_dir.symlink_to(source_dir, target_is_directory=True)
+\<CR>os.symlink('source.txt', 'dest.txt')
 iab #read 
 \f = open('file.txt', 'r')
 \<CR>for line in f:
