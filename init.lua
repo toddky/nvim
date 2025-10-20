@@ -172,10 +172,10 @@ require('lazy').setup({
 		"CopilotC-Nvim/CopilotChat.nvim",
 		-- https://github.com/CopilotC-Nvim/CopilotChat.nvim/wiki/Examples-and-Tips
 		--enabled = false,
+		enabled = is_rhel8,
 		cmd = 'CopilotChatOpen',
 		--model = 'gpt-4o-2024-11-20', -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
 		model = 'copilot:gpt-4o',
-
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
