@@ -18,7 +18,7 @@ local opt = vim.opt
 opt.showtabline = 1
 
 
-function tabline_color(name, ctermfg, ctermbg, guifg, guibg)
+local function tabline_color(name, ctermfg, ctermbg, guifg, guibg)
 	-- `highlight` doesn't work until after VimEnter:
 	--https://www.reddit.com/r/neovim/comments/me35u9/comment/h2x5n7u/?utm_source=share&utm_medium=web2x&context=3
 	--local highlight_cmd = 'autocmd VimEnter * '
@@ -58,7 +58,7 @@ tabline_color('White'  , cterm.white  , nil, gui.white  , nil)
 -- TAB LINE
 -- =============================================================================
 
-function tabname(tabnr)
+local function tabname(tabnr)
 
 	local buflist  = fn.tabpagebuflist(tabnr)
 	local winnr    = fn.tabpagewinnr(tabnr)
