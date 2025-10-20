@@ -396,6 +396,7 @@ require('functions')
 require('mappings')
 require('options')
 require('text-objects')
+require('auto-quit')
 
 
 -- =============================================================================
