@@ -167,10 +167,7 @@ require('lazy').setup({
 		-- 2025-03-07
 		tag = is_rhel8 and 'v1.42.0' or 'v1.36.0',
 	},
-	{
-		-- for curl, log and async functions
-		"nvim-lua/plenary.nvim",
-	},
+
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		-- https://github.com/CopilotC-Nvim/CopilotChat.nvim/wiki/Examples-and-Tips
