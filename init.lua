@@ -219,7 +219,12 @@ require('lazy').setup({
 			},
 		},
 	},
-	{ 'sindrets/diffview.nvim' },
+	{
+		'sindrets/diffview.nvim',
+		opts = {
+			enhanced_diff_hl = true,
+		},
+	},
 	-- REVISIT: Do I need this?
 	-- rhubarb.vim: GitHub plugin
 	--'tpope/vim-rhubarb',
@@ -372,10 +377,9 @@ require('lazy').setup({
 	-- Highlight, edit, and navigate code
 	{
 		'nvim-treesitter/nvim-treesitter',
-		-- Currently disabled because of this error:
-		-- src/tree_sitter/parser.h:184:5: error: ‘for’ loop initial declarations are only allowed in C99 mode
-		enabled = false,
-		--enabled = true,
+		-- Pin to v0.10.0: main branch requires nvim 0.11+ (ABI 15)
+		tag = 'v0.10.0',
+		enabled = true,
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
