@@ -17,6 +17,15 @@ local augroup = api.nvim_create_augroup
 execute('colorscheme nord')
 execute('colorscheme catppuccin_macchiato')
 
+-- Remove fg from diff highlights so syntax highlighting shows through
+vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = '#204820' })
+vim.api.nvim_set_hl(0, 'DiffDelete', { bg = '#502030' })
+vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#2d3040' })
+vim.api.nvim_set_hl(0, 'DiffText',   { bg = '#2d3552' })
+-- Diffview overrides: deleted lines on left side, and dimmed filler lines
+vim.api.nvim_set_hl(0, 'DiffviewDiffAddAsDelete', { bg = '#502030' })
+vim.api.nvim_set_hl(0, 'DiffviewDiffDeleteDim',   { bg = '#402030', fg = '#302030' })
+
 
 -- =============================================================================
 -- OPTIONS
