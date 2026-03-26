@@ -161,6 +161,11 @@ util.nmap(',tsp', '<cmd>TSPlaygroundToggle<Enter>')
 util.nmap(',ps',  '<cmd>Lazy sync<Enter>')
 util.nmap(',pu',  '<cmd>Lazy update<Enter>')
 
+vim.api.nvim_create_user_command('Diff', function(opts)
+	vim.cmd('DiffviewOpen ' .. (opts.args or ''))
+end, { nargs = '*' })
+
+
 ------------------------------------------------------------
 -- TELESCOPE
 ------------------------------------------------------------

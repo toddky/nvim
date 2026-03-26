@@ -219,6 +219,7 @@ require('lazy').setup({
 			},
 		},
 	},
+	{ 'sindrets/diffview.nvim' },
 	-- REVISIT: Do I need this?
 	-- rhubarb.vim: GitHub plugin
 	--'tpope/vim-rhubarb',
