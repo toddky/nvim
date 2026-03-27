@@ -14,12 +14,12 @@ local augroup = api.nvim_create_augroup
 -- COLORSCHEME
 -- =============================================================================
 --execute('colorscheme jellybeans')
-execute('colorscheme nord')
+--execute('colorscheme nord')
 execute('colorscheme catppuccin_macchiato')
 
 -- Remove fg from diff highlights so syntax highlighting shows through
-vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = '#204820' })
-vim.api.nvim_set_hl(0, 'DiffDelete', { bg = '#502030' })
+vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = '#103818' })
+vim.api.nvim_set_hl(0, 'DiffDelete', { bg = '#502030', fg = '#500000' })
 vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#2d3040' })
 vim.api.nvim_set_hl(0, 'DiffText',   { bg = '#2d3552' })
 -- Diffview overrides: deleted lines on left side, and dimmed filler lines
@@ -118,7 +118,6 @@ autocmd("FileType", {
 	command = "wincmd L",
 })
 
-
 -- Recompile when plugins.lua is updated
 --cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
@@ -129,7 +128,6 @@ cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
 -- Close windows with q
 -- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L115
 vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
-
 
 -- Only show cursor line in active window
 -- https://github.com/folke/dot/blob/0e112e845b75f2f9f3ae61479824ca3de47a697f/config/nvim/lua/options.lua#L96
@@ -176,7 +174,7 @@ autocmd({"BufEnter"}, {
 	callback = function()
 		local current_file = vim.fn.expand('%:t')
 		if vim.fn.getfsize(current_file) > (5*1024*1024) then
-			vim.o.syntax = false
+			vim.o.syntax = "false"
 		end
 	end,
 })
