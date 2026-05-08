@@ -72,7 +72,7 @@ vim.g.maplocalleader = ' '
 local fp = io.open("/etc/redhat-release", "r")
 local content = fp and fp:read("*all")
 if fp then fp:close() end
-local is_rhel8 = (string.find(content, "release 8") ~= nil)
+local is_rhel8 = content ~= nil and (string.find(content, "release 8") ~= nil)
 
 
 -- =============================================================================
@@ -311,7 +311,7 @@ require('lazy').setup({
 	{
 		'nvim-telescope/telescope.nvim',
 		--enabled = false,
-		version = '*',
+		version = 'v0.1.9',
 		dependencies = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'}
 	},
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built.
