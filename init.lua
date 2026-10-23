@@ -349,8 +349,9 @@ require('lazy').setup({
 		-- NOTE: `opts = {}` is the same as calling `require('ibl').setup({})`
 		opts = {
 			indent = {
+				-- Whitespace so guides match the listchars dots and eol arrow instead of the brighter Comment color.
 				highlight = {
-					"Comment",
+					"Whitespace",
 				},
 				char = "│",
 				smart_indent_cap = true,
