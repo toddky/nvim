@@ -105,7 +105,7 @@ end
 -- =============================================================================
 -- STATUS LINE LEFT
 -- =============================================================================
-function statusline_left()
+local function statusline_left()
 	local statusline = ''
 
 	-- Modified
@@ -124,7 +124,7 @@ end
 -- =============================================================================
 -- STATUS LINE RIGHT
 -- =============================================================================
-function statusline_right()
+local function statusline_right()
 	local statusline = ''
 
 	-- CurrentLine
