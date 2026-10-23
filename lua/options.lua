@@ -15,7 +15,8 @@ local augroup = api.nvim_create_augroup
 -- =============================================================================
 --execute('colorscheme jellybeans')
 --execute('colorscheme nord')
-execute('colorscheme catppuccin_macchiato')
+--execute('colorscheme catppuccin_macchiato')
+execute('colorscheme ela_perfect')
 
 -- Remove fg from diff highlights so syntax highlighting shows through
 vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = '#103818' })
