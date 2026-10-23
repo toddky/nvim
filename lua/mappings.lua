@@ -63,6 +63,8 @@ util.nvmap('m', "'")
 --util.nvmap('}', '}zz')
 --util.nvmap('<C-o>', '<C-o>zz')
 --util.nvmap('<C-i>', '<C-i>zz')
+--util.nvmap('<C-u>', '<C-u>zz')
+--util.nvmap('<C-d>', '<C-d>zz')
 
 -- Repeat latest f, t, F or T in opposite direction
 -- Opposite direction of ;
@@ -183,6 +185,8 @@ if pcall(require, 'telescope') then
 	util.nmap('//w', telescope.grep_string, {desc='Telescope Current [W]ord'})
 
 	util.nmap('//l', require('setup.telescope').log_files, {desc='Telescope [L]og'})
+
+	util.nmap('//<Enter>', telescope.commands, {desc='Telescope [Enter] Commands'})
 
 	util.nmap('///',
 		function()
