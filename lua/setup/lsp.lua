@@ -52,15 +52,27 @@ end
 
 
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  -- C and C++
+  --clangd = {},
 
-  -- Requires NPM
+  -- Go
+  --gopls = {},
+
+  -- Python
+  --pyright = {},
+  --pyflakes = {},
+  --flake8 = {},
+
+  -- Rust
+  --rust_analyzer = {},
+
+  -- TypeScript and JavaScript
+  --tsserver = {},
+
+  -- Bash. Requires NPM
   --bashls = {},
 
+  -- Lua
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
