@@ -23,7 +23,8 @@ let g:colors_name='ela_perfect'
 " cyan          = "#66C6E3"  80   primary, H1, link, keyword
 " purple        = "#A783F8"  141  accent, H2, function
 " green         = "#90D64F"  113  success, H3, string
-" orange        = "#E3A15A"  179  warning, inline code, number
+" orange        = "#E3A15A"  179  warning
+" tan           = "#E2B88C"  180  inline code, number, constant; read off the ela TUI chat, not in the theme note
 " red           = "#F4005F"  197  error
 " blue          = "#5496DD"  68   secondary, builtin
 
@@ -80,7 +81,7 @@ hi VisualNOS        guisp=NONE      guifg=NONE      guibg=#393939   ctermfg=NONE
 hi WarningMsg       guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
 hi WildMenu         guisp=NONE      guifg=NONE      guibg=#393939   ctermfg=NONE    ctermbg=237  gui=NONE           cterm=NONE
 hi Comment          guisp=NONE      guifg=#A7A7A7   guibg=NONE      ctermfg=248     ctermbg=NONE gui=italic         cterm=italic
-hi Constant         guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+hi Constant         guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
 hi Identifier       guisp=NONE      guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
 hi Statement        guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi PreProc          guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
@@ -92,9 +93,9 @@ hi Todo             guisp=NONE      guifg=#1A1A1A   guibg=#E3A15A   ctermfg=234 
 
 hi String           guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113     ctermbg=NONE gui=NONE           cterm=NONE
 hi Character        guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113     ctermbg=NONE gui=NONE           cterm=NONE
-hi Number           guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
-hi Boolean          guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
-hi Float            guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+hi Number           guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
+hi Boolean          guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
+hi Float            guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
 hi Function         guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
 hi Conditional      guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi Repeat           guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
