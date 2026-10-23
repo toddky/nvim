@@ -20,8 +20,8 @@ let g:colors_name='ela_perfect'
 " line_nr       = "#6A6A6A"  242  not in the theme; picked for 3.2:1 contrast on bg
 " text          = "#E8E8E8"  254
 " text_dim      = "#A7A7A7"  248
-" cyan          = "#66C6E3"  80   primary, H1, link, function
-" purple        = "#A783F8"  141  accent, H2, keyword
+" cyan          = "#66C6E3"  80   primary, H1, link, keyword
+" purple        = "#A783F8"  141  accent, H2, function
 " green         = "#90D64F"  113  success, H3, string
 " orange        = "#E3A15A"  179  warning, inline code, number
 " red           = "#F4005F"  197  error
@@ -82,8 +82,8 @@ hi WildMenu         guisp=NONE      guifg=NONE      guibg=#393939   ctermfg=NONE
 hi Comment          guisp=NONE      guifg=#A7A7A7   guibg=NONE      ctermfg=248     ctermbg=NONE gui=italic         cterm=italic
 hi Constant         guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
 hi Identifier       guisp=NONE      guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
-hi Statement        guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
-hi PreProc          guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
+hi Statement        guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
+hi PreProc          guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi Type             guisp=NONE      guifg=#5496DD   guibg=NONE      ctermfg=68      ctermbg=NONE gui=NONE           cterm=NONE
 hi Special          guisp=NONE      guifg=#5496DD   guibg=NONE      ctermfg=68      ctermbg=NONE gui=NONE           cterm=NONE
 hi Underlined       guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=underline      cterm=underline
@@ -95,13 +95,13 @@ hi Character        guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113 
 hi Number           guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
 hi Boolean          guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
 hi Float            guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
-hi Function         guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
-hi Conditional      guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
-hi Repeat           guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
-hi Label            guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
+hi Function         guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
+hi Conditional      guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
+hi Repeat           guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
+hi Label            guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi Operator         guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
-hi Keyword          guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
-hi Include          guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
+hi Keyword          guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
+hi Include          guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi StorageClass     guisp=NONE      guifg=#5496DD   guibg=NONE      ctermfg=68      ctermbg=NONE gui=NONE           cterm=NONE
 hi Structure        guisp=NONE      guifg=#5496DD   guibg=NONE      ctermfg=68      ctermbg=NONE gui=NONE           cterm=NONE
 hi Typedef          guisp=NONE      guifg=#5496DD   guibg=NONE      ctermfg=68      ctermbg=NONE gui=NONE           cterm=NONE
@@ -164,3 +164,5 @@ hi link StatusLineTermNC StatusLineNC
 hi link Terminal Normal
 hi link Ignore Comment
 hi link WinSeparator VertSplit
+" Vim's sh syntax links the `function` keyword to Function; make it match def and Lua's function.
+hi link shFunctionKey Keyword
