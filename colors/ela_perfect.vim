@@ -128,6 +128,16 @@ hi Removed          guisp=NONE      guifg=#F4005F   guibg=NONE      ctermfg=197 
 " Treesitter defaults @variable to nvim's own text color instead of Normal.
 hi @variable        guisp=NONE      guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
 
+" Markdown. Inline code colors are read off the ela TUI chat (2026-10-23), not the theme note, which says #E3A15A on #242424.
+" Fenced blocks keep Normal since code-block-bg is bg.
+hi @markup.raw          guisp=NONE  guifg=#E2B88C   guibg=#29241E   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @markup.raw.block    guisp=NONE  guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
+hi @markup.quote        guisp=NONE  guifg=#A783F8   guibg=#242424   ctermfg=141     ctermbg=235  gui=NONE           cterm=NONE
+hi link markdownCode @markup.raw
+hi link markdownCodeDelimiter @markup.raw
+hi link markdownCodeBlock @markup.raw.block
+hi link markdownBlockquote @markup.quote
+
 " CUSTOM
 " Same color as NonText so leading dots, eol arrows, and ibl indent guides all match.
 hi Whitespace       guisp=NONE      guifg=#444444   guibg=NONE      ctermfg=238     ctermbg=NONE gui=NONE           cterm=NONE
