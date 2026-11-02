@@ -81,7 +81,7 @@ hi VisualNOS        guisp=NONE      guifg=NONE      guibg=#393939   ctermfg=NONE
 hi WarningMsg       guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
 hi WildMenu         guisp=NONE      guifg=NONE      guibg=#393939   ctermfg=NONE    ctermbg=237  gui=NONE           cterm=NONE
 hi Comment          guisp=NONE      guifg=#A7A7A7   guibg=NONE      ctermfg=248     ctermbg=NONE gui=italic         cterm=italic
-hi Constant         guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
+hi Constant         guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
 hi Identifier       guisp=NONE      guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
 hi Statement        guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi PreProc          guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
@@ -93,9 +93,9 @@ hi Todo             guisp=NONE      guifg=#1A1A1A   guibg=#E3A15A   ctermfg=234 
 
 hi String           guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113     ctermbg=NONE gui=NONE           cterm=NONE
 hi Character        guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113     ctermbg=NONE gui=NONE           cterm=NONE
-hi Number           guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
-hi Boolean          guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
-hi Float            guisp=NONE      guifg=#E2B88C   guibg=NONE      ctermfg=180     ctermbg=NONE gui=NONE           cterm=NONE
+hi Number           guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi Boolean          guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi Float            guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
 hi Function         guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
 hi Conditional      guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
 hi Repeat           guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
@@ -185,3 +185,18 @@ hi shDeref               guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg
 hi bashSpecialVariables  guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
 hi shStatement           guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
 hi bashStatement         guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
+
+" Python overrides: builtins, constants, and parameters in tan on warm brown
+hi pythonBuiltin         guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @function.builtin     guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @type.builtin         guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @constant.builtin     guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @variable.parameter   guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @punctuation.bracket  guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
+
+" Ruby overrides
+let g:ruby_operators = 1
+hi rubyArrayDelimiter    guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
+hi rubyStringDelimiter   guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113     ctermbg=NONE gui=NONE           cterm=NONE
+hi rubyPredefinedConstant guisp=NONE     guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi rubyPseudoVariable    guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
