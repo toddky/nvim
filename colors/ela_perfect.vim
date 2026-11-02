@@ -177,3 +177,11 @@ hi link Ignore Comment
 hi link WinSeparator VertSplit
 " Vim's sh syntax links the `function` keyword to Function; make it match def and Lua's function.
 hi link shFunctionKey Keyword
+
+" Shell syntax overrides: orange for variables/expansions, purple for statements/commands.
+hi shDerefVar            guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+hi shDerefSimple         guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+hi shDeref               guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+hi bashSpecialVariables  guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+hi shStatement           guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
+hi bashStatement         guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
