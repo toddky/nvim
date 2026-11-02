@@ -56,7 +56,7 @@ hi LineNr           guisp=NONE      guifg=#6A6A6A   guibg=NONE      ctermfg=242 
 hi MatchParen       guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=bold           cterm=bold
 hi ModeMsg          guisp=NONE      guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=bold           cterm=bold
 hi MoreMsg          guisp=NONE      guifg=#66C6E3   guibg=NONE      ctermfg=80      ctermbg=NONE gui=NONE           cterm=NONE
-hi NonText          guisp=NONE      guifg=#444444   guibg=NONE      ctermfg=238     ctermbg=NONE gui=NONE           cterm=NONE
+hi NonText          guisp=NONE      guifg=#2E2E2E   guibg=NONE      ctermfg=236     ctermbg=NONE gui=NONE           cterm=NONE
 hi NormalFloat      guisp=NONE      guifg=#E8E8E8   guibg=#242424   ctermfg=254     ctermbg=235  gui=NONE           cterm=NONE
 hi FloatBorder      guisp=NONE      guifg=#66C6E3   guibg=#242424   ctermfg=80      ctermbg=235  gui=NONE           cterm=NONE
 hi Pmenu            guisp=NONE      guifg=#E8E8E8   guibg=#2E2E2E   ctermfg=254     ctermbg=236  gui=NONE           cterm=NONE
@@ -129,9 +129,9 @@ hi Removed          guisp=NONE      guifg=#F4005F   guibg=NONE      ctermfg=197 
 " Treesitter defaults @variable to nvim's own text color instead of Normal.
 hi @variable        guisp=NONE      guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
 
-" Markdown. Inline code colors are read off the ela TUI chat (2026-10-23), not the theme note, which says #E3A15A on #242424.
+" Markdown. Inline code colors from ela-perfect TUI: tan #E2B88C on #2E2720 ($warning 10% on $background).
 " Fenced blocks keep Normal since code-block-bg is bg.
-hi @markup.raw          guisp=NONE  guifg=#E2B88C   guibg=#29241E   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi @markup.raw          guisp=NONE  guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
 hi @markup.raw.block    guisp=NONE  guifg=#E8E8E8   guibg=NONE      ctermfg=254     ctermbg=NONE gui=NONE           cterm=NONE
 hi @markup.quote        guisp=NONE  guifg=#A783F8   guibg=#242424   ctermfg=141     ctermbg=235  gui=NONE           cterm=NONE
 hi link markdownCode @markup.raw
@@ -141,7 +141,7 @@ hi link markdownBlockquote @markup.quote
 
 " CUSTOM
 " Same color as NonText so leading dots, eol arrows, and ibl indent guides all match.
-hi Whitespace       guisp=NONE      guifg=#444444   guibg=NONE      ctermfg=238     ctermbg=NONE gui=NONE           cterm=NONE
+hi Whitespace       guisp=NONE      guifg=#2E2E2E   guibg=NONE      ctermfg=236     ctermbg=NONE gui=NONE           cterm=NONE
 
 " hi clear does not reset these, so the previous colorscheme's :terminal colors would linger.
 let g:terminal_color_0  = '#1A1A1A'
@@ -178,10 +178,10 @@ hi link WinSeparator VertSplit
 " Vim's sh syntax links the `function` keyword to Function; make it match def and Lua's function.
 hi link shFunctionKey Keyword
 
-" Shell syntax overrides: orange for variables/expansions, purple for statements/commands.
-hi shDerefVar            guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
-hi shDerefSimple         guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
-hi shDeref               guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
-hi bashSpecialVariables  guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
+" Shell syntax overrides: tan on warm brown for variables/expansions, purple for statements/commands.
+hi shDerefVar            guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi shDerefSimple         guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi shDeref               guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
+hi bashSpecialVariables  guisp=NONE      guifg=#E2B88C   guibg=#2E2720   ctermfg=180     ctermbg=235  gui=NONE           cterm=NONE
 hi shStatement           guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
 hi bashStatement         guisp=NONE      guifg=#A783F8   guibg=NONE      ctermfg=141     ctermbg=NONE gui=NONE           cterm=NONE
