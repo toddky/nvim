@@ -126,24 +126,8 @@ require('lazy').setup({
 		version = '82eb26de265292808917b82f3eda2725b53d785c',
 	},
 
-	{
-		-- Code outline window
-		-- https://github.com/stevearc/aerial.nvim
-		'stevearc/aerial.nvim',
-		-- Pretty neat plugin but needs LSP to work, so not worth it yet
-		--enabled = false,
-		cmd = 'AerialToggle',
-		opts = {},
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons"
-		},
-		-- 2025-03-07
-		version = 'v2.5.0',
-	},
-
 	------------------------------------------------------------
-	-- GitHub Copilot and ChatGPT
+	-- GitHub Copilot
 	------------------------------------------------------------
 	-- :Copilot setup
 	-- TODO: https://github.com/zbirenbaum/copilot-cmp
@@ -173,22 +157,6 @@ require('lazy').setup({
 			-- See Configuration section for options
 		},
 			-- See Commands section for default commands if you want to lazy load on them
-	},
-
-	-- https://github.com/jackMort/ChatGPT.nvim
-	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-	{
-		"jackMort/ChatGPT.nvim",
-		enabled = false,
-		cmd = 'ChatGPT',
-		opts = {
-			api_key_cmd = "openaikey",
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
 	},
 
 	------------------------------------------------------------
