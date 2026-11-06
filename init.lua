@@ -84,35 +84,6 @@ local is_rhel8 = content ~= nil and (string.find(content, "release 8") ~= nil)
 require('lazy').setup({
 
 	------------------------------------------------------------
-	-- STATUSLINE
-	------------------------------------------------------------
-	-- :help lualine.txt
-	{
-		'nvim-lualine/lualine.nvim',
-		opts = {
-			options = {
-				icons_enabled = false,
-				-- Different themes
-				--theme = 'onedark',
-				theme = 'palenight',
-				--theme = 'nightfly',
-				--theme = '',
-				component_separators = '│',
-				section_separators = '',
-			},
-			--- TODO: Check if copilot is enabled
-			-- https://github.com/ofseed/lualine-copilot/blob/9b441d06031cef3cf0ca82a6363189aeeea297ca/lua/lualine/components/copilot.lua#L21
-			--local function enabled()
-			  --if vim.g.loaded_copilot == 1 and vim.fn["copilot#Enabled"]() == 1 then
-				--return true
-			  --else
-				--return false
-			  --end
-			--end
-		},
-	},
-
-	------------------------------------------------------------
 	-- CONTEXT
 	------------------------------------------------------------
 	{
@@ -354,6 +325,7 @@ require('lazy').setup({
 -- REQUIRE
 -- =============================================================================
 require('colors')
+require('statusline')
 require('functions')
 require('mappings')
 require('options')
