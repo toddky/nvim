@@ -197,11 +197,6 @@ require('lazy').setup({
 			{ 'williamboman/mason.nvim', tag = 'v1.11.0' },
 			{ 'williamboman/mason-lspconfig.nvim', tag = 'v1.32.0' },
 
-
-			-- Useful status updates for LSP
-			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-
 			-- https://github.com/folke/neodev.nvim
 			-- Automatically configures lua-language-server for your Neovim config, Neovim runtime and plugin directories
 			-- Annotations for completion, hover and signatures of Vim functions, Neovim api functions, vim.opt, vim.loop
