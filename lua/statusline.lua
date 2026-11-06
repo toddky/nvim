@@ -39,13 +39,13 @@ local colors = require('colors')
 local cterm = colors.cterm
 local gui = colors.gui
 
-statusline_color('Red'    , cterm.red    , 236, gui.red    , gui.bg)
-statusline_color('Green'  , cterm.green  , 236, gui.green  , gui.bg)
-statusline_color('Yellow' , cterm.yellow , 236, gui.yellow , gui.bg)
-statusline_color('Blue'   , cterm.blue   , 236, gui.blue   , gui.bg)
-statusline_color('Magenta', cterm.magenta, 236, gui.magenta, gui.bg)
-statusline_color('Cyan'   , cterm.cyan   , 236, gui.cyan   , gui.bg)
-statusline_color('White'  , cterm.white  , 236, gui.white  , gui.bg)
+statusline_color('Red'    , cterm.red    , cterm.bg, gui.red    , gui.bg)
+statusline_color('Green'  , cterm.green  , cterm.bg, gui.green  , gui.bg)
+statusline_color('Yellow' , cterm.yellow , cterm.bg, gui.yellow , gui.bg)
+statusline_color('Blue'   , cterm.blue   , cterm.bg, gui.blue   , gui.bg)
+statusline_color('Magenta', cterm.magenta, cterm.bg, gui.magenta, gui.bg)
+statusline_color('Cyan'   , cterm.cyan   , cterm.bg, gui.cyan   , gui.bg)
+statusline_color('White'  , cterm.white  , cterm.bg, gui.white  , gui.bg)
 
 -- =============================================================================
 -- MODE
