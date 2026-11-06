@@ -147,24 +147,6 @@ require('lazy').setup({
 	--'tpope/vim-rhubarb',
 
 	------------------------------------------------------------
-	-- NERD Commenter
-	------------------------------------------------------------
-	{
-		'preservim/nerdcommenter',
-		init = function()
-			vim.g.NERDCustomDelimiters = {
-				['c'] = { ['left'] = '//' },
-				['python'] = { ['left'] = '#' }
-			}
-		end,
-		config = function()
-			local util = require('util')
-			util.nmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
-			util.xmap('#', '<Plug>NERDCommenterToggle', { noremap = false, unique = false } )
-		end
-	},
-
-	------------------------------------------------------------
 	-- FILE EXPLORER
 	------------------------------------------------------------
 	{
