@@ -81,20 +81,6 @@ local is_rhel8 = content ~= nil and (string.find(content, "release 8") ~= nil)
 require('lazy').setup({
 
 	------------------------------------------------------------
-	-- Colorschemes
-	------------------------------------------------------------
-	'shaunsingh/nord.nvim',
-	'EdenEast/nightfox.nvim',
-	{
-		-- Theme inspired by Atom
-		'navarasu/onedark.nvim',
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme 'onedark'
-		end,
-	},
-
-	------------------------------------------------------------
 	-- STATUSLINE
 	------------------------------------------------------------
 	-- :help lualine.txt
