@@ -129,3 +129,6 @@ inoremap <silent> <Plug>NERDCommenterInsert <C-\><C-O>:call nerdcommenter#Commen
 
 " switch to/from alternative delimiters (does not use wrapper function)
 nnoremap <Plug>NERDCommenterAltDelims :call nerdcommenter#SwitchToAlternativeDelimiters(1)<CR>
+
+nmap <silent> # <Plug>NERDCommenterToggle
+xmap <silent> # <Plug>NERDCommenterToggle
