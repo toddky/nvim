@@ -1,3 +1,6 @@
+" Local change: the default key mappings are off.
+let g:context_add_mappings = 0
+
 function! context#settings#parse() abort
     if exists('g:context')
     endif
