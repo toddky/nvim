@@ -99,7 +99,7 @@ function statusline_scrollbar()
 		end
 	end
 	--return yellow..'['..top..'..'..bottom..']'
-	return teal..'['..table.concat(bar, '')..']'
+	return teal..'▕'..table.concat(bar, '')..'▏'
 end
 
 -- =============================================================================
@@ -142,7 +142,7 @@ local function statusline_right()
 	-- TODO: Add file size
 
 	-- Indent status
-	statusline = statusline..blue..'[%{&expandtab?"s":"t"}%{&tabstop.&softtabstop.&shiftwidth}]'
+	statusline = statusline..green..'[%{&expandtab?"s":"t"}%{&tabstop.&softtabstop.&shiftwidth}]'
 
 	-- Scroll statusbar
 	-- TODO: Implement this
