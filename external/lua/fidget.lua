@@ -1,6 +1,6 @@
 local M = {}
 local api = vim.api
-local log = require("fidget.log")
+local log = { debug = function() end, warn = function() end, new = function() end }
 
 -- Spinners adapted from: https://github.com/sindresorhus/cli-spinners
 --
