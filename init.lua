@@ -62,6 +62,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Vendored AnsiEsc.vim in external/ replaces the vim-scripts/AnsiEsc.vim plugin
+vim.opt.rtp:append(vim.fn.stdpath('config') .. '/external')
+
 -- :help mapleader
 -- Set <space> as the leader key
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -354,7 +357,6 @@ require('lazy').setup({
 			},
 		},
 	},
-	'vim-scripts/AnsiEsc.vim',
 	-- REVISIT: Once treesitter gets fixed
 	-- https://github.com/OXY2DEV/markview.nvim
 
