@@ -62,9 +62,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.context_enabled = 1
-vim.g.context_add_mappings = 0
-
 -- :help mapleader
 -- Set <space> as the leader key
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
