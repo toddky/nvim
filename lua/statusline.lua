@@ -34,6 +34,8 @@ local blue    = '%#StatusLineBlue#'
 local magenta = '%#StatusLineMagenta#'
 local cyan    = '%#StatusLineCyan#'
 local white   = '%#StatusLineWhite#'
+local teal    = '%#StatusLineTeal#'
+local purple  = '%#StatusLinePurple#'
 
 local colors = require('colors')
 local cterm = colors.cterm
@@ -46,6 +48,8 @@ statusline_color('Blue'   , cterm.blue   , cterm.bg, gui.blue   , gui.bg)
 statusline_color('Magenta', cterm.magenta, cterm.bg, gui.magenta, gui.bg)
 statusline_color('Cyan'   , cterm.cyan   , cterm.bg, gui.cyan   , gui.bg)
 statusline_color('White'  , cterm.white  , cterm.bg, gui.white  , gui.bg)
+statusline_color('Teal'   , cterm.teal   , cterm.bg, gui.teal   , gui.bg)
+statusline_color('Purple' , cterm.purple , cterm.bg, gui.purple , gui.bg)
 
 -- =============================================================================
 -- MODE
@@ -77,13 +81,9 @@ function statusline_scrollbar()
 	local total_lines = api.nvim_buf_line_count(0)
 	local top_line = api.nvim_call_function('line', {'w0'})
 	local bottom_line = api.nvim_call_function('line', {'w$'})
-	local top = math.ceil(width * (top_line - 1) / total_lines) + 1
-	local bottom = math.floor(width * bottom_line / total_lines)
-
-	-- Use a percentage if file is too big
-	if top > bottom then
-		return yellow..'[%3p%%]'
-	end
+	-- Light every cell the visible lines touch, so the bar never shrinks to zero cells mid-file.
+	local top = math.floor(width * (top_line - 1) / total_lines) + 1
+	local bottom = math.ceil(width * bottom_line / total_lines)
 
 	local symbol_empty = '░'
 	local symbol_bar   = '█'
@@ -99,7 +99,7 @@ function statusline_scrollbar()
 		end
 	end
 	--return yellow..'['..top..'..'..bottom..']'
-	return yellow..'['..table.concat(bar, '')..']'
+	return teal..'['..table.concat(bar, '')..']'
 end
 
 -- =============================================================================
@@ -136,7 +136,7 @@ local function statusline_right()
 
 	-- Filetype and syntax
 	-- TODO: Move filetype and syntax into StatuslineFileInfo
-	statusline = statusline..green..'[%{&filetype==&syntax?&filetype:&filetype.".".&syntax}]'
+	statusline = statusline..purple..'[%{&filetype==&syntax?&filetype:&filetype.".".&syntax}]'
 	--let l:statusline .= StatuslineFileInfo(a:width)
 
 	-- TODO: Add file size
