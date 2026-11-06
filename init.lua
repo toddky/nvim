@@ -62,8 +62,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Vendored AnsiEsc.vim in external/ replaces the vim-scripts/AnsiEsc.vim plugin
-vim.opt.rtp:append(vim.fn.stdpath('config') .. '/external')
+vim.g.context_enabled = 1
+vim.g.context_add_mappings = 0
 
 -- :help mapleader
 -- Set <space> as the leader key
@@ -84,18 +84,10 @@ local is_rhel8 = content ~= nil and (string.find(content, "release 8") ~= nil)
 require('lazy').setup({
 
 	------------------------------------------------------------
-	-- CONTEXT
+	-- VENDORED
 	------------------------------------------------------------
-	{
-		'wellle/context.vim',
-		--enabled = false,
-		--cmd = {'ContextEnable', 'ContextEnableWindow'},
-		init = function()
-			vim.g.context_enabled = 1
-			vim.g.context_add_mappings = 0
-		end,
-		version = '82eb26de265292808917b82f3eda2725b53d785c',
-	},
+	-- A local spec puts external/ ahead of $VIMRUNTIME, whose own autoload/context.vim would shadow context.vim's.
+	{ dir = vim.fn.stdpath('config') .. '/external', name = 'external' },
 
 	------------------------------------------------------------
 	-- GitHub Copilot
