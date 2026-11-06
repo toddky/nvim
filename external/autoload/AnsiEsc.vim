@@ -61,7 +61,11 @@ fun! AnsiEsc#AnsiEsc(rebuild)
     exe 'silent! unmenu '.g:DrChipTopLvlMenu.'AnsiEsc'
     exe 'menu '.g:DrChipTopLvlMenu.'AnsiEsc.Start<tab>:AnsiEsc		:AnsiEsc<cr>'
    endif
-   let &l:hl= s:hlkeep_{bufnr("%")}
+   if has("nvim")
+    let &l:winhighlight= s:hlkeep_{bufnr("%")}
+   else
+    let &l:hl= s:hlkeep_{bufnr("%")}
+   endif
 "   call Dret("AnsiEsc#AnsiEsc")
    return
   else
@@ -306,8 +310,14 @@ fun! AnsiEsc#AnsiEsc(rebuild)
    hi def link ansiStop		Ignore
    hi def link ansiExtended	Ignore
   endif
-  let s:hlkeep_{bufnr("%")}= &l:hl
-  exe "setlocal hl=".substitute(&hl,'8:[^,]\{-},','8:Ignore,',"")
+  " Neovim removed the 'highlight' option; winhighlight is its replacement for remapping SpecialKey (hl flag 8).
+  if has("nvim")
+   let s:hlkeep_{bufnr("%")}= &l:winhighlight
+   setlocal winhighlight+=SpecialKey:Ignore
+  else
+   let s:hlkeep_{bufnr("%")}= &l:hl
+   exe "setlocal hl=".substitute(&hl,'8:[^,]\{-},','8:Ignore,',"")
+  endif
 
   " handle 3 or more element ansi escape sequences by building syntax and highlighting rules
   " specific to the current file
