@@ -94,8 +94,6 @@ require('lazy').setup({
 		dir = vim.fn.stdpath('config') .. '/external',
 		name = 'external',
 		event = 'VeryLazy',
-		-- context.vim activates on VimEnter, which has already fired by VeryLazy.
-		config = function() vim.cmd('ContextActivate') end,
 	},
 
 	------------------------------------------------------------
