@@ -252,7 +252,16 @@ require('lazy').setup({
 
 	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 	{ import = 'custom.plugins' },
-}, {})
+}, {
+	performance = { rtp = { disabled_plugins = { 'matchit' } } },
+})
+
+-- Load matchit on VeryLazy instead of at startup.
+vim.api.nvim_create_autocmd('User', {
+	pattern = 'VeryLazy',
+	once = true,
+	callback = function() vim.cmd.packadd('matchit') end,
+})
 
 
 -- =============================================================================
