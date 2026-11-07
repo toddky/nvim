@@ -84,7 +84,13 @@ require('lazy').setup({
 	-- VENDORED
 	------------------------------------------------------------
 	-- A local spec puts external/ ahead of $VIMRUNTIME, whose own autoload/context.vim would shadow context.vim's.
-	{ dir = vim.fn.stdpath('config') .. '/external', name = 'external' },
+	{
+		dir = vim.fn.stdpath('config') .. '/external',
+		name = 'external',
+		event = 'VeryLazy',
+		-- context.vim activates on VimEnter, which has already fired by VeryLazy.
+		config = function() vim.cmd('ContextActivate') end,
+	},
 
 	------------------------------------------------------------
 	-- GitHub Copilot
@@ -106,7 +112,7 @@ require('lazy').setup({
 		-- https://github.com/CopilotC-Nvim/CopilotChat.nvim/wiki/Examples-and-Tips
 		--enabled = false,
 		enabled = is_rhel8,
-		cmd = 'CopilotChatOpen',
+		event = 'VeryLazy',
 		--model = 'gpt-4o-2024-11-20', -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
 		model = 'copilot:gpt-4o',
 		dependencies = {
@@ -116,7 +122,10 @@ require('lazy').setup({
 		opts = {
 			-- See Configuration section for options
 		},
-			-- See Commands section for default commands if you want to lazy load on them
+		config = function(_, opts)
+			require('CopilotChat').setup(opts)
+			require('setup.copilot')
+		end,
 	},
 
 	------------------------------------------------------------
@@ -125,6 +134,7 @@ require('lazy').setup({
 	'tpope/vim-fugitive',
 	{
 		'lewis6991/gitsigns.nvim',
+		event = 'VeryLazy',
 		opts = {
 			-- :help gitsigns.txt
 			signs = {
@@ -224,6 +234,7 @@ require('lazy').setup({
 	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 	{
 		'folke/which-key.nvim',
+		event = 'VeryLazy',
 		opts = {},
 		-- 2025-03-07
 		version = 'v3.16.0'
@@ -305,7 +316,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- =============================================================================
 require('setup.treesitter')
 require('setup.telescope')
-require('setup.copilot')
 require('setup.lsp')
 require('setup.cmp')
 
