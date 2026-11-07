@@ -1,5 +1,4 @@
 function! context#popup#nvim#open() abort
-    call context#util#echof('    > context#popup#nvim#open')
 
     let buf = nvim_create_buf(v:false, v:true)
     let popup = nvim_open_win(buf, 0, {
@@ -22,7 +21,6 @@ endfunction
 
 function! context#popup#nvim#redraw(winid, popup, lines) abort
     let buf = winbufnr(a:popup)
-    call context#util#echof('    > context#popup#nvim#redraw', len(a:lines), a:winid, buf)
 
     " NOTE: again we need to do a workaround because of the neovim bug
     " neovim#11878. to reproduce open a buffer with visible context and then

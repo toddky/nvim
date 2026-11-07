@@ -23,7 +23,6 @@ function! context#preview#get_context() abort
     let [context, _] = context#context#get(base_line)
     let line_number = base_line.number
 
-    call context#util#echof('> context#preview#update_context', len(context))
 
     return context#util#filter(context, line_number, 0)
 endfunction
@@ -60,7 +59,6 @@ endfunction
 function! s:show(lines, level, indent) abort
     if len(a:lines) == 0
         " nothing to do
-        call context#util#echof('  none')
         return [[], 0]
     endif
 
@@ -71,7 +69,6 @@ function! s:show(lines, level, indent) abort
     let hls = [] " list of lists, one per context line
     for line in a:lines
         let [text, highlights] = context#line#display(winid, line)
-        " call context#util#echof('highlights', text, highlights)
         call add(display_lines, text)
         call add(hls, highlights)
     endfor
@@ -85,7 +82,6 @@ function! s:show(lines, level, indent) abort
     if !&previewwindow
         " NOTE: apparently this can fail with E242, see #6
         " in that case just silently abort
-        call context#util#echof('  no preview window')
         return [[], 0]
     endif
 

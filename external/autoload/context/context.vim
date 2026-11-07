@@ -71,7 +71,6 @@ function! s:get_context_line(line) abort
     " check if we have a skip available from the base line
     let skipped = get(b:context.skips, a:line.number, -1)
     if skipped != -1
-        " call context#util#echof('  skipped', a:line.number, '->', skipped)
         let [level, indent] = g:context.Indent(skipped)
         return context#line#make_trimmed(skipped, level, indent, getline(skipped))
     endif
@@ -116,7 +115,6 @@ function! s:get_context_line(line) abort
 endfunction
 
 function! s:join(lines) abort
-    " call context#util#echof('> join', len(a:lines))
     let joined = [a:lines[:0]] " start with first line
     for line in a:lines[1:]
         if context#line#should_join(line.text)

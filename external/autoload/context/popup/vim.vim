@@ -1,5 +1,4 @@
 function! context#popup#vim#open() abort
-    call context#util#echof('    > context#popup#vim#open')
 
     " NOTE: popups don't move automatically when windows get resized
     let popup = popup_create('', {
@@ -13,7 +12,6 @@ function! context#popup#vim#open() abort
 endfunction
 
 function! context#popup#vim#redraw(winid, popup, lines) abort
-    call context#util#echof('    > context#popup#vim#redraw', len(a:lines))
 
     call popup_settext(a:popup, a:lines)
 

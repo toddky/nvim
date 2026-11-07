@@ -1,6 +1,5 @@
 function! context#popup#update_context() abort
     let [lines, base_line] = context#popup#get_context()
-    call context#util#echof('> context#popup#update_context', len(lines))
 
     " NOTE: we remember context lines and baseline indent per window so we can
     " redraw them in #layout when the window layout changes
@@ -13,7 +12,6 @@ endfunction
 
 " returns [lines, base_line_nr]
 function! context#popup#get_context() abort
-    call context#util#echof('context#popup#get_context')
     " NOTE: there's a problem if some of the hidden lines
     " (behind the popup) are wrapped. then our calculations are off
     " TODO: fix that?
@@ -29,31 +27,26 @@ function! context#popup#get_context() abort
 
         let [level, indent] = g:context.Indent(line_number) " -1 for invalid lines
         if indent < 0
-            call context#util#echof('negative indent', line_number)
             return [[], 0]
         endif
 
         let text = getline(line_number) " empty for invalid lines
         if context#line#should_skip(text)
             let skipped += 1
-            " call context#util#echof('skip', line_number)
             continue
         endif
 
         let base_line = context#line#make(line_number, level, indent, text)
         let [context, line_count] = context#context#get(base_line)
-        call context#util#echof('context#get', line_number, line_count)
 
         if line_count == 0
             return [[], 0]
         endif
 
         if w:context.fix_strategy == 'scroll'
-            call context#util#echof('scroll: done')
             break
         endif
 
-        " call context#util#echof('fit?', top_line, line_count, border_height, line_number)
         if top_line + line_count + border_height <= line_number
             " this context fits, use it
             break
@@ -69,7 +62,6 @@ function! context#popup#get_context() abort
 endfunction
 
 function! context#popup#layout() abort
-    call context#util#echof('> context#popup#layout')
 
     for winid in keys(g:context.popups)
         let popup = g:context.popups[winid]
@@ -96,7 +88,6 @@ endfunction
 
 function! context#popup#redraw(winid) abort
     let popup = get(g:context.popups, a:winid)
-    call context#util#echof('> context#popup#redraw', a:winid, popup)
 
     if popup == 0
         return
@@ -111,7 +102,6 @@ function! context#popup#redraw(winid) abort
         return
     endif
 
-    call context#util#echof('  > context#popup#redraw', len(c.lines))
 
     let display_lines = []
     let hls = [] " list of lists, one per context line
@@ -175,7 +165,6 @@ function! s:show_cursor() abort
     end
 
     " otherwise we have to either move or scroll the cursor accordingly
-    " call context#util#echof('show_cursor', w:context.fix_strategy, n)
     let key = (w:context.fix_strategy == 'move') ? 'j' : "\<C-Y>"
     execute 'normal! ' . n . key
     call context#util#update_line_state()
@@ -192,7 +181,6 @@ function! s:show() abort
     endif
 
     if len(w:context.lines) == 0
-        call context#util#echof('  no lines')
 
         if popup > 0
             call s:close(popup)
@@ -214,7 +202,6 @@ function! s:show() abort
 endfunction
 
 function! s:open() abort
-    call context#util#echof('  > open')
     if g:context.presenter == 'nvim-float'
         return context#popup#nvim#open()
     elseif g:context.presenter == 'vim-popup'
@@ -223,7 +210,6 @@ function! s:open() abort
 endfunction
 
 function! s:close(popup) abort
-    call context#util#echof('  > close')
     if g:context.presenter == 'nvim-float'
         call context#popup#nvim#close(a:popup)
     elseif g:context.presenter == 'vim-popup'

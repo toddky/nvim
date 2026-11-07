@@ -90,7 +90,6 @@ function! context#update(...) abort
         " if peek was used disable on next update
         " (but ignore CursorHold and GitGutter)
         let w:context.peek = 0
-        call context#util#echof('> context#update unpeek', source)
         call context#disable('window')
         return
     endif
@@ -121,13 +120,9 @@ function! context#update(...) abort
     endif
 
     if !w:context.needs_update && !w:context.needs_layout
-        " call context#util#echof('> context#update (nothing to do)', source)
         return
     endif
 
-    call context#util#echof()
-    call context#util#echof('> context#update', source)
-    call context#util#log_indent(2)
 
     if g:context.presenter == 'preview'
         let s:ignore_update = 1
@@ -151,7 +146,6 @@ function! context#update(...) abort
         endif
     endif
 
-    call context#util#log_indent(-2)
 endfunction
 
 function! s:set_enabled(arg, enabled) abort

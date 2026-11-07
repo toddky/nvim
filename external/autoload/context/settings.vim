@@ -107,8 +107,6 @@ function! context#settings#parse() abort
     " see popup/nvim.vim
     let nvim_no_redraw = get(g:, 'context_nvim_no_redraw', 0)
 
-    let logfile = get(g:, 'context_logfile', '')
-
     " transform list to lookup dictionary
     let blacklist = {}
     for filetype in filetype_blacklist
@@ -135,7 +133,6 @@ function! context#settings#parse() abort
                 \ 'show_border':         show_border,
                 \ 'show_tag':            show_tag,
                 \ 'nvim_no_redraw':      nvim_no_redraw,
-                \ 'logfile':             logfile,
                 \ 'ellipsis':            repeat(char_ellipsis, 3),
                 \ 'ellipsis5':           repeat(char_ellipsis, 5),
                 \ 'Indent':              Indent,

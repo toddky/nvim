@@ -106,7 +106,6 @@ function! context#util#update_state() abort
         let number_width = 0
     endif
     if w:context.number_width != number_width
-        " call context#util#echof('number width changed', w:context.number_width, number_width)
         let w:context.number_width = number_width
         let w:context.needs_update = 1
     endif
@@ -126,7 +125,6 @@ function! context#util#update_state() abort
     " NOTE: sign_width can be negative if the cursor is on the wrapped part of
     " a wrapped line. in that case ignore the value
     if sign_width >= 0 && w:context.sign_width != sign_width
-        " call context#util#echof('sign width changed', w:context.sign_width, sign_width)
         let w:context.sign_width = sign_width
         let w:context.needs_update = 1
     endif
@@ -259,7 +257,6 @@ function! context#util#filter(context, line_number, consider_height) abort
         endif
 
 
-        " call context#util#echof('inner_lines', inner_lines)
 
         let level  = inner_lines[0][0].level
         let indent = inner_lines[0][0].indent
@@ -293,7 +290,6 @@ endfunction
 " takes a list of join parts and checks g:context.max_join_parts
 " if the limit is exceeded it's reduced with an ellipsis part
 function! context#util#limit_join_parts(lines) abort
-    " call context#util#echof('> join', len(a:lines))
     if len(a:lines) == 1
         return a:lines
     endif
@@ -328,28 +324,7 @@ function! context#util#limit_join_parts(lines) abort
     return a:lines
 endfunction
 
-let s:log_indent = 0
-
-function! context#util#log_indent(amount) abort
-    let s:log_indent += a:amount
-endfunction
-
-" debug logging, set g:context.logfile to activate
-function! context#util#echof(...) abort
-    if g:context.logfile == ''
-        return
-    endif
-
-    let args = join(a:000)
-    let args = substitute(args, "'", '"', 'g')
-    let args = substitute(args, '!', '^', 'g')
-    let args = substitute(args, '#', '+', 'g')
-    let message = repeat(' ', s:log_indent) . args
-    execute "silent! !echo '" . message . "' >>" g:context.logfile
-endfunction
-
 function! s:set_fix_strategy(context, message, strategy) abort
-    " call context#util#echof(printf('set_fix_strategy(%s)  %s -> %s', a:context, a:message, a:strategy))
     let w:context.fix_strategy = a:strategy
     let w:context.needs_update = 1
 endfunction
