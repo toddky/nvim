@@ -213,7 +213,9 @@ require('lazy').setup({
 		'nvim-telescope/telescope.nvim',
 		--enabled = false,
 		version = 'v0.1.9',
-		dependencies = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'}
+		cmd = 'Telescope',
+		dependencies = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'},
+		config = function() require('setup.telescope') end,
 	},
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built.
 	{
@@ -221,6 +223,7 @@ require('lazy').setup({
 		-- NOTE: If you are having trouble with this installation,
 		--       refer to the README for telescope-fzf-native for more instructions.
 		build = 'make',
+		lazy = true,
 		-- Only load if `make` is available. Make sure you have the system requirements installed.
 		cond = function()
 			return vim.fn.executable 'make' == 1
@@ -315,7 +318,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- PLUGIN SETUP
 -- =============================================================================
 require('setup.treesitter')
-require('setup.telescope')
 require('setup.lsp')
 require('setup.cmp')
 
