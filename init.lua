@@ -267,10 +267,12 @@ require('lazy').setup({
 		-- Pin to v0.10.0: main branch requires nvim 0.11+ (ABI 15)
 		tag = 'v0.10.0',
 		enabled = true,
+		event = 'VeryLazy',
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
 		},
 		build = ':TSUpdate',
+		config = function() require('setup.treesitter') end,
 	},
 
 	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
@@ -326,7 +328,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- =============================================================================
 -- PLUGIN SETUP
 -- =============================================================================
-require('setup.treesitter')
 require('setup.lsp')
 
 
