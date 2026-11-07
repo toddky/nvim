@@ -13,20 +13,6 @@
 "redraw!|call DechoSep()|call inputsave()|call input("Press <cr> to continue")|call inputrestore()
 " ---------------------------------------------------------------------
 "DechoTabOn
-"  Load Once: {{{1
-if exists("g:loaded_AnsiEsc")
- finish
-endif
-let g:loaded_AnsiEsc = "v12"
-if v:version < 700
- echohl WarningMsg
- echo "***warning*** this version of AnsiEsc needs vim 7.0"
- echohl Normal
- finish
-endif
-let s:keepcpo= &cpo
-set cpo&vim
-
 " ---------------------------------------------------------------------
 " AnsiEsc#AnsiEsc: toggles ansi-escape code visualization {{{2
 fun! AnsiEsc#AnsiEsc(rebuild)
@@ -56,11 +42,6 @@ fun! AnsiEsc#AnsiEsc(rebuild)
    exe "set ft=".s:AnsiEsc_ft_{bn}
    if exists("colorname")|exe "colors ".colorname|endif
    let s:AnsiEsc_enabled_{bn}= 0
-   if has("gui_running") && has("menu") && &go =~ 'm'
-    " menu support
-    exe 'silent! unmenu '.g:DrChipTopLvlMenu.'AnsiEsc'
-    exe 'menu '.g:DrChipTopLvlMenu.'AnsiEsc.Start<tab>:AnsiEsc		:AnsiEsc<cr>'
-   endif
    if has("nvim")
     let &l:winhighlight= s:hlkeep_{bufnr("%")}
    else
@@ -72,12 +53,6 @@ fun! AnsiEsc#AnsiEsc(rebuild)
    let s:AnsiEsc_ft_{bn}      = &ft
    let s:AnsiEsc_enabled_{bn} = 1
 "   call Decho("enable AnsiEsc highlighting: s:AnsiEsc_ft_".bn."<".s:AnsiEsc_ft_{bn}."> bn#".bn)
-   if has("gui_running") && has("menu") && &go =~ 'm'
-    " menu support
-    exe 'silent! unmenu '.g:DrChipTopLvlMenu.'AnsiEsc'
-    exe 'menu '.g:DrChipTopLvlMenu.'AnsiEsc.Stop<tab>:AnsiEsc		:AnsiEsc<cr>'
-   endif
-
    " -----------------
    "  Conceal Support: {{{2
    " -----------------
@@ -847,11 +822,6 @@ fun! s:Ansi2Gui(code)
 "  call Dret("s:Ansi2Gui ".guicolor)
   return guicolor
 endfun
-
-" ---------------------------------------------------------------------
-"  Restore: {{{1
-let &cpo= s:keepcpo
-unlet s:keepcpo
 
 " ---------------------------------------------------------------------
 "  Modelines: {{{1
