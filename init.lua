@@ -276,7 +276,21 @@ require('lazy').setup({
 	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 	{ import = 'custom.plugins' },
 }, {
-	performance = { rtp = { disabled_plugins = { 'matchit' } } },
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				'matchit',
+				'gzip',
+				'tarPlugin',
+				'zipPlugin',
+				'tutor',
+				'tohtml',
+				'rplugin',
+				'netrwPlugin',
+				'spellfile',
+			},
+		},
+	},
 })
 
 -- Load matchit on VeryLazy instead of at startup.
