@@ -172,41 +172,49 @@ end, { nargs = '*' })
 -- TELESCOPE
 ------------------------------------------------------------
 -- :help telescope.builtin
-if pcall(require, 'telescope') then
-	local telescope = require('telescope.builtin')
-	util.nmap('//a', telescope.live_grep,   {desc='Telescope Grep [A]ll'})
-	util.nmap('//b', telescope.buffers,     {desc='Telescope [B]uffers'})
-	util.nmap('//c', telescope.colorscheme, {desc='Telescope [C]olorscheme'})
-	util.nmap('//d', telescope.diagnostics, {desc='Telescope [D]iagnostics'})
-	util.nmap('//f', telescope.find_files,  {desc='Telescope [F]iles'})
-	util.nmap('//g', telescope.git_files,   {desc='Telescope [G]it Files'})
-	util.nmap('//h', telescope.help_tags,   {desc='Telescope [H]elp'})
-	util.nmap('//k', telescope.keymaps,     {desc='Telescope [K]eymaps'})
-	util.nmap('//w', telescope.grep_string, {desc='Telescope Current [W]ord'})
+-- Requiring telescope inside each mapping makes lazy.nvim load it on first use instead of at startup.
+local builtin = function(name)
+	return function() require('telescope.builtin')[name]() end
+end
+util.nmap('//a', builtin('live_grep'),   {desc='Telescope Grep [A]ll'})
+util.nmap('//b', builtin('buffers'),     {desc='Telescope [B]uffers'})
+util.nmap('//c', builtin('colorscheme'), {desc='Telescope [C]olorscheme'})
+util.nmap('//d', builtin('diagnostics'), {desc='Telescope [D]iagnostics'})
+util.nmap('//f', builtin('find_files'),  {desc='Telescope [F]iles'})
+util.nmap('//g', builtin('git_files'),   {desc='Telescope [G]it Files'})
+util.nmap('//h', builtin('help_tags'),   {desc='Telescope [H]elp'})
+util.nmap('//k', builtin('keymaps'),     {desc='Telescope [K]eymaps'})
+util.nmap('//w', builtin('grep_string'), {desc='Telescope Current [W]ord'})
 
-	util.nmap('//l', require('setup.telescope').log_files, {desc='Telescope [L]og'})
+util.nmap('//l',
+	function()
+		-- Load telescope first: its lazy.nvim config requires setup.telescope, which would otherwise be mid-require here.
+		require('telescope')
+		require('setup.telescope').log_files()
+	end,
+	{desc='Telescope [L]og'}
+)
 
-	util.nmap('//<Enter>', telescope.commands, {desc='Telescope [Enter] Commands'})
+util.nmap('//<Enter>', builtin('commands'), {desc='Telescope [Enter] Commands'})
 
-	util.nmap('///',
-		function()
-			-- You can pass additional configuration to telescope to change theme, layout, etc.
-			telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-				winblend = 10,
-				previewer = false,
-			})
-		end,
-		{desc='[/] Fuzzily search in current buffer'}
-	)
+util.nmap('///',
+	function()
+		-- You can pass additional configuration to telescope to change theme, layout, etc.
+		require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+			winblend = 10,
+			previewer = false,
+		})
+	end,
+	{desc='[/] Fuzzily search in current buffer'}
+)
 
-	util.vmap('//',
-		function()
-			local text = util.get_selection()
-			telescope.live_grep({default_text=text})
-		end,
-		{noremap = true, silent=true}
-	)
-end -- pcall(require, 'telescope') then
+util.vmap('//',
+	function()
+		local text = util.get_selection()
+		require('telescope.builtin').live_grep({default_text=text})
+	end,
+	{noremap = true, silent=true}
+)
 
 -- Bazel
 -- Open TOP/some/path/BUILD from //some/path:target
