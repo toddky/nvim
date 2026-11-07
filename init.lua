@@ -74,6 +74,12 @@ local content = fp and fp:read("*all")
 if fp then fp:close() end
 local is_rhel8 = content ~= nil and (string.find(content, "release 8") ~= nil)
 
+-- Source the file instead of :colorscheme: the runtimepath search for colors/* is slow on this filesystem,
+-- and lazy's ColorSchemePre hook adds another glob over every plugin.
+--vim.cmd.source(vim.fn.stdpath('config') .. '/colors/jellybeans.vim')
+--vim.cmd.source(vim.fn.stdpath('config') .. '/colors/catppuccin_macchiato.vim')
+vim.cmd.source(vim.fn.stdpath('config') .. '/colors/ela_perfect.vim')
+
 
 -- =============================================================================
 -- LAZY

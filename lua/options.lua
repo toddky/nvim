@@ -5,7 +5,6 @@
 local api = vim.api
 local cmd = vim.cmd
 local opt = vim.opt
-local execute = api.nvim_command
 local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 
@@ -13,10 +12,7 @@ local augroup = api.nvim_create_augroup
 -- =============================================================================
 -- COLORSCHEME
 -- =============================================================================
---execute('colorscheme jellybeans')
---execute('colorscheme nord')
---execute('colorscheme catppuccin_macchiato')
-execute('colorscheme ela_perfect')
+-- The colorscheme itself is set in init.lua, before lazy.setup.
 
 -- Remove fg from diff highlights so syntax highlighting shows through
 vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = '#103818' })
