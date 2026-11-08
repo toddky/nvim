@@ -1,13 +1,5 @@
 
 -- =============================================================================
--- EXAMPLES
--- =============================================================================
--- https://github.com/alvarosevilla95/luatab.nvim/blob/master/lua/luatab/init.lua
--- https://github.com/toddyamakawa/vim/blob/master/my-plugins/plugin/tabline.vim
--- https://github.com/akinsho/bufferline.nvim
-
-
--- =============================================================================
 -- OPTIONS
 -- =============================================================================
 local execute = vim.api.nvim_command
@@ -32,69 +24,62 @@ local function tabline_color(name, ctermfg, ctermbg, guifg, guibg)
 	execute(highlight_cmd)
 end
 
-local red     = '%#TabLineRed#'
-local green   = '%#TabLineGreen#'
-local yellow  = '%#TabLineYellow#'
-local blue    = '%#TabLineBlue#'
-local magenta = '%#TabLineMagenta#'
-local cyan    = '%#TabLineCyan#'
-local white   = '%#TabLineWhite#'
-local other   = '%#Comment#'
+-- TabLineFill and TabLine come from the colorscheme; the rest are defined below.
+local fill      = '%#TabLineFill#'
+local normal    = '%#TabLine#'
+local red       = '%#TabLineRed#'
+local sel_red   = '%#TabLineSelRed#'
+local sel_blue  = '%#TabLineSelBlue#'
+local sel_white = '%#TabLineSelWhite#'
+local sel_dim   = '%#TabLineSelDim#'
 
 local colors = require('colors')
 local cterm = colors.cterm
 local gui = colors.gui
 
-tabline_color('Red'    , cterm.red    , nil, gui.red    , nil)
-tabline_color('Green'  , cterm.green  , nil, gui.green  , nil)
-tabline_color('Yellow' , cterm.yellow , nil, gui.yellow , nil)
-tabline_color('Blue'   , cterm.blue   , nil, gui.blue   , nil)
-tabline_color('Magenta', cterm.magenta, nil, gui.magenta, nil)
-tabline_color('Cyan'   , cterm.cyan   , nil, gui.cyan   , nil)
-tabline_color('White'  , cterm.white  , nil, gui.white  , nil)
+-- Picked by eye to stand out from the #242424 bar; ela_perfect's TabLineSel #393939 was too close to it.
+local cterm_sel_bg = 240
+local gui_sel_bg = '#585858'
+
+tabline_color('Red'     , cterm.red  , cterm.bg    , gui.red  , gui.bg)
+tabline_color('SelRed'  , cterm.red  , cterm_sel_bg, gui.red  , gui_sel_bg)
+tabline_color('SelBlue' , cterm.blue , cterm_sel_bg, gui.blue , gui_sel_bg)
+tabline_color('SelWhite', cterm.white, cterm_sel_bg, gui.white, gui_sel_bg)
+-- Dimmer than the white name but light enough to read on the #585858 block; picked by eye.
+tabline_color('SelDim'  , 251        , cterm_sel_bg, '#C6C6C6', gui_sel_bg)
 
 
 -- =============================================================================
--- TAB LINE
+-- TABLINE
 -- =============================================================================
-
 local function tabname(tabnr)
 
 	local buflist  = fn.tabpagebuflist(tabnr)
 	local winnr    = fn.tabpagewinnr(tabnr)
-	local bufnr    = buflist[1]
+	local bufnr    = buflist[winnr]
 	local bufname  = fn.bufname(bufnr)
-	local buftype  = fn.getbufvar(bufnr, '&buftype')
-	local filetype = fn.getbufvar(bufnr, '&filetype')
-
-	-- TODO: Check for any modified buffer in tab
-	local modified = fn.getbufvar(bufnr, '&modified') == 1 and red..'~' or ''
 
 	local current = tabnr == fn.tabpagenr()
 
-	local tabname = ''
-		.. (current and blue or other)..'['..tabnr..']'
-		.. (current and white or other)..bufname
-		.. modified
-		.. (#buflist > 1 and other..'('..#buflist..')' or '')
+	-- TODO: Check for any modified buffer in tab
+	local modified = fn.getbufvar(bufnr, '&modified') == 1 and (current and sel_red or red)..'~' or ''
+	local count = #buflist > 1 and (current and sel_dim or normal)..'('..#buflist..')' or ''
 
-	return tabname
+	if current then
+		return sel_blue..' ['..tabnr..']'..sel_white..bufname..modified..count..sel_white..' '
+	end
+	return normal..' ['..tabnr..']'..bufname..modified..count..normal..' '
 end
 
 
-local function tabline()
-	local tabline = ''
+function tabline()
+	local rendered = normal..' [NVIM] '
 
-	tabnrs = fn.tabpagenr('$')
-	--tabline = tabline .. yellow..'['..tabnrs..']  '
-	tabline = tabline .. '%#LineNr#[NVIM] '
-
-	for tabnr = 1, tabnrs, 1 do
-		tabline = tabline .. tabname(tabnr) .. ' '
+	for tabnr = 1, fn.tabpagenr('$') do
+		rendered = rendered .. fill .. tabname(tabnr)
 	end
 
-
-	return tabline
+	return rendered .. fill
 end
 
 opt.tabline = '%!luaeval("tabline()")'
