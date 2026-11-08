@@ -72,7 +72,7 @@ local function tabname(tabnr)
 end
 
 
-function tabline()
+local function render()
 	local rendered = normal..' [NVIM] '
 
 	for tabnr = 1, fn.tabpagenr('$') do
@@ -82,5 +82,7 @@ function tabline()
 	return rendered .. fill
 end
 
-opt.tabline = '%!luaeval("tabline()")'
+opt.tabline = "%!v:lua.require'tabline'.render()"
+
+return { render = render }
 
