@@ -121,7 +121,7 @@ hi DiagnosticUnderlineInfo  guisp=#66C6E3 guifg=NONE guibg=NONE  ctermfg=NONE   
 hi DiagnosticUnderlineHint  guisp=#A783F8 guifg=NONE guibg=NONE  ctermfg=NONE    ctermbg=NONE gui=undercurl      cterm=underline
 hi DiagnosticUnderlineOk    guisp=#90D64F guifg=NONE guibg=NONE  ctermfg=NONE    ctermbg=NONE gui=undercurl      cterm=underline
 
-" gitsigns and diff signs take their colors from these.
+" git-signs.lua and diff signs take their colors from these.
 hi Added            guisp=NONE      guifg=#90D64F   guibg=NONE      ctermfg=113     ctermbg=NONE gui=NONE           cterm=NONE
 hi Changed          guisp=NONE      guifg=#E3A15A   guibg=NONE      ctermfg=179     ctermbg=NONE gui=NONE           cterm=NONE
 hi Removed          guisp=NONE      guifg=#F4005F   guibg=NONE      ctermfg=197     ctermbg=NONE gui=NONE           cterm=NONE
