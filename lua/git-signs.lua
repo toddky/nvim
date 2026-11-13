@@ -10,8 +10,65 @@ local SIGN_PRIORITY = 6
 -- A guess: long enough to skip most keystrokes while typing, short enough that signs feel live.
 local RENDER_DELAY_MS = 100
 
+-- A guess: far above a normal index read, short enough to notice a hung git on a network filesystem or a held lock.
+local GIT_TIMEOUT_MS = 10000
+
+-- Repo config is untrusted in a repo you only cloned, so git must not run commands it names.
+--   * core.fsmonitor names a command git runs on an index read.
+--   * core.hooksPath: an index write runs the post-index-change hook.
+--   * safe.bareRepository=explicit: git refuses a repo checked in as plain files, so its config is never read.
+local GIT_OVERRIDES = { 'core.fsmonitor=false', 'core.hooksPath=/dev/null', 'safe.bareRepository=explicit' }
+
+-- A partial clone fetches a missing blob through the remote URL, which can name a command (ext::, core.sshCommand).
+local GIT_ENVIRONMENT = { GIT_ALLOW_PROTOCOL = 'none', GIT_NO_LAZY_FETCH = '1' }
+
 -- bufnr -> { dir, name, base, hunks, render_pending }. base is the index content, nil when the file is not tracked.
 local states = {}
+
+-- jobstart hands output over as lines, with each NUL inside a line turned into a newline.
+local function job_output(data)
+	local lines = vim.tbl_map(function(line) return (line:gsub('\n', '\0')) end, data)
+	return table.concat(lines, '\n')
+end
+
+-- Runs git in dir without blocking; on_exit({ code, stdout, stderr }) runs on the main loop.
+local function run_git(dir, arguments, stdin, on_exit)
+	local command = { 'git' }
+	for _, override in ipairs(GIT_OVERRIDES) do
+		vim.list_extend(command, { '-c', override })
+	end
+	vim.list_extend(command, arguments)
+
+	local result = { stdout = '', stderr = '' }
+	local is_timed_out = false
+	local job = vim.fn.jobstart(command, {
+		cwd = dir,
+		env = GIT_ENVIRONMENT,
+		stdout_buffered = true,
+		stderr_buffered = true,
+		on_stdout = function(_, data) result.stdout = job_output(data) end,
+		on_stderr = function(_, data) result.stderr = job_output(data) end,
+		on_exit = function(_, code)
+			result.code = code
+			if is_timed_out then
+				vim.notify(
+					('git-signs: `git %s` in %s was stopped after %d s, check for a stale .git/index.lock or a hung mount')
+						:format(table.concat(arguments, ' '), dir, GIT_TIMEOUT_MS / 1000),
+					vim.log.levels.ERROR
+				)
+			end
+			on_exit(result)
+		end,
+	})
+	vim.defer_fn(function()
+		if result.code then return end
+		is_timed_out = true
+		vim.fn.jobstop(job)
+	end, GIT_TIMEOUT_MS)
+
+	if stdin then vim.fn.chansend(job, stdin) end
+	vim.fn.chanclose(job, 'stdin')
+end
 
 local function split_lines(text)
 	local lines = vim.split(text, '\n', { plain = true })
@@ -93,7 +150,7 @@ local function refresh(buf)
 
 	local dir = vim.fs.dirname(path)
 	local basename = vim.fs.basename(path)
-	vim.system({ 'git', 'show', ':./' .. basename }, { cwd = dir, text = false }, vim.schedule_wrap(function(result)
+	run_git(dir, { 'show', ':./' .. basename }, nil, function(result)
 		if not vim.api.nvim_buf_is_loaded(buf) then return end
 		local state = states[buf] or {}
 		states[buf] = state
@@ -101,7 +158,7 @@ local function refresh(buf)
 		state.name = basename
 		state.base = result.code == 0 and result.stdout or nil
 		render(buf)
-	end))
+	end)
 end
 
 local function refresh_all()
@@ -186,50 +243,53 @@ function M.stage_hunk()
 	local old_lines, old_ends_with_newline = split_lines(state.base)
 	local new_lines, new_ends_with_newline = split_lines(buffer_text(buf))
 
-	-- git apply reads patch paths relative to the repo root, even when run from a subdirectory.
-	local prefix_result = vim.system({ 'git', 'rev-parse', '--show-prefix' }, { cwd = state.dir }):wait()
-	if prefix_result.code ~= 0 then
-		vim.notify(
-			('git-signs: could not find the repo root for %s, is it still inside a git repo?\n%s')
-				:format(state.dir, prefix_result.stderr),
-			vim.log.levels.ERROR
-		)
-		return
-	end
-	local repo_path = vim.trim(prefix_result.stdout) .. state.name
-
-	-- Where the hunk lands in the index once applied alone: a pure add starts one line later, a pure delete one earlier.
-	local staged_start = hunk.old_start + (hunk.old_count == 0 and 1 or 0) - (hunk.new_count == 0 and 1 or 0)
-	local patch = {
-		('diff --git a/%s b/%s'):format(repo_path, repo_path),
-		'--- a/' .. repo_path,
-		'+++ b/' .. repo_path,
-		('@@ -%d,%d +%d,%d @@'):format(hunk.old_start, hunk.old_count, staged_start, hunk.new_count),
-	}
+	local body = {}
 	local function add_side(prefix, lines, ends_with_newline, start, count)
 		for index = start, start + count - 1 do
-			table.insert(patch, prefix .. lines[index])
+			table.insert(body, prefix .. lines[index])
 			if index == #lines and not ends_with_newline then
-				table.insert(patch, '\\ No newline at end of file')
+				table.insert(body, '\\ No newline at end of file')
 			end
 		end
 	end
 	add_side('-', old_lines, old_ends_with_newline, hunk.old_start, hunk.old_count)
 	add_side('+', new_lines, new_ends_with_newline, hunk.new_start, hunk.new_count)
 
-	local apply_result = vim.system(
-		{ 'git', 'apply', '--cached', '--unidiff-zero', '-' },
-		{ cwd = state.dir, stdin = table.concat(patch, '\n') .. '\n' }
-	):wait()
-	if apply_result.code ~= 0 then
-		vim.notify(
-			('git-signs: could not stage the hunk in %s, check `git status` for a conflict or lock:\n%s')
-				:format(repo_path, apply_result.stderr),
-			vim.log.levels.ERROR
-		)
-		return
-	end
-	refresh(buf)
+	-- git apply reads patch paths relative to the repo root, even when run from a subdirectory.
+	run_git(state.dir, { 'rev-parse', '--show-prefix' }, nil, function(prefix_result)
+		if prefix_result.code ~= 0 then
+			vim.notify(
+				('git-signs: could not find the repo root for %s, is it still inside a git repo?\n%s')
+					:format(state.dir, prefix_result.stderr),
+				vim.log.levels.ERROR
+			)
+			return
+		end
+		local repo_path = vim.trim(prefix_result.stdout) .. state.name
+
+		-- Where the hunk lands in the index once applied alone: a pure add starts one line later, a pure delete one earlier.
+		local staged_start = hunk.old_start + (hunk.old_count == 0 and 1 or 0) - (hunk.new_count == 0 and 1 or 0)
+		local patch = {
+			('diff --git a/%s b/%s'):format(repo_path, repo_path),
+			'--- a/' .. repo_path,
+			'+++ b/' .. repo_path,
+			('@@ -%d,%d +%d,%d @@'):format(hunk.old_start, hunk.old_count, staged_start, hunk.new_count),
+		}
+		vim.list_extend(patch, body)
+
+		local stdin = table.concat(patch, '\n') .. '\n'
+		run_git(state.dir, { 'apply', '--cached', '--unidiff-zero', '-' }, stdin, function(apply_result)
+			if apply_result.code ~= 0 then
+				vim.notify(
+					('git-signs: could not stage the hunk in %s, check `git status` for a conflict or lock:\n%s')
+						:format(repo_path, apply_result.stderr),
+					vim.log.levels.ERROR
+				)
+				return
+			end
+			refresh(buf)
+		end)
+	end)
 end
 
 if vim.fn.executable('git') ~= 1 then return M end
