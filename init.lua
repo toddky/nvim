@@ -127,22 +127,6 @@ require('lazy').setup({
 	------------------------------------------------------------
 	'tpope/vim-fugitive',
 	{
-		'lewis6991/gitsigns.nvim',
-		-- v2.1.0 is the last release that supports Neovim 0.10; later commits need 0.11.
-		version = 'v2.1.0',
-		event = 'VeryLazy',
-		opts = {
-			-- :help gitsigns.txt
-			signs = {
-				add = { text = '+' },
-				change = { text = '~' },
-				delete = { text = '_' },
-				topdelete = { text = '‾' },
-				changedelete = { text = '~' },
-			},
-		},
-	},
-	{
 		'sindrets/diffview.nvim',
 		cmd = { 'DiffviewOpen', 'DiffviewFileHistory' },
 		opts = {
@@ -304,6 +288,7 @@ require('mappings')
 require('options')
 require('text-objects')
 require('auto-quit')
+require('git-signs')
 
 
 -- =============================================================================
